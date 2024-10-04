@@ -113,7 +113,8 @@ Rule +
     /4/     = /Left/ /Color/ /Green/ /Color/ /White/
 * 5. Обитатель зеленого дома пьет кофе. 
     /5/     = /Member/ /Color/ /Green/ /Drink/ /Coffee/
-* 6. Человек, который курит Pall Mall, держит птицу. 
+* 6. Человек, который курит Pall Mall,
+* держит птицу. 
     /6/     = /Member/ /Cigarettes/ /PallMall/ /Pet/ /Bird/
 * 7. Обитатель среднего дома пьет молоко. 
     /7/     = /Member/ /Home/ /3/ /Drink/ /Milk/
@@ -139,60 +140,45 @@ Rule +
 * 16. Рыба - пятое животное.
     /16/    = /Fish/    
 
-/*
-
-<RuleText s.Rule> == e.RuleText
-
-s.Rule ::= s.NUMBER
-e.RuleText ::= 'Англичанин живет в красном доме.' | 'У шведа есть собака.' |
-  | 'Датчанин пьет чай.' | 'Зеленый дом стоит слева от белого.' | 'Обитатель зеленого дома пьет кофе.' |
-  | 'Человек, который курит Pall Mall, держит птицу.' | 'Обитатель среднего дома пьет молоко.' |
-  | 'Норвежец живет в первом доме.' | 'Курильщик Marlboro живет возле того, у кого есть кошка.' |
-  | 'Человек, у которого есть конь, живет возле того, кто курит Dunhill.' | 'Курильщик Winfield пьет пиво.' |
-  | 'Норвежец живет возле голубого дома.' | 'Немец курит Rothmans.' | 
-  | 'Курильщик Marlboro живет по соседству с человеком, который пьет воду.' | 
-  | 'Начальные условия.'
-  | 'Рыба - пятое животное.'
-
-*/
-RuleText {
-  0 = 
-    'Conditions.';
-  1 =
-    'The Englishman lives in the red house.';
-  2 =
-    'The Swede has a dog.';
-  3 =
-    'The Dane likes to drink tea.';
-  4 =
-    'The green house is left of the white house.';
-  5 =
-    'The resident in the green house drinks coffee.';
-  6 =
-    'The person who smokes Pall Mall has a bird.';
-  7 =
-    'The man who lives in the middle house drinks milk.';
-  8 =
-    'The resident in the yellow house smokes Dunhill.';
-  9 =
-    'The Norwegian lives in the first house.';
-  10 =
-    'The Marlboro smoker lives next to the person ' + 
-            'with a cat.\n'
-  11 =
-    'The man who has a horse lives next to the person ' + 
+* <RuleText S(/0/../16/)R> == ET
+*
+* ET ::= 'Conditions.' |
+*        'The Englishman lives in the red house.' | 
+*        'The Swede has a dog.' |
+*        'The Dane likes to drink tea.' |
+*        'The green house is left of the white house.' |
+*        'The resident in the green house drinks coffee.' |
+*        'The person who smokes Pall Mall has a bird.' |
+*        'The man who lives in the middle house drinks milk.' |
+*        'The resident in the yellow house smokes Dunhill.' |
+*        'The Norwegian lives in the first house.' |
+*        'The Marlboro smoker lives next to the person with a cat.' |
+*        'The man who has a horse lives next to the person who smokes Dunhill.' |
+*        'The Winfield smoker likes to drink beer.' |
+*        'The Norwegian lives next to the blue house.' |
+*        'The German smokes Rothmanns.' | 
+*        'The Marlboro smoker has a neighbor who drinks water.' | 
+*        'Fish is the fifth pet.'
+RuleText +
+    /0/     = 'Conditions.'
+    /1/     = 'The Englishman lives in the red house.'
+    /2/     = 'The Swede has a dog.'
+    /3/     = 'The Dane likes to drink tea.'
+    /4/     = 'The green house is left of the white house.'
+    /5/     = 'The resident in the green house drinks coffee.'
+    /6/     = 'The person who smokes Pall Mall has a bird.'
+    /7/     = 'The man who lives in the middle house drinks milk.'
+    /8/     = 'The resident in the yellow house smokes Dunhill.'
+    /9/     = 'The Norwegian lives in the first house.'
+    /10/    = 'The Marlboro smoker lives next to the person ' + 
+            'with a cat.'
+    /11/    = 'The man who has a horse lives next to the person ' + 
             'who smokes Dunhill'
-  12 =
-    'The Winfield smoker likes to drink beer.';
-  13 =
-    'The Norwegian lives next to the blue house.';
-  14 =
-    'The German smokes Rothmanns.';
-  15 =
-    'The Marlboro smoker has a neighbor who drinks water.';
-  16 = 
-    'Fish is the fifth pet.'
-}
+    /12/    = 'The Winfield smoker likes to drink beer.'
+    /13/    = 'The Norwegian lives next to the blue house.'
+    /14/    = 'The German smokes Rothmanns.'
+    /15/    = 'The Marlboro smoker has a neighbor who drinks water.'
+    /16/    = 'Fish is the fifth pet.'
 
 /*
 
