@@ -2,13 +2,13 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-03
-* https://github.com/Aleksandr3Bocharov/RefalABTaskEinshtein
+* 2024-10-04
+* https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
-* RefalABTaskEinshtein
+* RefalABEinshteinPuzzle
 *
-* Программа "RefalABTaskEinshtein" написана
+* Программа "RefalABEinshteinPuzzle" написана
 * на языке программирования РефалАБ.
 * https://github.com/Aleksandr3Bocharov/RefalAB
 *
@@ -60,8 +60,7 @@
 
 * Вывод справки
 Help        = <Prout 'Solution of the Einstein''s Puzzle ' + 
-            'on RefalAB.\n\n' + 
-            'Solution of the Einstein''s Puzzle on RefalAB.\n\n' +
+            'on RefalAB.\n\n' +
             'Einstein''s Puzzle.\n\n' +
             'Conditions:\n' +
             '1. There are 5 houses each of a different color.\n' +

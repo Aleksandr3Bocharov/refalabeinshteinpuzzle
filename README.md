@@ -1,7 +1,7 @@
 Задача Эйнштейна
 ------------------
 
-Программа "RefalABTaskEinshtein" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/RefalAB).
+Программа "RefalABEinshteinPuzzle" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/RefalAB).
 
 Решение задачи Эйнштейна на РефалАБ.
 

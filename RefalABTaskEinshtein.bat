@@ -1,6 +1,6 @@
 SET REFAL=F:\Programming\Projects\RefalAB
 
-%REFAL%\bin\RefalAB RefalABTaskEinshtein > RefalABTaskEinshtein.log
-as -o RefalABTaskEinshtein.o RefalABTaskEinshtein.asm >> RefalABTaskEinshtein.log
-gcc -o RefalABTaskEinshtein.exe %REFAL%\lib\mainrf.o RefalABTaskEinshtein.o -Wl,-L%REFAL%\lib -Wl,-lRefalAB >> RefalABTaskEinshtein.log
-RefalABTaskEinshtein
+%REFAL%\bin\RefalAB RefalABEinshteinPuzzle > RefalABEinshteinPuzzle.log
+as -o RefalABEinshteinPuzzle.o RefalABEinshteinPuzzle.asm >> RefalABEinshteinPuzzle.log
+gcc -o RefalABEinshteinPuzzle.exe %REFAL%\lib\mainrf.o RefalABEinshteinPuzzle.o -Wl,-L%REFAL%\lib -Wl,-lRefalAB >> RefalABEinshteinPuzzle.log
+RefalABEinshteinPuzzle
