@@ -192,8 +192,7 @@ RuleText +
 * ET ::= '???' |
 *        'Yellow' | 'Blue' | 'Red' | 'Green' | 'White' |
 *        'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede' |
-*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' |
-*        'Winfield' |
+*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
 *        'Cat' | 'Horse' | 'Bird' | 'Dog' | 'Fish' |
 *        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
 ObjectText +
