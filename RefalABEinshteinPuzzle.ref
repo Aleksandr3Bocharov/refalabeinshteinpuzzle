@@ -180,77 +180,71 @@ RuleText +
     /15/    = 'The Marlboro smoker has a neighbor who drinks water.'
     /16/    = 'Fish is the fifth pet.'
 
-/*
+* <ObjectText SC EO> == ET
+*
+* SC ::= /Color/ | /Nationality/ | /Cigarettes/ | /Pet/ | /Drink/
+* EO ::= '???' |
+*        /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ |
+*        /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
+*        /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/| /Winfield/ |
+*        /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
+*        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* ET ::= '???' |
+*        'Yellow' | 'Blue' | 'Red' | 'Green' | 'White' |
+*        'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede' |
+*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' |
+*        'Winfield' |
+*        'Cat' | 'Horse' | 'Bird' | 'Dog' | 'Fish' |
+*        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
+ObjectText +
+    /Color/ '???' +
+            = '???'
+    /Nationality/ '???' +
+            = '???'
+    /Cigarettes/ '???' +
+            = '???'
+    /Pet/ '???' +
+            = '???'
+    /Drink/ '???' +
+            = '???'
+    SC SO   = <ObjectTextAux SO>
 
-<ObjectText e.Object> == e.ObjectText
-
-e.Object ::= s.Color | s.Nationality | s.Cigarretes | s.Pet | s.Drink | '???'
-s.Color ::= Yellow | Blue | Red | Green | White
-s.Nationality ::= Norwegian | Dane | Englishman | German | Swede
-s.Cigarettes ::= Dunhill | Rothmans | PallMall | Marlboro | Winfield
-s.Pet ::= Cat | Horse | Bird | Fish | Dog
-s.Drink ::= Water | Tea | Milk | Coffee | Beer
-e.ObjectText ::= 'Жёлтый' | 'Голубой' | 'Красный' | 'Зелёный' | 'Белый' |
-  | 'Норвежец' | 'Датчанин'  |  'Англичанин' | 'Немец' | 'Швед'  |
-  | 'Dunhill' | 'Rothmans'  |  'Pall Mall' | 'Marlboro' | 'Winfield'  |
-  | 'Кошка' | 'Конь'  |  'Птица' | 'Рыба' | 'Собака'  |
-  | 'Вода' | 'Чай'  |  'Молоко' | 'Кофе' | 'Пиво' | '???'
-
-*/
-ObjectText {
-  Yellow =
-    'Жёлтый';
-  Blue =
-    'Голубой';
-  Red =
-    'Красный';
-  Green =
-    'Зелёный';
-  White =
-    'Белый';     
-  Norwegian =
-    'Норвежец'; 
-  Dane =
-    'Датчанин';  
-  Englishman =
-    'Англичанин';
-  German =
-    'Немец'; 
-  Swede =
-    'Швед';   
-  Dunhill =
-    'Dunhill';
-  Rothmans =
-    'Rothmans';
-  PallMall =
-    'Pall Mall';
-  Marlboro =
-    'Marlboro'; 
-  Winfield =
-    'Winfield';  
-  Cat =
-    'Кошка';    
-  Horse =
-    'Конь';
-  Bird =
-    'Птица'; 
-  Fish =
-    'Рыба';
-  Dog =
-    'Собака';
-  Water =
-    'Вода';  
-  Tea =
-    'Чай';
-  Milk =
-    'Молоко'; 
-  Coffee =
-    'Кофе';
-  Beer =
-    'Пиво';
-  '???' =
-    '???'  
-}
+ObjectTextAux +
+    /Yellow/ +
+            = 'Yellow'
+    /Blue/  = 'Blue'
+    /Red/   = 'Red'
+    /Green/ = 'Green'
+    /White/ = 'White'     
+    /Norwegian/ +
+            = 'Norwegian' 
+    /Dane/  = 'Dane'  
+    /Englishman/ +
+            = 'Englishman'
+    /German/ +
+            = 'German'
+    /Swede/ = 'Swede'   
+    /Dunhill/ +
+            = 'Dunhill'
+    /Rothmans/ +
+            = 'Rothmans'
+    /PallMall/ +
+            = 'Pall Mall'
+    /Marlboro/ +
+            = 'Marlboro' 
+    /Winfield/ +
+            = 'Winfield'  
+    /Cat/   = 'Cat'
+    /Horse/ = 'Horse'
+    /Bird/  = 'Bird'
+    /Dog/   = 'Dog'
+    /Fish/  = 'Fish'
+    /Water/ = 'Water'  
+    /Tea/   = 'Tea'
+    /Milk/  = 'Milk' 
+    /Coffee/ +
+            = 'Coffee'
+    /Beer/  = 'Beer'
 
 /*
 
