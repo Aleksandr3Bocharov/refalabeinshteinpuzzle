@@ -247,8 +247,7 @@ ObjectTextAux +
 
 * <Solve VS> == VS
 *
-* VS ::= (S(/0/../16/)R (E(/1/../15/)R) ET '=' VX)+
-* ET ::= (VH)*
+* VS ::= (S(/0/../16/)R (E(/1/../15/)R) (VH)* '=' VX)+
 * VX ::= VH | /Impossible/
 * VH ::= (V1) (V2) (V3) (V4) (V5)
 * V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
