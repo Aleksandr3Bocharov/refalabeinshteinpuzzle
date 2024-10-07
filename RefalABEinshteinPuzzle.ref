@@ -274,31 +274,31 @@ Solve +
             <Solve EB (SP (ER) ET '=' /Impossible/)>
 * Переход к следующему применению правила
     EB (SC (ER) (VH) ET '=' /Impossible/) +
-            = <Br Steps '=' <P1 <Dg Steps>>> +
-            <Br StepsBack '=' <P1 <Dg StepsBack>>> +
+            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             <Solve EB (SN (ER) ET '=' VH)>
 * Решение найдено
     EB (SC () ET '=' VH) +
-            = <Br Steps '=' <P1 <Dg Steps>>> +
-            <Br StepsBack '=' <P1 <Dg StepsBack>>> +
+            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             EB (SC () ET '=' VH) (/16/ () '=' <ApplyRule <Rule /16/> VH>)
 * Переход к следующему правилу  
-  e.Solve-B (s.Rule (e.Rules) e.Tables '=' e.Table),
-  <FindMinRule (e.Rules) e.Table>: s.MinRule,
-  e.Rules: e.Rules-B s.MinRule e.Rules-E,
-  <Br RuleTables '='>
-  <ApplyRule <Rule s.MinRule> e.Table>
-  <Dg RuleTables>: 
-  {
-    (e.NewTable) e.RestNewTables =
-      <Rp Steps '=' <Inc <Cp Steps>>>
-      <Rp StepsBack '=' <Inc <Cp StepsBack>>>
-      <Solve e.Solve-B (s.Rule (e.Rules) e.Tables '=' e.Table) (s.MinRule (e.Rules-B e.Rules-E) e.RestNewTables '=' e.NewTable)>;
-    =
-      <Solve e.Solve-B (s.Rule (e.Rules) e.Tables '=' Impossible)>
-  }      
+    EB (SC (ER) ET '=' VH) +
+            = <SolveAux1 EB (SC (ER) ET '=' VH) <FindMinRule (ER) VH>>
 
+SolveAux1 +
+    EB (SC (ER) ET '=' VH) SM +
+            = <ApplyRule <Rule SM> VH> +
+            <SolveAux2 EB (SC (ER) ET '=' VH) SM <Dg /RuleTables/>> 
 
+SolveAux2 +
+    EB (SC (EP SM EE) ET '=' VH) SM (VN) ER +
+            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+            <Solve EB (SC (EP SM EE) ET '=' VH) (SM (EP EE) ER '=' VN)>
+    EB (SC (ER) ET '=' VH) SM +
+            = <Solve EB (SC (ER) ET '=' /Impossible/)>
+      
 /*
 
 <FindMinRule (e.Rules) e.Table> == s.Rule
