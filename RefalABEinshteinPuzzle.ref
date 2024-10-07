@@ -265,23 +265,23 @@ ObjectTextAux +
 *        '???'
 * VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
 *        /Winfield/ | '???'
-* VP ::= /Cat/ | /Horse/ | /Bird/ | /Fish/ | /Dog/ | '???'
+* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Solve +
 * Возврат к предыдущему правилу
-    EB (SP (ER) ET '=' VH) (SN (EI) '=' /Impossible/) +
+    EB (SP (ER) ET '=' VH) (SC (EI) '=' /Impossible/) +
             = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             <Solve EB (SP (ER) ET '=' /Impossible/)>
 * Переход к следующему применению правила
-  e.Solve-B (s.Rule (e.Rules) (e.Table) e.RestTables '=' Impossible) =
-    <Rp Steps '=' <Inc <Cp Steps>>>
-    <Rp StepsBack '=' <Inc <Cp StepsBack>>>
-    <Solve e.Solve-B (s.Rule (e.Rules) e.RestTables '=' e.Table)>;
+    EB (SC (ER) (VH) ET '=' /Impossible/) +
+            = <Br Steps '=' <P1 <Dg Steps>>> +
+            <Br StepsBack '=' <P1 <Dg StepsBack>>> +
+            <Solve EB (SN (ER) ET '=' VH)>
 * Решение найдено
-  e.Solve-B (s.Rule () e.Tables '=' e.Table) =
-    <Rp Steps '=' <Inc <Cp Steps>>>
-    <Rp StepsBack '=' <Inc <Cp StepsBack>>>
-    e.Solve-B (s.Rule () e.Tables '=' e.Table) (16 () '=' <ApplyRule <Rule 16> e.Table>);  
+    EB (SC () ET '=' VH) +
+            = <Br Steps '=' <P1 <Dg Steps>>> +
+            <Br StepsBack '=' <P1 <Dg StepsBack>>> +
+            EB (SC () ET '=' VH) (/16/ () '=' <ApplyRule <Rule /16/> VH>)
 * Переход к следующему правилу  
   e.Solve-B (s.Rule (e.Rules) e.Tables '=' e.Table),
   <FindMinRule (e.Rules) e.Table>: s.MinRule,
