@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-04
+* 2024-10-07
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -258,7 +258,7 @@ ObjectTextAux +
 * V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
 *        /Pet/ VP /Drink/ VD
 * V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ EP /Drink/ ED
+*        /Pet/ VP /Drink/ VD
 * V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
 *        /Pet/ VP /Drink/ VD
 * VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
