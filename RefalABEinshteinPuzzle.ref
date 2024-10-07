@@ -269,9 +269,9 @@ ObjectTextAux +
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Solve +
 * Возврат к предыдущему правилу
-  e.Solve-B (s.PrevRule (e.PrevRules) e.Tables '=' e.Table) (s.Rule (e.Rules) '=' Impossible) =
-    <Rp StepsBack '=' <Inc <Cp StepsBack>>>
-    <Solve e.Solve-B (s.PrevRule (e.PrevRules) e.Tables '=' Impossible)>;
+    EB (SP (ER) ET '=' VH) (SN (EI) '=' /Impossible/) +
+            = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+            <Solve EB (SP (ER) ET '=' /Impossible/)>
 * Переход к следующему применению правила
   e.Solve-B (s.Rule (e.Rules) (e.Table) e.RestTables '=' Impossible) =
     <Rp Steps '=' <Inc <Cp Steps>>>
