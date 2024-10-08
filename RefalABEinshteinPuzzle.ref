@@ -321,9 +321,9 @@ ObjectTextAux +
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Solve +
 * Возврат к предыдущему правилу
-    EB (SP (ER) ET '=' VH) (SC (EI) '=' /Impossible/) +
+    EB (SP (VR) ET '=' VH) (SC (EI) '=' /Impossible/) +
             = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SP (ER) ET '=' /Impossible/)>
+            <Solve EB (SP (VR) ET '=' /Impossible/)>
 * Переход к следующему применению правила
     EB (SC (ER) (VH) ET '=' /Impossible/) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
@@ -335,21 +335,21 @@ Solve +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             EB (SC () ET '=' VH) (/16/ () '=' <ApplyRule <Rule /16/> VH>)
 * Переход к следующему правилу  
-    EB (SC (ER) ET '=' VH) +
-            = <SolveAux1 EB (SC (ER) ET '=' VH) <FindMinRule (ER) VH>>
+    EB (SC (VR) ET '=' VH) +
+            = <SolveAux1 EB (SC (VR) ET '=' VH) <FindMinRule (VR) VH>>
 
 SolveAux1 +
-    EB (SC (ER) ET '=' VH) SM +
+    EB (SC (VR) ET '=' VH) SM +
             = <ApplyRule <Rule SM> VH> +
-            <SolveAux2 EB (SC (ER) ET '=' VH) SM <Dg /RuleTables/>> 
+            <SolveAux2 EB (SC (VR) ET '=' VH) SM <Dg /RuleTables/>> 
 
 SolveAux2 +
     EB (SC (EP SM EE) ET '=' VH) SM (VN) ER +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             <Solve EB (SC (EP SM EE) ET '=' VH) (SM (EP EE) ER '=' VN)>
-    EB (SC (ER) ET '=' VH) SM +
-            = <Solve EB (SC (ER) ET '=' /Impossible/)>
+    EB (SC (VR) ET '=' VH) SM +
+            = <Solve EB (SC (VR) ET '=' /Impossible/)>
 
 * <Rule S(/1/../16/)R> == S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
 *
@@ -398,34 +398,33 @@ Rule +
 * 16. Рыба - пятое животное.
     /16/    = /Fish/
 
-/*
-
-<FindMinRule (e.Rules) e.Table> == s.Rule
-
-e.Rules ::= s.Rule+
-s.Rule ::= s.NUMBER
-e.Table ::= (e.Home1) (e.Home2) (e.Home3) (e.Home4) (e.Home5)
-e.Home1 ::= Home 1 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home2 ::= Home 2 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home3 ::= Home 3 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home4 ::= Home 4 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home5 ::= Home 5 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Color ::= Yellow | Blue | Red | Green | White | '???'
-e.Nationality ::= Norwegian | Dane | Englishman | German | Swede | '???'
-e.Cigarettes ::= Dunhill | Rothmans | PallMall | Marlboro | Winfield | '???'
-e.Pet ::= Cat | Horse | Bird | Fish | Dog | '???'
-e.Drink ::= Water | Tea | Milk | Coffee | Beer | '???'
-
-*/
-FindMinRule {
-  (s.Rule) e.Table =
-    s.Rule;
+* <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
+*
+* VH ::= (V1) (V2) (V3) (V4) (V5)
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
+*        '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
+*        /Winfield/ | '???'
+* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
+* VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+FindMinRule +
+  (SR) VH   = SR
   (s.Rule e.RestRules) e.Table,
   <Br RuleTables '='>
   <ApplyRule <Rule s.Rule> e.Table>
   <Lenw <Dg RuleTables>>: s.MinLen e.Tables =
     <FindMinRule-Aux s.MinLen s.Rule (e.RestRules) e.Table>
-}
 
 FindMinRule-Aux {
   0 s.MinRule (e.Rules) e.Table =
