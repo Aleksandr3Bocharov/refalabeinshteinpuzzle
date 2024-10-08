@@ -321,35 +321,35 @@ ObjectTextAux +
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Solve +
 * Возврат к предыдущему правилу
-    EB (SP (VR) ET '=' VH) (SC (EI) '=' /Impossible/) +
+    EB (SP (ER) ET '=' EH) (SC (EI) '=' /Impossible/) +
             = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SP (VR) ET '=' /Impossible/)>
+            <Solve EB (SP (ER) ET '=' /Impossible/)>
 * Переход к следующему применению правила
-    EB (SC (ER) (VH) ET '=' /Impossible/) +
+    EB (SC (ER) (EH) ET '=' /Impossible/) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SN (ER) ET '=' VH)>
+            <Solve EB (SC (ER) ET '=' EH)>
 * Решение найдено
-    EB (SC () ET '=' VH) +
+    EB (SC () ET '=' EH) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            EB (SC () ET '=' VH) (/16/ () '=' <ApplyRule <Rule /16/> VH>)
+            EB (SC () ET '=' EH) (/16/ () '=' <ApplyRule <Rule /16/> EH>)
 * Переход к следующему правилу  
-    EB (SC (VR) ET '=' VH) +
-            = <SolveAux1 EB (SC (VR) ET '=' VH) <FindMinRule (VR) VH>>
+    EB (SC (ER) ET '=' EH) +
+            = <SolveAux1 EB (SC (ER) ET '=' EH) <FindMinRule (ER) EH>>
 
 SolveAux1 +
-    EB (SC (VR) ET '=' VH) SM +
-            = <ApplyRule <Rule SM> VH> +
-            <SolveAux2 EB (SC (VR) ET '=' VH) SM <Dg /RuleTables/>> 
+    EB (SC (ER) ET '=' EH) SM +
+            = <ApplyRule <Rule SM> EH> +
+            <SolveAux2 EB (SC (ER) ET '=' EH) SM <Dg /RuleTables/>> 
 
 SolveAux2 +
-    EB (SC (EP SM EE) ET '=' VH) SM (VN) ER +
+    EB (SC (EP SM EE) ET '=' EH) SM (EN) ER +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SC (EP SM EE) ET '=' VH) (SM (EP EE) ER '=' VN)>
-    EB (SC (VR) ET '=' VH) SM +
-            = <Solve EB (SC (VR) ET '=' /Impossible/)>
+            <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
+    EB (SC (ER) ET '=' EH) SM +
+            = <Solve EB (SC (ER) ET '=' /Impossible/)>
 
 * <Rule S(/1/../16/)R> == S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
 *
@@ -419,28 +419,28 @@ Rule +
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 FindMinRule +
-    (SM) VH = SM
-    (SM VE) VH +
-            = <ApplyRule <Rule SM> VH> +
-            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (VE) VH>
+    (SM) EH = SM
+    (SM EE) EH +
+            = <ApplyRule <Rule SM> EH> +
+            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
 
 FindMinRuleAux +
-    /0/ ET SM (VE) VH +
+    /0/ ET SM (EE) EH +
             = SM
-    SL ET SM () VH +
+    SL ET SM () EH +
             = SM
-    SL ET SM (SR EE) VH +
-            = <ApplyRule <Rule SR> VH> +
-            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) VH>
+    SL ET SM (SR EE) EH +
+            = <ApplyRule <Rule SR> EH> +
+            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
 
 MinRule +
     SL SM SN ET SR +
             = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
 
 MinRuleAux +
-    SL SM SN SR '>' VE +
+    SL SM SN SR '>' EE +
             = SN SR
-    SL SM SN SR VE +
+    SL SM SN SR EE +
             = SL SM
 
 /*
