@@ -419,10 +419,9 @@ Rule +
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 FindMinRule +
-  (SR) VH   = SR
-  (s.Rule e.RestRules) e.Table,
-  <Br RuleTables '='>
-  <ApplyRule <Rule s.Rule> e.Table>
+    (SR) VH = SR
+    (SR VE) VH +
+            = <ApplyRule <Rule SR> VH> +
   <Lenw <Dg RuleTables>>: s.MinLen e.Tables =
     <FindMinRule-Aux s.MinLen s.Rule (e.RestRules) e.Table>
 
