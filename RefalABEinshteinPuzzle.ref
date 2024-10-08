@@ -422,36 +422,26 @@ FindMinRule +
     (SM) VH = SM
     (SM VE) VH +
             = <ApplyRule <Rule SM> VH> +
-            <FindMinRuleAux <Lengw <Dg /RuleTables/>> SM (VE) VH>
+            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (VE) VH>
 
 FindMinRuleAux +
     /0/ ET SM (VE) VH +
             = SM
     SL ET SM () VH +
             = SM
-  s.MinLen s.MinRule (s.Rule e.RestRules) e.Table,
-  <Br RuleTables '='>
-  <ApplyRule <Rule s.Rule> e.Table>
-  <Lenw <Dg RuleTables>>: s.LenRule e.Tables,
-  <MinRule (s.MinLen s.MinRule) (s.LenRule s.Rule)>: (s.NewMinLen s.NewMinRule) =
-    <FindMinRule-Aux s.NewMinLen s.NewMinRule (e.RestRules) e.Table>
-}
+    SL ET SM (SR EE) VH +
+            = <ApplyRule <Rule SR> VH> +
+            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) VH>
 
-/*
+MinRule +
+    SL SM SN ET SR +
+            = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
 
-<MinRule t.MinRule t.Rule> == t.NewMinRule
-
-t.MinRule, t.Rule, t.NewMinRule ::= (s.Len s.Rule)
-s.Len, s.Rule ::= s.NUMBER
-
-*/
-MinRule {
-  (s.MinLen s.MinRule) (s.LenRule s.Rule),
-  <Compare s.MinLen s.LenRule>: '+' =
-    (s.LenRule s.Rule);
-  (s.MinLen s.MinRule) (s.LenRule s.Rule) =
-    (s.MinLen s.MinRule)
-}
+MinRuleAux +
+    SL SM SN SR '>' VE +
+            = SN SR
+    SL SM SN SR VE +
+            = SL SM
 
 /*
 
