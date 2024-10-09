@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-08
+* 2024-10-09
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -297,9 +297,9 @@ ObjectTextAux +
             = 'Coffee'
     /Beer/  = 'Beer'
 
-* <Solve VS> == VS
+* <Solve VS> == VS'
 *
-* VS ::= (S(/0/../16/)R (E(/1/../15/)R) (VH)* '=' VX)+
+* VS ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+
 * VX ::= VH | /Impossible/
 * VH ::= (V1) (V2) (V3) (V4) (V5)
 * V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
@@ -317,8 +317,26 @@ ObjectTextAux +
 *        '???'
 * VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
 *        /Winfield/ | '???'
-* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ | '???'
+* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+* VS' ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+
+*         (/16/ () '=' VH')
+* VH' ::= (V1') (V2') (V3') (V4') (V5')
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
+* SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Solve +
 * Возврат к предыдущему правилу
     EB (SP (ER) ET '=' EH) (SC (EI) '=' /Impossible/) +
@@ -350,6 +368,51 @@ SolveAux2 +
             <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
     EB (SC (ER) ET '=' EH) SM +
             = <Solve EB (SC (ER) ET '=' /Impossible/)>
+
+* <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
+*
+* VH ::= (V1) (V2) (V3) (V4) (V5)
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
+*        '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
+*        /Winfield/ | '???'
+* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
+* VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+FindMinRule +
+    (SM) EH = SM
+    (SM EE) EH +
+            = <ApplyRule <Rule SM> EH> +
+            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
+
+FindMinRuleAux +
+    /0/ ET SM (EE) EH +
+            = SM
+    SL ET SM () EH +
+            = SM
+    SL ET SM (SR EE) EH +
+            = <ApplyRule <Rule SR> EH> +
+            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
+
+MinRule +
+    SL SM SN ET SR +
+            = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
+
+MinRuleAux +
+    SL SM SN SR '>' EE +
+            = SN SR
+    SL SM SN SR EE +
+            = SL SM
 
 * <Rule S(/1/../16/)R> == S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
 *
@@ -397,51 +460,6 @@ Rule +
     /15/    = /Nextto/ /Cigarettes/ /Marlboro/ /Drink/ /Water/
 * 16. Рыба - пятое животное.
     /16/    = /Fish/
-
-* <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
-*
-* VH ::= (V1) (V2) (V3) (V4) (V5)
-* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
-*        '???'
-* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
-*        /Winfield/ | '???'
-* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
-* VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-FindMinRule +
-    (SM) EH = SM
-    (SM EE) EH +
-            = <ApplyRule <Rule SM> EH> +
-            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
-
-FindMinRuleAux +
-    /0/ ET SM (EE) EH +
-            = SM
-    SL ET SM () EH +
-            = SM
-    SL ET SM (SR EE) EH +
-            = <ApplyRule <Rule SR> EH> +
-            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
-
-MinRule +
-    SL SM SN ET SR +
-            = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
-
-MinRuleAux +
-    SL SM SN SR '>' EE +
-            = SN SR
-    SL SM SN SR EE +
-            = SL SM
 
 /*
 
