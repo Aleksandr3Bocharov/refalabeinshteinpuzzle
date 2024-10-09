@@ -503,11 +503,11 @@ Rule +
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 ApplyRule +
 * Member - 2 объекта в одном доме
-    /Member/ SU SX SV SY EB (E1 SU SX E2 SV SY E3) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SV SY E3) EE)>
+    /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
     /Member/ SU SX SV SY ET +
             = <ApplyRuleExist /Member/ SU SX SV SY ET +
-            <Exist SU SX ET> <Exist SV SY ET>> 
+            <ExistObject SX ET> <ExistObject SY ET>> 
   Member s.Category1 s.Object1 s.Category2 s.Object2
   e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 '???' e.Home-E) e.Table-E =
     <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;  
@@ -576,8 +576,8 @@ ApplyRule +
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
             = EB (E1 /Pet/ /Fish/ E2) EE
 
-Exist +
-    SC SO EB (E1 SC SO E2) EE +
+ExistObject +
+    SO EB (E1 SO E2) EE +
             = /True/
     E0      = /False/
         
