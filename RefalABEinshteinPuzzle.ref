@@ -339,9 +339,9 @@ ObjectTextAux +
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Solve +
 * Возврат к предыдущему правилу
-    EB (SP (ER) ET '=' EH) (SC (EI) '=' /Impossible/) +
+    EB (E0 '=' EH) (SC (EI) '=' /Impossible/) +
             = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SP (ER) ET '=' /Impossible/)>
+            <Solve EB (E0 '=' /Impossible/)>
 * Переход к следующему применению правила
     EB (SC (ER) (EH) ET '=' /Impossible/) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
@@ -357,17 +357,17 @@ Solve +
             = <SolveAux1 EB (SC (ER) ET '=' EH) <FindMinRule (ER) EH>>
 
 SolveAux1 +
-    EB (SC (ER) ET '=' EH) SM +
+    EB (E0 '=' EH) SM +
             = <ApplyRule <Rule SM> EH> +
-            <SolveAux2 EB (SC (ER) ET '=' EH) SM <Dg /RuleTables/>> 
+            <SolveAux2 EB (E0 '=' EH) SM <Dg /RuleTables/>> 
 
 SolveAux2 +
     EB (SC (EP SM EE) ET '=' EH) SM (EN) ER +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
-    EB (SC (ER) ET '=' EH) SM +
-            = <Solve EB (SC (ER) ET '=' /Impossible/)>
+    EB (E0 '=' EH) SM +
+            = <Solve EB (E0 '=' /Impossible/)>
 
 * <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
 *
@@ -396,9 +396,9 @@ FindMinRule +
             <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
 
 FindMinRuleAux +
-    /0/ ET SM (EE) EH +
+    /0/ ET SM E0 +
             = SM
-    SL ET SM () EH +
+    E0 SM () EH +
             = SM
     SL ET SM (SR EE) EH +
             = <ApplyRule <Rule SR> EH> +
@@ -409,9 +409,9 @@ MinRule +
             = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
 
 MinRuleAux +
-    SL SM SN SR '>' EE +
+    E0 SN SR '>' EE +
             = SN SR
-    SL SM SN SR EE +
+    SL SM E0 +
             = SL SM
 
 * <Rule S(/1/../16/)R> == S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
@@ -503,13 +503,11 @@ Rule +
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 ApplyRule +
 * Member - 2 объекта в одном доме
-    /Member/ SF SO SG SP EB (E1 SF SO E2 SG SP E3) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SF SO E2 SG SP E3) EE)>
-    /Member/ SF SO SG SP ET +
-            =  
-  <Exist s.Category1 s.Object1 e.Table>: True,
-  <Exist s.Category2 s.Object2 e.Table>: True =
-    ; 
+    /Member/ SU SX SV SY EB (E1 SU SX E2 SV SY E3) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SV SY E3) EE)>
+    /Member/ SU SX SV SY ET +
+            = <ApplyRuleExist /Member/ SU SX SV SY ET +
+            <Exist SU SX ET> <Exist SV SY ET>> 
   Member s.Category1 s.Object1 s.Category2 s.Object2
   e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 '???' e.Home-E) e.Table-E =
     <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;  
@@ -581,7 +579,11 @@ ApplyRule +
 Exist +
     SC SO EB (E1 SC SO E2) EE +
             = /True/
-    SC SO ET +
-            = /False/  
+    E0      = /False/
+        
+ApplyRuleExist +
+    E0 /True/ /True/ +
+            =
+    E0      = <ApplyRuleAux E0>
 
             END
