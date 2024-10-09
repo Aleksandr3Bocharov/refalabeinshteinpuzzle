@@ -576,9 +576,8 @@ ApplyRule +
     <ApplyRule Left s.Category2 s.Object2 s.Category1 s.Object1 e.Table>
     <Rp RuleTables '=' <Dg RuleTablesTemp> <Cp RuleTables>>;
 * Fish - рыба - пятое животное 
-  Fish
-  e.Table-B (e.Home-B Pet '???' e.Home-E) e.Table-E =
-    e.Table-B (e.Home-B Pet Fish e.Home-E) e.Table-E
+    /Fish/ EB (E1 /Pet/ '???' E2) EE +
+            = EB (E1 /Pet/ /Fish/ E2) EE
 
 Exist +
     SC SO EB (E1 SC SO E2) EE +
