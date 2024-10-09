@@ -461,32 +461,47 @@ Rule +
 * 16. Рыба - пятое животное.
     /16/    = /Fish/
 
-/*
-
-<ApplyRule e.Rule e.Table> ==
-
-e.Rule ::= s.Predicate e.Object e.Object | Fish
-s.Predicate ::= Member | Left  | Nextto
-e.Object ::= Color s.Color | Nationality s.Nationality | Cigarettes s.Cigarettes | Pet s.Pet | Drink s.Drink 
-s.Color ::= Yellow | Blue | Red | Green | White
-s.Nationality ::= Norwegian | Dane | Englishman | German | Swede
-s.Cigarettes ::= Dunhill | Rothmans | PallMall | Marlboro | Winfield
-s.Pet ::= Cat | Horse | Bird | Fish | Dog
-s.Drink ::= Water | Tea | Milk | Coffee | Beer
-e.Table ::= (e.Home1) (e.Home2) (e.Home3) (e.Home4) (e.Home5)
-e.Home1 ::= Home 1 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home2 ::= Home 2 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home3 ::= Home 3 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home4 ::= Home 4 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home5 ::= Home 5 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Color ::= s.Color | '???'
-e.Nationality ::= s.Nationality | '???'
-e.Cigarettes ::= s.Cigarettes | '???'
-e.Pet ::= s.Pet | '???'
-e.Drink ::= s.Drink | '???'
-
-*/
-ApplyRule {
+* <ApplyRule VR VH> == | VH'
+*
+* VR ::= S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
+* VO ::= /Home/ S(/1/ /3/)H | /Color/ SC | /Nationality/ SN | 
+*        /Cigarettes/ SG | /Pet/ SA | /Drink/ SD 
+* SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* SA ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
+* SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* VH ::= (V1) (V2) (V3) (V4) (V5)
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
+*        /Pet/ VP /Drink/ VD
+* VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
+*        '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
+*        /Winfield/ | '???'
+* VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
+* VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+* VH' ::= (V1') (V2') (V3') (V4') (V5')
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
+ApplyRule +
   /* Member - 2 объекта в одном доме */
   Member s.Category1 s.Object1 s.Category2 s.Object2
   e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
@@ -564,7 +579,6 @@ ApplyRule {
   Fish
   e.Table-B (e.Home-B Pet '???' e.Home-E) e.Table-E =
     e.Table-B (e.Home-B Pet Fish e.Home-E) e.Table-E
-}
 
 /*
 
