@@ -580,34 +580,10 @@ ApplyRule +
   e.Table-B (e.Home-B Pet '???' e.Home-E) e.Table-E =
     e.Table-B (e.Home-B Pet Fish e.Home-E) e.Table-E
 
-/*
-
-<Exist e.Object e.Table> == True | False
-
-e.Object ::= Color s.Color | Nationality s.Nationality | Cigarettes s.Cigarettes | Pet s.Pet | Drink s.Drink 
-e.Table ::= (e.Home1) (e.Home2) (e.Home3) (e.Home4) (e.Home5)
-e.Home1 ::= Home 1 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home2 ::= Home 2 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home3 ::= Home 3 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home4 ::= Home 4 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Home5 ::= Home 5 Color e.Color Nationality e.Nationality Cigarettes e.Cigarettes Pet e.Pet Drink e.Drink
-e.Color ::= s.Color | '???'
-s.Color ::= Yellow | Blue | Red | Green | White
-e.Nationality ::= s.Nationality | '???'
-s.Nationality ::= Norwegian | Dane | Englishman | German | Swede
-e.Cigarettes ::= s.Cigarettes | '???'
-s.Cigarettes ::= Dunhill | Rothmans | PallMall | Marlboro | Winfield
-e.Pet ::= s.Pet | '???'
-s.Pet ::= Cat | Horse | Bird | Fish | Dog
-e.Drink ::= s.Drink | '???'
-s.Drink ::= Water | Tea | Milk | Coffee | Beer
-
-*/
-Exist {
-  s.Category s.Object e.Table-B (e.Home-B s.Category s.Object e.Home-E) e.Table-E =
-    True;
-  s.Category s.Object e.Table =
-    False  
-}
+Exist +
+    SC SO EB (E1 SC SO E2) EE +
+            = /True/
+    SC SO ET +
+            = /False/  
 
             END
