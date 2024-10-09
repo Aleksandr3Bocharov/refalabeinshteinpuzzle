@@ -339,22 +339,22 @@ ObjectTextAux +
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Solve +
 * Возврат к предыдущему правилу
-    EB (E0 '=' EH) (SC (EI) '=' /Impossible/) +
+    EB (E0 '=' EH) (SC WI '=' /Impossible/) +
             = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             <Solve EB (E0 '=' /Impossible/)>
 * Переход к следующему применению правила
-    EB (SC (ER) (EH) ET '=' /Impossible/) +
+    EB (SC WR (EH) ET '=' /Impossible/) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SC (ER) ET '=' EH)>
+            <Solve EB (SC WR ET '=' EH)>
 * Решение найдено
     EB (SC () ET '=' EH) +
             = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
             <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
             EB (SC () ET '=' EH) (/16/ () '=' <ApplyRule <Rule /16/> EH>)
 * Переход к следующему правилу  
-    EB (SC (ER) ET '=' EH) +
-            = <SolveAux1 EB (SC (ER) ET '=' EH) <FindMinRule (ER) EH>>
+    EB (SC WR ET '=' EH) +
+            = <SolveAux1 EB (SC WR ET '=' EH) <FindMinRule WR EH>>
 
 SolveAux1 +
     EB (E0 '=' EH) SM +
