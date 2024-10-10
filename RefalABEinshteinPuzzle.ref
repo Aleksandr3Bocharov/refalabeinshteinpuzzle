@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-09
+* 2024-10-10
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -508,70 +508,18 @@ ApplyRule +
     /Member/ SU SX SV SY ET +
             = <ApplyRuleExist /Member/ SU SX SV SY ET +
             <ExistObject SX ET> <ExistObject SY ET>> 
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 '???' e.Home-E) e.Table-E =
-    <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;  
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.OtherObject2 e.Home-E) e.Table-E =
-    ;    
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
-    <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 s.OtherObject1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
-    ;  
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 '???' e.Home-E) e.Table-E,
-  <Rp RuleTables '='
-    <Cp RuleTables>
-    (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)
-  >: False =
-    ;
-  Member s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table =
-    ;
 * Left - 1 объект в доме слева дома 2 объекта
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
-    <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;   
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table,
-  <Exist s.Category1 s.Object1 e.Table>: True,
-  <Exist s.Category2 s.Object2 e.Table>: True =
-    ; 
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
-    <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;  
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 s.OtherObject1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
-    ;
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  (e.Home-B s.Category2 s.Object2 e.Home-E) e.Table-E =
-    ;      
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E =
-    <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.OtherObject2 e.HomeR-E) e.Table-E =
-    ;
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-E) =
-    ;  
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E,
-  <Rp RuleTables '=' <Cp RuleTables> (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>: False =
-    ;
-  Left s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table =
-    ;
+    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
+    /Left/ SU SX SV SY ET +
+            = <ApplyRuleExist /Left/ SU SX SV SY ET +
+            <ExistObject SX ET> <ExistObject SY ET>>
 * Nextto - 2 объекта в соседних домах
-  Nextto s.Category1 s.Object1 s.Category2 s.Object2
-  e.Table =
-    <ApplyRule Left s.Category1 s.Object1 s.Category2 s.Object2 e.Table>
-    <Br RuleTablesTemp '=' <Cp RuleTables>>
-    <Rp RuleTables '='>
-    <ApplyRule Left s.Category2 s.Object2 s.Category1 s.Object1 e.Table>
-    <Rp RuleTables '=' <Dg RuleTablesTemp> <Cp RuleTables>>;
+  /Nextto/ SU SX SV SY ET +
+            = <ApplyRule /Left/ SU SX SV SY ET> +
+            <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
+            <ApplyRule /Left/ SV SY SU SX ET> +
+            <Br /RuleTables/ '=' <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
             = EB (E1 /Pet/ /Fish/ E2) EE
@@ -585,5 +533,56 @@ ApplyRuleExist +
     E0 /True/ /True/ +
             =
     E0      = <ApplyRuleAux E0>
+
+ApplyRuleAux +
+* Member - 2 объекта в одном доме
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 '???' e.Home-E) e.Table-E =
+  <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;  
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.OtherObject2 e.Home-E) e.Table-E =
+  ;    
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
+  <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 s.OtherObject1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
+  ;  
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 '???' e.Home-E) e.Table-E,
+<Rp RuleTables '='
+  <Cp RuleTables>
+  (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)
+>: False =
+  ;
+Member s.Category1 s.Object1 s.Category2 s.Object2
+e.Table =
+  ;
+* Left - 1 объект в доме слева дома 2 объекта
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
+  <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;  
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.HomeL-B s.Category1 s.OtherObject1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
+  ;
+Left s.Category1 s.Object1 s.Category2 s.Object2
+(e.Home-B s.Category2 s.Object2 e.Home-E) e.Table-E =
+  ;      
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E =
+  <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.OtherObject2 e.HomeR-E) e.Table-E =
+  ;
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-E) =
+  ;  
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E,
+<Rp RuleTables '=' <Cp RuleTables> (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>: False =
+  ;
+Left s.Category1 s.Object1 s.Category2 s.Object2
+e.Table =
+  ;
 
             END
