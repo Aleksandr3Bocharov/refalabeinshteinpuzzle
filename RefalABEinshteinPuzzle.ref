@@ -536,18 +536,14 @@ ApplyRuleExist +
 
 ApplyRuleAux +
 * Member - 2 объекта в одном доме
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 '???' e.Home-E) e.Table-E =
-  <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;  
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.OtherObject2 e.Home-E) e.Table-E =
-  ;    
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
-  <Rp RuleTables '=' (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)>;
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 s.OtherObject1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E =
-  ;  
+    /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
+    /Member/ SU SX E0 (E1 SX E2) EE +
+            =
+    /Member/ SU SX SV SY EB (E1 SU '???' E2 SY E3) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
+    /Member/ SU SX SV SY EB (E1 SY E2) EE +
+            = 
 Member s.Category1 s.Object1 s.Category2 s.Object2
 e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 '???' e.Home-E) e.Table-E,
 <Rp RuleTables '='
