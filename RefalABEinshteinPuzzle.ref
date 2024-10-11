@@ -504,23 +504,21 @@ Rule +
 ApplyRule +
 * Member - 2 объекта в одном доме
 * ??????????? delete?
-    /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
+*    /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
+*            = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
     /Member/ SU SX SV SY ET +
             = <ApplyRuleTwo /Member/ SU SX SV SY ET +
             <ExistObject SX ET> <ExistObject SY ET>> 
 * Left - 1 объект в доме слева дома 2 объекта
-    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
+*    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
+*            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
     /Left/ SU SX SV SY ET +
             = <ApplyRuleTwo /Left/ SU SX SV SY ET +
             <ExistObject SX ET> <ExistObject SY ET>>
 * Nextto - 2 объекта в соседних домах
     /Nextto/ SU SX SV SY ET +
-            = <ApplyRule /Left/ SU SX SV SY ET> +
-            <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
-            <ApplyRule /Left/ SV SY SU SX ET> +
-            <Br /RuleTables/ '=' <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
+            = <ApplyRuleTwo /Nextto/ SU SX SV SY ET +
+            <ExistObject SX ET> <ExistObject SY ET>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
             = EB (E1 /Pet/ /Fish/ E2) EE
@@ -555,8 +553,16 @@ ApplyRuleOne +
     /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SY E4) EE +
             = <Br /RuleTables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
     /Left/ SU SX SV SY EB (E1 SY E2) EE +
-            = 
-    E0      = <ApplyRuleNone E0>
+            =
+    /Left/ E0 +
+            = <ApplyRuleNone E0> 
+*    E0      = <ApplyRuleNone E0>
+* Nextto - 2 объекта в соседних домах
+    /Nextto/ SU SX SV SY ET +
+            = <ApplyRuleOne /Left/ SU SX SV SY ET> +
+            <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
+            <ApplyRuleOne /Left/ SV SY SU SX ET> +
+            <Br /RuleTables/ '=' <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
 
 ApplyRuleNone +
 * Member - 2 объекта в одном доме
