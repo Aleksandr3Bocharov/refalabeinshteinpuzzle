@@ -502,26 +502,30 @@ Rule +
 *         /Pet/ SP /Drink/ SD
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 ApplyRule +
-* Member - 2 объекта в одном доме
-* ??????????? delete?
-*    /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
-*            = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
-    /Member/ SU SX SV SY ET +
-            = <ApplyRuleTwo /Member/ SU SX SV SY ET +
-            <ExistObject SX ET> <ExistObject SY ET>> 
-* Left - 1 объект в доме слева дома 2 объекта
-*    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
-*            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
-    /Left/ SU SX SV SY ET +
-            = <ApplyRuleTwo /Left/ SU SX SV SY ET +
-            <ExistObject SX ET> <ExistObject SY ET>>
-* Nextto - 2 объекта в соседних домах
-    /Nextto/ SU SX SV SY ET +
-            = <ApplyRuleTwo /Nextto/ SU SX SV SY ET +
-            <ExistObject SX ET> <ExistObject SY ET>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
             = EB (E1 /Pet/ /Fish/ E2) EE
+* Member - 2 объекта в одном доме
+*    /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
+*            = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
+*    /Member/ SU SX SV SY ET +
+*            = <ApplyRuleTwo /Member/ SU SX SV SY ET +
+*            <ExistObject SX ET> <ExistObject SY ET>> 
+* Left - 1 объект в доме слева дома 2 объекта
+*    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
+*            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
+*    /Left/ SU SX SV SY ET +
+*            = <ApplyRuleTwo /Left/ SU SX SV SY ET +
+*            <ExistObject SX ET> <ExistObject SY ET>>
+* Nextto - 2 объекта в соседних домах
+*    /Nextto/ SU SX SV SY ET +
+*            = <ApplyRule /Left/ SU SX SV SY ET> +
+*            <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
+*            <ApplyRule /Left/ SV SY SU SX ET> +
+*            <Br /RuleTables/ '=' <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
+    SP SU SX SV SY ET +
+            = <ApplyRuleTwo SP SU SX SV SY ET +
+            <ExistObject SX ET> <ExistObject SY ET>>
 
 ExistObject +
     SO EB (E1 SO E2) EE +
