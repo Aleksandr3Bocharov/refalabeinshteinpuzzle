@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-10
+* 2024-10-11
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -503,16 +503,17 @@ Rule +
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 ApplyRule +
 * Member - 2 объекта в одном доме
+* ??????????? delete?
     /Member/ SU SX SV SY EB (E1 SX E2 SY E3) EE +
             = <Br /RuleTables/ '=' (EB (E1 SX E2 SY E3) EE)>
     /Member/ SU SX SV SY ET +
-            = <ApplyRuleExist /Member/ SU SX SV SY ET +
+            = <ApplyRuleTwo /Member/ SU SX SV SY ET +
             <ExistObject SX ET> <ExistObject SY ET>> 
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ SU SX SV SY EB (E1 SX E2) (E3 SY E4) EE +
             = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SY E4) EE)>
     /Left/ SU SX SV SY ET +
-            = <ApplyRuleExist /Left/ SU SX SV SY ET +
+            = <ApplyRuleTwo /Left/ SU SX SV SY ET +
             <ExistObject SX ET> <ExistObject SY ET>>
 * Nextto - 2 объекта в соседних домах
     /Nextto/ SU SX SV SY ET +
@@ -529,12 +530,12 @@ ExistObject +
             = /True/
     E0      = /False/
         
-ApplyRuleExist +
+ApplyRuleTwo +
     E0 /True/ /True/ +
             =
-    E0      = <ApplyRuleAux E0>
+    E0      = <ApplyRuleOne E0>
 
-ApplyRuleAux +
+ApplyRuleOne +
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
             = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
@@ -544,41 +545,30 @@ ApplyRuleAux +
             = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
     /Member/ SU SX SV SY EB (E1 SY E2) EE +
             = 
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 '???' e.Home-M s.Category2 '???' e.Home-E) e.Table-E,
-<Rp RuleTables '='
-  <Cp RuleTables>
-  (e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-M s.Category2 s.Object2 e.Home-E) e.Table-E)
->: False =
-  ;
-Member s.Category1 s.Object1 s.Category2 s.Object2
-e.Table =
-  ;
+    /Member/ E0 +
+            = <ApplyRuleNone /Member/ E0>
 * Left - 1 объект в доме слева дома 2 объекта
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
-  <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;  
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.HomeL-B s.Category1 s.OtherObject1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E =
-  ;
-Left s.Category1 s.Object1 s.Category2 s.Object2
-(e.Home-B s.Category2 s.Object2 e.Home-E) e.Table-E =
-  ;      
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E =
-  <Rp RuleTables '=' (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>;
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.OtherObject2 e.HomeR-E) e.Table-E =
-  ;
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.Home-B s.Category1 s.Object1 e.Home-E) =
-  ;  
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table-B (e.HomeL-B s.Category1 '???' e.HomeL-E) (e.HomeR-B s.Category2 '???' e.HomeR-E) e.Table-E,
-<Rp RuleTables '=' <Cp RuleTables> (e.Table-B (e.HomeL-B s.Category1 s.Object1 e.HomeL-E) (e.HomeR-B s.Category2 s.Object2 e.HomeR-E) e.Table-E)>: False =
-  ;
-Left s.Category1 s.Object1 s.Category2 s.Object2
-e.Table =
-  ;
+    /Left/ SU SX SV SY EB (E1 SX E2) (E3 SV '???' E4) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SV SY E4) EE)>
+    /Left/ SU SX E0 (E1 SX E2) EE +
+            =
+    /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SY E4) EE +
+            = <Br /RuleTables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
+    /Left/ SU SX SV SY EB (E1 SY E2) EE +
+            = 
+    E0      = <ApplyRuleNone E0>
+
+ApplyRuleNone +
+* Member - 2 объекта в одном доме
+    /Member/ SU SX SV SY EB (E1 SU '???' E2 SV '???' E3) EE +
+            = <Br /RuleTables/ '=' <Dg /RuleTables/> (EB (E1 SU SX E2 SV SY E3) EE)> +
+            <ApplyRuleNone /Member/ SU SX SV SY EE>
+    /Member/ E0 +
+            =
+* Left - 1 объект в доме слева дома 2 объекта
+    /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SV '???' E4) EE +
+            = <Br /RuleTables/ '=' <Dg /RuleTables/> (EB (E1 SU SX E2) (E3 SV SY E4) EE)> +
+            <ApplyRuleNone /Left/ SU SX SV SY (E3 SV '???' E4) EE>
+    E0      =
 
             END
