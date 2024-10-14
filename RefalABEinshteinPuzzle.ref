@@ -122,10 +122,10 @@ Help        = <Prout 'Solution of the Einstein''s Puzzle ' +
             '\n\n'>
 
 SolveOut +
-    EB (E0 '=' VH) =
-                  <Prout 'Question: Who has the fish?\n' +
-                  'Answer: ' <Answer VH> ' has the fish.\n\n'>
-                  <Map /DoMapSolve/ EB (E0 '=' VH)>
+    EB (E0 '=' VH) +
+            = <Prout 'Question: Who has the fish?\n' +
+            'Answer: ' <Answer VH> ' has the fish.\n\n'>
+            <Map /DoMapSolve/ EB (E0 '=' VH)>
 
 * <Answer VH'> == VT
 *
@@ -151,11 +151,11 @@ Answer +
             = <ObjectTextAux SN>
   
 DoMapSolve +
-    (SR E0 '=' VH) =
-      <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
-      <Prout 'Home Color Nationality Cigarettes Pet Drink'> +
-      <Map /DoMapTable/ VH> +
-      <Prout '\n'>
+    (SR E0 '=' VH) +
+            = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
+            <Prout 'Home Color Nationality Cigarettes Pet Drink'> +
+            <Map /DoMapTable/ VH> +
+            <Prout '\n'>
 
 DoMapTable +
     (/Home/ SH /Color/ EC /Nationality/ +
