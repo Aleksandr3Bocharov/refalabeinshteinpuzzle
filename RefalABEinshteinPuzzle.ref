@@ -55,7 +55,16 @@
             START
             ENTRY Go
             EXTRN Map, P1, Prout, Symb
-            EMPTY Member
+            EXTRN True, False
+            EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
+            EMPTY Impossible, Member, Left, Nextto, Home
+            EMPTY Color, Yellow, Blue, Red, Green, White
+            EMPTY Nationality, Norwegian, Dane, Englishman, German
+            EMPTY Swede
+            EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro
+            EMPTY Winfield
+            EMPTY Pet, Cat, Horse, Bird, Dog, Fish
+            EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
 Go          = <Help>
             <Br /Steps/ '=' /0/> +
