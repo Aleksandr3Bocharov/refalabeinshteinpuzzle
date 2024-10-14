@@ -375,8 +375,8 @@ FindMinRuleAux +
             = SM
     SL ET SM (SR EE) EH +
             = <ApplyRule <Rule SR> EH> +
-            <FindMinRuleAux <MinRule SL SM <LengW <Dg /RuleTables/>> SR> +
-            (EE) EH>
+            <FindMinRuleAux +
+            <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
 
 MinRule +
     SL SM SN ET SR +
