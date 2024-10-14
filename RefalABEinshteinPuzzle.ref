@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-11
+* 2024-10-14
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -111,28 +111,28 @@ Help        = <Prout 'Solution of the Einstein''s Puzzle ' +
             '15. The Marlboro smoker has a neighbor who drinks water.' + 
             '\n\n'>
 
-/*
-
-<Answer e.Table> == e.NationalityText
-
-e.Table ::= (e.Home1) (e.Home2) (e.Home3) (e.Home4) (e.Home5)
-e.Home1 ::= Home 1 Color s.Color Nationality s.Nationality Cigarettes s.Cigarettes Pet s.Pet Drink s.Drink
-e.Home2 ::= Home 2 Color s.Color Nationality s.Nationality Cigarettes s.Cigarettes Pet s.Pet Drink s.Drink
-e.Home3 ::= Home 3 Color s.Color Nationality s.Nationality Cigarettes s.Cigarettes Pet s.Pet Drink s.Drink
-e.Home4 ::= Home 4 Color s.Color Nationality s.Nationality Cigarettes s.Cigarettes Pet s.Pet Drink s.Drink
-e.Home5 ::= Home 5 Color s.Color Nationality s.Nationality Cigarettes s.Cigarettes Pet s.Pet Drink s.Drink
-s.Color ::= Yellow | Blue | Red | Green | White
-s.Nationality ::= Norwegian | Dane | Englishman | German | Swede 
-s.Cigarettes ::= Dunhill | Rothmans | PallMall | Marlboro | Winfield 
-s.Pet ::= Cat | Horse | Bird | Fish | Dog 
-s.Drink ::= Water | Tea | Milk | Coffee | Beer 
-e.NationalityText ::= 'Норвежец'  | 'Датчанин'  |  'Англичанин' | 'Немец' | 'Швед'
-
-*/
-Answer {
-    e.Table-B (e.Home-B Nationality s.Nationality e.Home-M Pet Fish e.Home-E) e.Table-E = 
-      <ObjectText s.Nationality>
-  }    
+* <Answer VH'> == VT
+*
+* VH' ::= (V1') (V2') (V3') (V4') (V5')
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
+*         /Pet/ SP /Drink/ SD
+* SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
+* SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
+Answer +
+    EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
+            = <ObjectTextAux SN>
   
   /*
   
@@ -258,7 +258,16 @@ ObjectText +
             = '???'
     /Drink/ '???' +
             = '???'
-    SC SO   = <ObjectTextAux SO>
+    /Color/ SC +
+            = <ObjectTextAux SC> ' '
+    /Nationality/ SN +
+            = <ObjectTextAux SN> ' '
+    /Cigarettes/ SC +
+            = <ObjectTextAux SC> ' '
+    /Pet/ SP +
+            = <ObjectTextAux SP> ' '
+    /Drink/ SD +
+            = <ObjectTextAux SD> ' '
 
 ObjectTextAux +
     /Yellow/ +
