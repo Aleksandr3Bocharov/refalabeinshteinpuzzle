@@ -485,12 +485,6 @@ Rule +
 *         /Pet/ SP /Drink/ SD
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 ApplyRule +
-* Fish - рыба - пятое животное 
-    /Fish/ EB (E1 /Pet/ '???' E2) EE +
-            = EB (E1 /Pet/ /Fish/ E2) EE
-    E0      = <ApplyRuleAux E0>
-
-ApplyRuleAux +
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
             = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
@@ -515,11 +509,14 @@ ApplyRuleAux +
             = <ApplyRuleNone /Left/ E0 ()> 
 * Nextto - 2 объекта в соседних домах
     /Nextto/ SU SX SV SY ET +
-            = <ApplyRuleAux /Left/ SU SX SV SY ET> +
+            = <ApplyRule /Left/ SU SX SV SY ET> +
             <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
-            <ApplyRuleAux /Left/ SV SY SU SX ET> +
+            <ApplyRule /Left/ SV SY SU SX ET> +
             <Br /RuleTables/ '=' +
             <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
+* Fish - рыба - пятое животное 
+    /Fish/ EB (E1 /Pet/ '???' E2) EE +
+            = EB (E1 /Pet/ /Fish/ E2) EE
 
 ApplyRuleNone +
 * Member - 2 объекта в одном доме
