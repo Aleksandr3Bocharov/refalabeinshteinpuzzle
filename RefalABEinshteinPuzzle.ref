@@ -148,19 +148,31 @@ SolveOut +
 * VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
 Answer +
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
-            = <ObjectTextAux SN>
-  
+            = <AnswerAux SN>
+
+AnswerAux +
+    /Norwegian/ +
+            = 'Norwegian'
+    /Dane/ +
+            = 'Dane'
+    /Englishman/ +
+            = 'Englishman'
+    /German/ +
+            = 'German'
+    /Swede/ +
+            = 'Swede'
+
 DoMapSolve +
     (SR E0 '=' VH) +
             = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
-            <Prout 'Home Color Nationality Cigarettes Pet Drink'> +
+            <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
             <Map /DoMapTable/ VH> +
             <Prout '\n'>
 
 DoMapTable +
     (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
-            = <Prout <Symb SH> <ObjectText /Color/ EC> +
+            = <Prout <Symb SH> '    ' <ObjectText /Color/ EC> +
             <ObjectText /Nationality/ EN> +
             <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
             <ObjectText /Drink/ ED>>
@@ -214,67 +226,60 @@ RuleText +
 *        /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/| /Winfield/ |
 *        /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
 *        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= '???' |
-*        'Yellow' | 'Blue' | 'Red' | 'Green' | 'White' |
-*        'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede' |
-*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
-*        'Cat' | 'Horse' | 'Bird' | 'Dog' | 'Fish' |
+* VT ::= '???    ' | '???         ' | '???       ' | '???   ' | '???' |
+*        'Yellow ' | 'Blue   ' | 'Red    ' | 'Green  ' | 'White  ' |
+*        'Norwegian   ' | 'Dane        ' | 'Englishman  ' | 'German      ' |
+*        'Swede       ' |
+*        'Dunhill    ' | 'Rothmans   ' | 'Pall Mall  ' | 'Marlboro   ' |
+*        'Winfield   ' |
+*        'Cat   ' | 'Horse ' | 'Bird  ' | 'Dog   ' | 'Fish  ' |
 *        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
 ObjectText +
     /Color/ '???' +
-            = '???'
+            = '???    '
     /Nationality/ '???' +
-            = '???'
+            = '???         '
     /Cigarettes/ '???' +
-            = '???'
+            = '???        '
     /Pet/ '???' +
-            = '???'
+            = '???   '
     /Drink/ '???' +
             = '???'
-    /Color/ SC +
-            = <ObjectTextAux SC> ' '
-    /Nationality/ SN +
-            = <ObjectTextAux SN> ' '
-    /Cigarettes/ SC +
-            = <ObjectTextAux SC> ' '
-    /Pet/ SP +
-            = <ObjectTextAux SP> ' '
-    /Drink/ SD +
-            = <ObjectTextAux SD> ' '
+    SC SO   = <ObjectTextAux SO>
 
 ObjectTextAux +
     /Yellow/ +
-            = 'Yellow'
-    /Blue/  = 'Blue'
-    /Red/   = 'Red'
-    /Green/ = 'Green'
-    /White/ = 'White'     
+            = 'Yellow '
+    /Blue/  = 'Blue   '
+    /Red/   = 'Red    '
+    /Green/ = 'Green  '
+    /White/ = 'White  '     
     /Norwegian/ +
-            = 'Norwegian' 
-    /Dane/  = 'Dane'  
+            = 'Norwegian   ' 
+    /Dane/  = 'Dane        '  
     /Englishman/ +
-            = 'Englishman'
+            = 'Englishman  '
     /German/ +
-            = 'German'
-    /Swede/ = 'Swede'   
+            = 'German      '
+    /Swede/ = 'Swede       '   
     /Dunhill/ +
-            = 'Dunhill'
+            = 'Dunhill    '
     /Rothmans/ +
-            = 'Rothmans'
+            = 'Rothmans   '
     /PallMall/ +
-            = 'Pall Mall'
+            = 'Pall Mall  '
     /Marlboro/ +
-            = 'Marlboro' 
+            = 'Marlboro   ' 
     /Winfield/ +
-            = 'Winfield'  
-    /Cat/   = 'Cat'
-    /Horse/ = 'Horse'
-    /Bird/  = 'Bird'
-    /Dog/   = 'Dog'
-    /Fish/  = 'Fish'
-    /Water/ = 'Water'  
+            = 'Winfield   '  
+    /Cat/   = 'Cat   '
+    /Horse/ = 'Horse '
+    /Bird/  = 'Bird  '
+    /Dog/   = 'Dog   '
+    /Fish/  = 'Fish  '
+    /Water/ = 'Water'
     /Tea/   = 'Tea'
-    /Milk/  = 'Milk' 
+    /Milk/  = 'Milk'
     /Coffee/ +
             = 'Coffee'
     /Beer/  = 'Beer'
