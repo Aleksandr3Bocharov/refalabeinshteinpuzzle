@@ -8,5 +8,5 @@ rem https://github.com/Aleksandr3Bocharov/RefalAB
 
 %REFALABBIN%\RefalAB RefalABEinshteinPuzzle > RefalABEinshteinPuzzle.log
 as -o RefalABEinshteinPuzzle.o RefalABEinshteinPuzzle.asm >> RefalABEinshteinPuzzle.log
-clang -o RefalABEinshteinPuzzle.exe %REFALABLIB%\mainrf.o RefalABEinshteinPuzzle.o -Wl,-L%REFALABLIB% -Wl,-lRefalAB >> RefalABEinshteinPuzzle.log
+clang -o RefalABEinshteinPuzzle.exe %REFALABLIB%\mainrf.o RefalABEinshteinPuzzle.o -L%REFALABLIB% -lRefalAB >> RefalABEinshteinPuzzle.log
 RefalABEinshteinPuzzle
