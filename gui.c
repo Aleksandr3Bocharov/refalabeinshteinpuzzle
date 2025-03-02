@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-01
+// 2025-03-03
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -17,9 +17,6 @@
 #include "raygui/raygui.h"
 #undef RAYGUI_IMPLEMENTATION
 
-#define GUI_WINDOW_FILE_DIALOG_IMPLEMENTATION
-#include "raygui/gui_window_file_dialog.h"
-
 #include "gui.h"
 
 static const int screenWidth = 1024;
@@ -29,7 +26,6 @@ static int errorsViewScrollIndex = 0;
 
 static Font cyrillicFont;
 
-static GuiWindowFileDialogState fileDialogState;
 
 static void setStyle(void)
 {
@@ -43,7 +39,6 @@ void guiInit(void)
     InitWindow(screenWidth, screenHeight, "RefalABBrainfuck (GUI версия)");
     SetExitKey(0);
     cyrillicFont = LoadFont("fonts/dejavu.fnt");
-    fileDialogState = InitGuiWindowFileDialog(GetWorkingDirectory());
     SetTargetFPS(60);
     setStyle();
 }
@@ -51,93 +46,6 @@ void guiInit(void)
 void guiClose(void)
 {
     CloseWindow();
-}
-
-bool guiFileName(char *fileName)
-{
-    bool ok = false;
-    bool exitWindow = false;
-    const float sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
-    while (!exitWindow)
-    {
-        exitWindow = WindowShouldClose();
-        if (fileDialogState.SelectFilePressed)
-        {
-            if (fileDialogState.fileNameText[0] != '\0')
-                strncpy(fileName, TextFormat("%s" PATH_SEPERATOR "%s", fileDialogState.dirPathText, fileDialogState.fileNameText), 254);
-            fileDialogState.SelectFilePressed = false;
-        }
-        const bool cntrl_o = IsKeyPressed(KEY_O) && (IsKeyDown(KEY_LEFT_CONTROL) || IsKeyDown(KEY_RIGHT_CONTROL));
-        const bool can_open = cntrl_o && !fileDialogState.windowActive;
-        const bool cntrl_r = IsKeyPressed(KEY_R) && (IsKeyDown(KEY_LEFT_CONTROL) || IsKeyDown(KEY_RIGHT_CONTROL));
-        const bool can_run = cntrl_r && !fileDialogState.windowActive;
-        const bool enter = IsKeyPressed(KEY_ENTER);
-        const bool can_select = enter && fileDialogState.windowActive;
-        const bool escape = IsKeyPressed(KEY_ESCAPE);
-        const bool can_cancel = escape && fileDialogState.windowActive;
-        BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
-        DrawTextEx(cyrillicFont, "Программа ''RefalABBrainfuck (GUI version)'' интерпретирует код", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "на  языке программирования Brainfuck из файла с исходником.", (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "Открытие файла с исходником", (Vector2){10.0f, 150.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("''%s''", fileName), (Vector2){10.0f, 190.0f}, sizeCyrillicFont, 1.0f, GRAY);
-        DrawTextEx(cyrillicFont, "с кодом на языке программирования Brainfuck.", (Vector2){10.0f, 230.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "Запуск интерпретатора кода на языке программирования Brainfuck.", (Vector2){10.0f, 320.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        if (fileDialogState.windowActive)
-            GuiLock();
-        if (GuiButton((Rectangle){screenWidth / 2 - 250, 100, 500, 30}, GuiIconText(ICON_FILE_OPEN, "Открыть файл с исходником Brainfuck (Cntrl+O)")) || can_open)
-            fileDialogState.windowActive = true;
-        if (GuiButton((Rectangle){screenWidth / 2 - 230, 270, 460, 30}, "Запустить интерпретатор Brainfuck (Cntrl+R)") || can_run)
-            if (*fileName != '\0')
-            {
-                ok = true;
-                exitWindow = true;
-            }
-        GuiUnlock();
-        GuiSetFont(GetFontDefault());
-        GuiLoadStyleDefault();
-        if (can_select)
-        {
-            fileDialogState.SelectFilePressed = true;
-            fileDialogState.windowActive = false;
-        }
-        if (can_cancel)
-            fileDialogState.windowActive = false;
-        GuiWindowFileDialog(&fileDialogState);
-        setStyle();
-        EndDrawing();
-    }
-    return ok;
-}
-
-void guiErrClear(void)
-{
-    errorsViewScrollIndex = 0;
-}
-
-bool guiErrView(const char *errors)
-{
-    bool exitWindow = false;
-    bool ok = false;
-    while (!exitWindow)
-    {
-        exitWindow = WindowShouldClose();
-        const bool enter = IsKeyPressed(KEY_ENTER);
-        if (IsKeyPressed(KEY_DOWN))
-            errorsViewScrollIndex++;
-        if (IsKeyPressed(KEY_UP))
-            errorsViewScrollIndex--;
-        BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
-        GuiListView((Rectangle){10, 20, screenWidth - 20, screenHeight - 90}, errors, &errorsViewScrollIndex, NULL);
-        if (GuiButton((Rectangle){screenWidth / 2 - 20, screenHeight - 50, 40, 30}, "ОК") || enter)
-        {
-            ok = true;
-            exitWindow = true;
-        }
-        EndDrawing();
-    }
-    return ok;
 }
 
 bool guiIsExit(void)
