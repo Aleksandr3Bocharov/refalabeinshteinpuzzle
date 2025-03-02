@@ -26,7 +26,6 @@ static int errorsViewScrollIndex = 0;
 
 static Font cyrillicFont;
 
-
 static void setStyle(void)
 {
     GuiSetFont(cyrillicFont);
@@ -36,7 +35,7 @@ static void setStyle(void)
 
 void guiInit(void)
 {
-    InitWindow(screenWidth, screenHeight, "RefalABBrainfuck (GUI версия)");
+    InitWindow(screenWidth, screenHeight, "RefalABEinshteinPuzzle (GUI версия)");
     SetExitKey(0);
     cyrillicFont = LoadFont("fonts/dejavu.fnt");
     SetTargetFPS(60);
