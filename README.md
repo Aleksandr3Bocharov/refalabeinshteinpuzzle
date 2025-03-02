@@ -3,6 +3,16 @@
 
 Программа "RefalABEinshteinPuzzle" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/RefalAB).
 
+Список командных файлов для сборки программы:
+- RefalABEinshteinPuzzle.bat для компиляции, компоновки и запуска программы в Windows;
+- RefalABEinshteinPuzzle.sh для компиляции, компоновки и запуска программы в Linux (UNIX, FreeBSD);
+- RefalABEinshteinPuzzle_gui.bat для компиляции, компоновки и запуска программы (GUI raygui raylib версия) в Windows (в разработке);
+- RefalABEinshteinPuzzle_gui.sh для компиляции, компоновки и запуска программы (GUI raygui raylib версия) в Linux (UNIX, FreeBSD) (в разработке).
+
+[raygui](https://github.com/raysan5/raygui)
+
+[raylib](https://github.com/raysan5/raylib)
+
 Решение задачи Эйнштейна на РефалАБ.
 
 Задача Эйнштейна.
