@@ -22,15 +22,12 @@
 static const int screenWidth = 1024;
 static const int screenHeight = 360;
 
-static int errorsViewScrollIndex = 0;
-
 static Font cyrillicFont;
 
 static void setStyle(void)
 {
     GuiSetFont(cyrillicFont);
     GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
-    GuiSetStyle(LISTVIEW, TEXT_ALIGNMENT, TEXT_ALIGN_LEFT);
 }
 
 void guiInit(void)
