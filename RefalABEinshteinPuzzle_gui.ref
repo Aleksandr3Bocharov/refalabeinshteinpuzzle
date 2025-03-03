@@ -56,7 +56,7 @@
             ENTRY Go
             EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
             EXTRN True, False
-            EXTRN Init, CLose, IsExit
+            EXTRN Init, Close, Info, IsExit
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
             EMPTY Color, Yellow, Blue, Red, Green, White

@@ -43,6 +43,29 @@ char close_0[] = {Z5 'C', 'L', 'O', 'S', 'E', '\005'};
 G_L_B uint8_t close = '\122';
 void (*close_1)(void) = close_;
 
+// <Info> == 'Y' | 'N'
+static void info_(void)
+{
+    if (refal.preva->next != refal.nexta)
+    {
+        refal.upshot = 2;
+        return;
+    }
+    T_LINKCB *p = refal.prevr;
+    if (!slins(p, 1))
+        return;
+    p = p->next;
+    p->tag = TAGO;
+    p->info.codep = NULL;
+    p->info.infoc = 'Y';
+    if (!guiInfo())
+        p->info.infoc = 'N';
+    return;
+}
+char info_0[] = {Z4 'I', 'N', 'F', 'O', '\004'};
+G_L_B uint8_t info = '\122';
+void (*info_1)(void) = info_;
+
 // <IsExit> == 'Y' | 'N'
 static void isexit_(void)
 {

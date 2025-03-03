@@ -44,6 +44,21 @@ void guiClose(void)
     CloseWindow();
 }
 
+bool guiInfo(void)
+{
+    bool ok = true;
+    bool exitWindow = false;
+    while (!exitWindow)
+    {
+        exitWindow = WindowShouldClose();
+        const bool enter = IsKeyPressed(KEY_ENTER);
+        BeginDrawing();
+        
+        EndDrawing();
+    }
+    return ok;
+}
+
 bool guiIsExit(void)
 {
     bool isExit = true;
