@@ -95,7 +95,7 @@ IsInfoAux +
 SolveOut +
     EB (E0 '=' VH) +
             = <VAnswer <Dg /Steps/> <Dg /StepsBack/> <Answer VH>> +
-            <Map /DoMapSolve/ EB (E0 '=' VH)> <View>
+            <DoSolveOut EB ((E0 '=' VH))>
 
 * <Answer VH'> == VT
 *
@@ -133,8 +133,11 @@ AnswerAux +
     /Swede/ +
             = 'Швед'
 
-DoMapSolve +
-    (SR E0 '=' VH) +
+DoSolveOut +
+    EB (WL) = <DoSolveOutAux WL /2/>
+
+DoSolveOutAux +
+    (SR E0 '=' VH) SN +
             = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
             <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
             <Map /DoMapTable/ VH> +
