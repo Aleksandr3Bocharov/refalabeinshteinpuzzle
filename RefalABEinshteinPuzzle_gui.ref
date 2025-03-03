@@ -134,7 +134,7 @@ AnswerAux +
             = 'Швед'
 
 DoSolveOut +
-    EB (WL) = <DoSolveOutAux WL /2/>
+    EB (WL) = <DoSolveOutAux WL /2/> <View>
 
 DoSolveOutAux +
     (SR E0 '=' VH) SN +
