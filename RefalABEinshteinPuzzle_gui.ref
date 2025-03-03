@@ -71,7 +71,7 @@ Go          = <Init> <IsInfo <Info>> <Close>
 
 IsInfo      
     'N'     = <IsInfoAux <IsExit>>
-    'Y'     = <Help> +
+    'Y'     = +
             <Br /Steps/ '=' /0/> +
             <Br /StepsBack/ '=' /0/> +
             <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
@@ -94,41 +94,6 @@ IsInfo
 IsInfoAux +
     'Y'     =
     'N'     = <IsInfo <Info>>
-
-* Вывод справки
-Help        = <Prout 'Solution of the Einstein''s Puzzle ' + 
-            'on RefalAB.\n\n' +
-            'Einstein''s Puzzle.\n\n' +
-            'Conditions:\n' +
-            '1. There are 5 houses each of a different color.\n' +
-            '2. One person lives in each house and the residents ' + 
-            'each have different nationalities.\n' +
-            '3. Each resident prefers a certain drink, smokes ' + 
-            'a certain brand of cigarettes, ' + 
-            'and has a certain house pet.\n' +
-            '4. NONE of the five persons drinks the same drink, ' + 
-            'smokes the same brand of cigarettes or has the same ' + 
-            'house pet as any one of the other residents.\n\n' +
-            'Question: Who has the fish?\n\n' +
-            'The clues:\n' +
-            '1. The Englishman lives in the red house.\n' +
-            '2. The Swede has a dog.\n' +
-            '3. The Dane likes to drink tea.\n' +
-            '4. The green house is left of the white house.\n' +
-            '5. The resident in the green house drinks coffee.\n' +
-            '6. The person who smokes Pall Mall has a bird.\n' +
-            '7. The man who lives in the middle house drinks milk.\n' +
-            '8. The resident in the yellow house smokes Dunhill.\n' +
-            '9. The Norwegian lives in the first house.\n' +
-            '10. The Marlboro smoker lives next to the person ' + 
-            'with a cat.\n' +
-            '11. The man who has a horse lives next to the person ' + 
-            'who smokes Dunhill.\n' +
-            '12. The Winfield smoker likes to drink beer.\n' +
-            '13. The Norwegian lives next to the blue house.\n' +
-            '14. The German smokes Rothmanns.\n' +
-            '15. The Marlboro smoker has a neighbor who drinks water.' + 
-            '\n\n'>
 
 SolveOut +
     EB (E0 '=' VH) +

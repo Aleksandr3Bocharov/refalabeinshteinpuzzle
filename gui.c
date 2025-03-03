@@ -19,8 +19,8 @@
 
 #include "gui.h"
 
-static const int screenWidth = 800;
-static const int screenHeight = 360;
+static const int screenWidth = 1300;
+static const int screenHeight = 820;
 
 static Font cyrillicFont;
 
@@ -55,8 +55,30 @@ bool guiInfo(void)
         const bool enter = IsKeyPressed(KEY_ENTER);
         BeginDrawing();
         ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
-        DrawTextEx(cyrillicFont, "", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        if (GuiButton((Rectangle){screenWidth / 2 - 80, 310, 160, 30}, "Решить задачу") || enter)
+        DrawTextEx(cyrillicFont, "Задача Эйнштейна.", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "Условия:", (Vector2){10.0f, 50.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "1. Есть 5 домов разных цветов.", (Vector2){10.0f, 80.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "2. В каждом доме живет по одному человеку, отличающегося от другого по национальности.", (Vector2){10.0f, 110.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "3. Каждый обитатель пьет только один определенный напиток, курит определенную марку сигарет и держит животное.", (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "4. Никто из пяти людей не пьет одинакового напитка, не курит одинаковые сигареты и не держит одинаковых животных.", (Vector2){10.0f, 170.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 230.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "Подсказки:", (Vector2){10.0f, 290.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "1. Англичанин живет в красном доме.", (Vector2){10.0f, 320.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "2. У шведа есть собака.", (Vector2){10.0f, 350.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "3. Датчанин пьет чай.", (Vector2){10.0f, 380.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "4. Зеленый дом стоит слева от белого.", (Vector2){10.0f, 410.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "5. Обитатель зеленого дома пьет кофе.", (Vector2){10.0f, 440.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "6. Человек, который курит Pall Mall, держит птицу.", (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "7.  Обитатель среднего дома пьет молоко.", (Vector2){10.0f, 500.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "8.  Обитатель желтого дома курит Dunhill.", (Vector2){10.0f, 530.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "9.  Норвежец живет в первом доме.", (Vector2){10.0f, 560.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "10. Курильщик Marlboro живет возле того, у кого есть кошка.", (Vector2){10.0f, 590.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "11. Человек, у которого есть конь, живет возле того, кто курит Dunhill.", (Vector2){10.0f, 620.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "12. Курильщик Winfield пьет пиво.", (Vector2){10.0f, 650.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "13. Норвежец живет возле голубого дома.", (Vector2){10.0f, 680.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "14. Немец курит Rothmans.", (Vector2){10.0f, 710.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "15. Курильщик Marlboro живет по соседству с человеком, который пьет воду.", (Vector2){10.0f, 740.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        if (GuiButton((Rectangle){screenWidth / 2 - 80, 770, 160, 30}, "Решить задачу") || enter)
         {
             ok = true;
             exitWindow = true;
