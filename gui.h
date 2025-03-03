@@ -17,5 +17,6 @@ extern void guiClose(void);
 extern bool guiInfo(void);
 extern void guiInit(void);
 extern bool guiIsExit(void);
+extern bool guiView(const char *answer, int steps, int stepsBack);
 
 #endif

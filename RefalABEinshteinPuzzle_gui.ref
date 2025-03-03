@@ -57,6 +57,7 @@
             EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
             EXTRN True, False
             EXTRN Init, Close, Info, IsExit
+            EXTRN VAnswer, View
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
             EMPTY Color, Yellow, Blue, Red, Green, White
@@ -85,11 +86,7 @@ IsInfo
             (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
             /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
             (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
-            <Prout 'Number of steps without returns: ' +
-            <Symb <Dg /Steps/>> '.\n' +
-            'Number of steps with returns: ' +
-            <Symb <Dg /StepsBack/>> '.'>
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>>
 
 IsInfoAux +
     'Y'     =
@@ -97,9 +94,8 @@ IsInfoAux +
 
 SolveOut +
     EB (E0 '=' VH) +
-            = <Prout 'Question: Who has the fish?\n' +
-            'Answer: ' <Answer VH> ' has the fish.\n\n'> +
-            <Map /DoMapSolve/ EB (E0 '=' VH)>
+            = <VAnswer <Dg /Steps/> <Dg /StepsBack/> <Answer VH>> +
+            <Map /DoMapSolve/ EB (E0 '=' VH)> <View>
 
 * <Answer VH'> == VT
 *
@@ -119,22 +115,23 @@ SolveOut +
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
+* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' |
+*        'Немец' | 'Швед'
 Answer +
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
             = <AnswerAux SN>
 
 AnswerAux +
     /Norwegian/ +
-            = 'Norwegian'
+            = 'Норвежец'
     /Dane/ +
-            = 'Dane'
+            = 'Датчанин'
     /Englishman/ +
-            = 'Englishman'
+            = 'Англичанин'
     /German/ +
-            = 'German'
+            = 'Немец'
     /Swede/ +
-            = 'Swede'
+            = 'Швед'
 
 DoMapSolve +
     (SR E0 '=' VH) +

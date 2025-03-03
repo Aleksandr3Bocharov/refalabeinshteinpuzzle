@@ -13,6 +13,10 @@
 #include "refal.def"
 #include "gui.h"
 
+static int steps = 0;
+static int stepsBack = 0;
+static char answer[21] = {'\0'};
+
 // <Init> ==
 static void init_(void)
 {
@@ -65,6 +69,66 @@ static void info_(void)
 char info_0[] = {Z4 'I', 'N', 'F', 'O', '\004'};
 G_L_B uint8_t info = '\122';
 void (*info_1)(void) = info_;
+
+// <VAnswer S(N)S S(N)B E(O)A> ==
+static void vanswer_(void)
+{
+    const T_LINKCB *p = refal.preva->next;
+    do
+    {
+        if (p->tag != TAGN)
+            break;
+        steps = gcoden(p);
+        p = p->next;
+        if (p->tag != TAGN)
+            break;
+        stepsBack = gcoden(p);
+        p = p->next;
+        bool neot = false;
+        size_t i;
+        for (i = 0; p != refal.nexta; i++)
+        {
+            if (p->tag != TAGO || i == 20)
+            {
+                neot = true;
+                break;
+            }
+            answer[i] = p->info.infoc;
+            p = p->next;
+        }
+        if (neot)
+            break;
+        answer[i] = '\0';
+        return;
+    } while (false);
+    refal.upshot = 2;
+    return;
+}
+char vanswer_0[] = {Z7 'V', 'A', 'N', 'S', 'W', 'E', 'R', '\007'};
+G_L_B uint8_t vanswer = '\122';
+void (*vanswer_1)(void) = vanswer_;
+
+// <View> == 'Y' | 'N'
+static void view_(void)
+{
+    if (refal.preva->next != refal.nexta)
+    {
+        refal.upshot = 2;
+        return;
+    }
+    T_LINKCB *p = refal.prevr;
+    if (!slins(p, 1))
+        return;
+    p = p->next;
+    p->tag = TAGO;
+    p->info.codep = NULL;
+    p->info.infoc = 'Y';
+    guiView(answer, steps, stepsBack);
+    return;
+}
+char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};
+G_L_B uint8_t view = '\122';
+void (*view_1)(void) = view_;
 
 // <IsExit> == 'Y' | 'N'
 static void isexit_(void)

@@ -23,10 +23,12 @@ static const int screenWidth = 1300;
 static const int screenHeight = 820;
 
 static Font cyrillicFont;
+static float sizeCyrillicFont = 0.0f;
 
 static void setStyle(void)
 {
     GuiSetFont(cyrillicFont);
+    sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
     GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 }
 
@@ -48,7 +50,6 @@ bool guiInfo(void)
 {
     bool ok = false;
     bool exitWindow = false;
-    const float sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
     while (!exitWindow)
     {
         exitWindow = WindowShouldClose();
@@ -83,6 +84,24 @@ bool guiInfo(void)
             ok = true;
             exitWindow = true;
         }
+        EndDrawing();
+    }
+    return ok;
+}
+
+bool guiView(const char *answer, int steps, int stepsBack)
+{
+    bool ok = false;
+    bool exitWindow = false;
+    while (!exitWindow)
+    {
+        exitWindow = WindowShouldClose();
+        BeginDrawing();
+        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 100.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
     }
     return ok;
