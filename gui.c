@@ -19,7 +19,7 @@
 
 #include "gui.h"
 
-static const int screenWidth = 1024;
+static const int screenWidth = 800;
 static const int screenHeight = 360;
 
 static Font cyrillicFont;
@@ -48,12 +48,19 @@ bool guiInfo(void)
 {
     bool ok = false;
     bool exitWindow = false;
+    const float sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
     while (!exitWindow)
     {
         exitWindow = WindowShouldClose();
         const bool enter = IsKeyPressed(KEY_ENTER);
         BeginDrawing();
-        
+        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        DrawTextEx(cyrillicFont, "", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        if (GuiButton((Rectangle){screenWidth / 2 - 80, 310, 160, 30}, "Решить задачу") || enter)
+        {
+            ok = true;
+            exitWindow = true;
+        }
         EndDrawing();
     }
     return ok;

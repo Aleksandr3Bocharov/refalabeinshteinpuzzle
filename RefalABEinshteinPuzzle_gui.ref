@@ -67,7 +67,11 @@
             EMPTY Pet, Cat, Horse, Bird, Dog, Fish
             EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go          = <Init> <Help> +
+Go          = <Init> <IsInfo <Info>> <Close>
+
+IsInfo      
+    'N'     = <IsInfoAux <IsExit>>
+    'Y'     = <Help> +
             <Br /Steps/ '=' /0/> +
             <Br /StepsBack/ '=' /0/> +
             <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
@@ -85,8 +89,11 @@ Go          = <Init> <Help> +
             <Prout 'Number of steps without returns: ' +
             <Symb <Dg /Steps/>> '.\n' +
             'Number of steps with returns: ' +
-            <Symb <Dg /StepsBack/>> '.'> +
-            <Close>
+            <Symb <Dg /StepsBack/>> '.'>
+
+IsInfoAux +
+    'Y'     =
+    'N'     = <IsInfo <Info>>
 
 * Вывод справки
 Help        = <Prout 'Solution of the Einstein''s Puzzle ' + 
