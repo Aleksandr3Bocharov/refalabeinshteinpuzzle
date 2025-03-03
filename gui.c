@@ -46,7 +46,7 @@ void guiClose(void)
 
 bool guiInfo(void)
 {
-    bool ok = true;
+    bool ok = false;
     bool exitWindow = false;
     while (!exitWindow)
     {
