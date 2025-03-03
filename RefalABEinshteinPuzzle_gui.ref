@@ -56,6 +56,7 @@
             ENTRY Go
             EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
             EXTRN True, False
+            EXTRN Init, CLose, IsExit
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
             EMPTY Color, Yellow, Blue, Red, Green, White
@@ -66,7 +67,7 @@
             EMPTY Pet, Cat, Horse, Bird, Dog, Fish
             EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go          = <Help> +
+Go          = <Init> <Help> +
             <Br /Steps/ '=' /0/> +
             <Br /StepsBack/ '=' /0/> +
             <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
@@ -84,7 +85,8 @@ Go          = <Help> +
             <Prout 'Number of steps without returns: ' +
             <Symb <Dg /Steps/>> '.\n' +
             'Number of steps with returns: ' +
-            <Symb <Dg /StepsBack/>> '.'>
+            <Symb <Dg /StepsBack/>> '.'> +
+            <Close>
 
 * Вывод справки
 Help        = <Prout 'Solution of the Einstein''s Puzzle ' + 
