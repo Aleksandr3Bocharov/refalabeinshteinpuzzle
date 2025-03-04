@@ -17,6 +17,6 @@ extern void guiClose(void);
 extern bool guiInfo(void);
 extern void guiInit(void);
 extern bool guiIsExit(void);
-extern int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, const char table[6][150], int position);
+extern int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, char table[6][150], int position);
 
 #endif

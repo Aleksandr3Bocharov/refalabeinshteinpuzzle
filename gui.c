@@ -84,7 +84,7 @@ bool guiInfo(void)
     return ok;
 }
 
-int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, const char table[6][150], int position)
+int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, char table[6][150], int position)
 {
     int result = 0;
     bool exitWindow = false;
@@ -95,8 +95,11 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 100.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Правило %d: %s.", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        for (size_t i = 0; i < 6; i++)
+            DrawTextEx(cyrillicFont, table[i], (Vector2){10.0f, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 300.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 340.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
     }
     return result;

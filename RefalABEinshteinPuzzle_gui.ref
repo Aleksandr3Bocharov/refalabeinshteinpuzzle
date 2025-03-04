@@ -140,7 +140,6 @@ DoSolveOut +
 DoSolveOutAux +
     (SR E0 '=' VH) SP +
             = <VRule SP SR <RuleText SR>> +
-            <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
             <DelAccum <MapAccum /DoMapTable/ /1/ VH>>
 
 DoMapTable +
