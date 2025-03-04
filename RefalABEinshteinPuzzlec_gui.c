@@ -16,6 +16,9 @@
 static int steps = 0;
 static int stepsBack = 0;
 static char answer[21] = {'\0'};
+static int rule = 0;
+static int position = 0;
+static char ruleText[150] = {'\0'};
 
 // <Init> ==
 static void init_(void)
@@ -107,6 +110,48 @@ static void vanswer_(void)
 char vanswer_0[] = {Z7 'V', 'A', 'N', 'S', 'W', 'E', 'R', '\007'};
 G_L_B uint8_t vanswer = '\122';
 void (*vanswer_1)(void) = vanswer_;
+
+// <VRule S(N)P S(N)R E(O)T> ==
+static void vrule_(void)
+{
+    const T_LINKCB *p = refal.preva->next;
+    do
+    {
+        if (p->tag != TAGN)
+            break;
+        position = gcoden(p);
+        if (position > 2)
+            break;
+        p = p->next;
+        if (p->tag != TAGN)
+            break;
+        rule = gcoden(p);
+        if (rule > 16)
+            break;
+        p = p->next;
+        bool neot = false;
+        size_t i;
+        for (i = 0; p != refal.nexta; i++)
+        {
+            if (p->tag != TAGO || i == 149)
+            {
+                neot = true;
+                break;
+            }
+            ruleText[i] = p->info.infoc;
+            p = p->next;
+        }
+        if (neot)
+            break;
+        ruleText[i] = '\0';
+        return;
+    } while (false);
+    refal.upshot = 2;
+    return;
+}
+char vrule_0[] = {Z4 'V', 'R', 'U', 'L', 'E', '\005'};
+G_L_B uint8_t vrule = '\122';
+void (*vrule_1)(void) = vrule_;
 
 // <View> == 'Y' | 'N'
 static void view_(void)

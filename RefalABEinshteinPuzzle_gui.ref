@@ -57,7 +57,7 @@
             EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
             EXTRN True, False
             EXTRN Init, Close, Info, IsExit
-            EXTRN VAnswer, View
+            EXTRN VAnswer, VRule, View
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
             EMPTY Color, Yellow, Blue, Red, Green, White
@@ -138,7 +138,8 @@ DoSolveOut +
 
 DoSolveOutAux +
     (SR E0 '=' VH) SN +
-            = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
+            = <VRule SN SR <RuleText SR>> +
+            <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
             <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
             <Map /DoMapTable/ VH> +
             <Prout '\n'>
