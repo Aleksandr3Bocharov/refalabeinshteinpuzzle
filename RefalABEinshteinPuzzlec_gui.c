@@ -19,6 +19,8 @@ static char answer[21] = {'\0'};
 static int rule = 0;
 static int position = 0;
 static char ruleText[150] = {'\0'};
+static char table[6][150] = { "Home Color  Nationality Cigarettes Pet   Drink",
+                              {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} };
 
 // <Init> ==
 static void init_(void)
