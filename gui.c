@@ -95,7 +95,7 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Правило %d: %s.", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Правило %d: %s", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         for (size_t i = 0; i < 6; i++)
             DrawTextEx(cyrillicFont, table[i], (Vector2){10.0f, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
         GuiButton((Rectangle){10, 420, 50, 30}, GuiIconText(ICON_PLAYER_PREVIOUS, NULL));

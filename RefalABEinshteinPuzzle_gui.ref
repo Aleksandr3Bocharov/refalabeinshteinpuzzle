@@ -153,25 +153,29 @@ DoMapTable +
 
 * <RuleText S(/0/../16/)R> == VT
 *
-* VT ::= 'Conditions.' |
-*        'The Englishman lives in the red house.' | 
-*        'The Swede has a dog.' |
-*        'The Dane likes to drink tea.' |
-*        'The green house is left of the white house.' |
-*        'The resident in the green house drinks coffee.' |
-*        'The person who smokes Pall Mall has a bird.' |
-*        'The man who lives in the middle house drinks milk.' |
-*        'The resident in the yellow house smokes Dunhill.' |
-*        'The Norwegian lives in the first house.' |
-*        'The Marlboro smoker lives next to the person with a cat.' |
-*        'The man who has a horse lives next to the person who smokes Dunhill.' |
-*        'The Winfield smoker likes to drink beer.' |
-*        'The Norwegian lives next to the blue house.' |
-*        'The German smokes Rothmanns.' | 
-*        'The Marlboro smoker has a neighbor who drinks water.' | 
-*        'Fish is the fifth pet.'
+* VT ::= 'Условия.' |
+*        'Англичанин живет в красном доме.' | 
+*        'У шведа есть собака.' |
+*        'Датчанин пьет чай.' |
+*        'Зеленый дом стоит слева от белого.' |
+*        'Обитатель зеленого дома пьет кофе.' |
+*        'Человек, который курит Pall Mall,
+*         держит птицу.' |
+*        'Обитатель среднего дома пьет молоко.' |
+*        'Обитатель желтого дома курит Dunhill.' |
+*        'Норвежец живет в первом доме.' |
+*        'Курильщик Marlboro живет возле того,
+*         у кого есть кошка.' |
+*        'Человек, у которого есть конь,
+*         живет возле того, кто курит Dunhill.' |
+*        'Курильщик Winfield пьет пиво.' |
+*        'Норвежец живет возле голубого дома.' |
+*        'Немец курит Rothmans.' | 
+*        'Курильщик Marlboro живет по соседству
+*         с человеком, который пьет воду.' | 
+*        'Рыба - пятое животное.'
 RuleText +
-    /0/     = 'Conditions.'
+    /0/     = 'Условия.'
     /1/     = 'The Englishman lives in the red house.'
     /2/     = 'The Swede has a dog.'
     /3/     = 'The Dane likes to drink tea.'
@@ -189,7 +193,7 @@ RuleText +
     /13/    = 'The Norwegian lives next to the blue house.'
     /14/    = 'The German smokes Rothmanns.'
     /15/    = 'The Marlboro smoker has a neighbor who drinks water.'
-    /16/    = 'Fish is the fifth pet.'
+    /16/    = 'Рыба - пятое животное.'
 
 * <ObjectText SC VO> == VT
 *
