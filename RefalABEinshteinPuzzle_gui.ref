@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-03-03
+* 2025-03-05
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -144,9 +144,10 @@ DoSolveOutAux +
             <DelAccum <MapAccum /DoMapTable/ /1/ VH>>
 
 DoMapTable +
-    SN (/Home/ SH /Color/ EC /Nationality/ +
+    SR (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
-            = <P1 SN> <VTable SN <Symb SH> '    ' <ObjectText /Color/ EC> +
+            = <P1 SR> +
+            <VTable SR <Symb SH> '    ' <ObjectText /Color/ EC> +
             <ObjectText /Nationality/ EN> +
             <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
             <ObjectText /Drink/ ED>>

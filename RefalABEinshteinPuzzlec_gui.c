@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-03
+// 2025-03-05
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -151,9 +151,45 @@ static void vrule_(void)
     refal.upshot = 2;
     return;
 }
-char vrule_0[] = {Z4 'V', 'R', 'U', 'L', 'E', '\005'};
+char vrule_0[] = {Z5 'V', 'R', 'U', 'L', 'E', '\005'};
 G_L_B uint8_t vrule = '\122';
 void (*vrule_1)(void) = vrule_;
+
+// <VTable S(N)R E(O)T> ==
+static void vtable_(void)
+{
+    const T_LINKCB *p = refal.preva->next;
+    do
+    {
+        if (p->tag != TAGN)
+            break;
+        const int row = gcoden(p);
+        if (row < 1 || row > 5)
+            break;
+        p = p->next;
+        bool neot = false;
+        size_t i;
+        for (i = 0; p != refal.nexta; i++)
+        {
+            if (p->tag != TAGO || i == 149)
+            {
+                neot = true;
+                break;
+            }
+            table[row][i] = p->info.infoc;
+            p = p->next;
+        }
+        if (neot)
+            break;
+        table[row][i] = '\0';
+        return;
+    } while (false);
+    refal.upshot = 2;
+    return;
+}
+char vtable_0[] = {Z6 'V', 'T', 'A', 'B', 'L', 'E', '\006'};
+G_L_B uint8_t vtable = '\122';
+void (*vtable_1)(void) = vtable_;
 
 // <View> == 'Y' | 'N'
 static void view_(void)
@@ -170,7 +206,7 @@ static void view_(void)
     p->tag = TAGO;
     p->info.codep = NULL;
     p->info.infoc = 'Y';
-    guiView(answer, steps, stepsBack);
+    guiView(answer, steps, stepsBack, rule, ruleText, table, position);
     return;
 }
 char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};

@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-03
+// 2025-03-05
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -17,6 +17,6 @@ extern void guiClose(void);
 extern bool guiInfo(void);
 extern void guiInit(void);
 extern bool guiIsExit(void);
-extern bool guiView(const char *answer, int steps, int stepsBack);
+extern int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, const char table[6][150], int position);
 
 #endif

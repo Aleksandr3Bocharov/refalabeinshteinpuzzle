@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-03
+// 2025-03-05
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -25,20 +25,15 @@ static const int screenHeight = 820;
 static Font cyrillicFont;
 static float sizeCyrillicFont = 0.0f;
 
-static void setStyle(void)
-{
-    GuiSetFont(cyrillicFont);
-    sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
-    GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
-}
-
 void guiInit(void)
 {
     InitWindow(screenWidth, screenHeight, "RefalABEinshteinPuzzle (GUI версия)");
     SetExitKey(0);
     cyrillicFont = LoadFont("fonts/dejavu.fnt");
     SetTargetFPS(60);
-    setStyle();
+    GuiSetFont(cyrillicFont);
+    sizeCyrillicFont = (float)cyrillicFont.baseSize + 1.0f;
+    GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 }
 
 void guiClose(void)
@@ -89,9 +84,9 @@ bool guiInfo(void)
     return ok;
 }
 
-bool guiView(const char *answer, int steps, int stepsBack)
+int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, const char table[6][150], int position)
 {
-    bool ok = false;
+    int result = 0;
     bool exitWindow = false;
     while (!exitWindow)
     {
@@ -104,7 +99,7 @@ bool guiView(const char *answer, int steps, int stepsBack)
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
     }
-    return ok;
+    return result;
 }
 
 bool guiIsExit(void)
