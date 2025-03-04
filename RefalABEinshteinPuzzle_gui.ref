@@ -140,16 +140,23 @@ DoSolveOut +
 DoSolveOutAux +
     (SR E0 '=' VH) SP +
             = <VRule SP SR <RuleText SR>> +
-            <DelAccum <MapAccum /DoMapTable/ /1/ VH>>
+            <DelAccum <MapAccum /DoMapRow/ /1/ VH>>
 
-DoMapTable +
+DoMapRow +
     SR (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
             = <P1 SR> +
-            <VTable SR <Symb SH> '    ' <ObjectText /Color/ EC> +
-            <ObjectText /Nationality/ EN> +
-            <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
-            <ObjectText /Drink/ ED>>
+            <DelAccum <MapAccum /DoMapCol/ (SR /0/) +
+            (<Symb SH>) +
+            (<ObjectText EC>) +
+            (<ObjectText EN>) +
+            (<ObjectText EG>) +
+            (<ObjectText EP>) +
+            (<ObjectText ED>)>>
+
+DoMapCol +
+    (SR SC) (ES) +
+            = (SR <P1 SC>) <VRule SR SC ES>
 
 * <RuleText S(/0/../16/)R> == VT
 *
@@ -204,37 +211,24 @@ RuleText +
             'соседству с человеком, который пьет воду.'
     /16/    = 'Рыба - пятое животное.'
 
-* <ObjectText SC VO> == VT
+* <ObjectText VO> == VT
 *
-* SC ::= /Color/ | /Nationality/ | /Cigarettes/ | /Pet/ | /Drink/
 * VO ::= '???' |
 *        /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ |
 *        /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
 *        /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/| /Winfield/ |
 *        /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
 *        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= '???    ' | '???         ' | '???       ' | '???   ' | '???' |
-*        'Yellow ' | 'Blue   ' | 'Red    ' | 'Green  ' | 'White  ' |
-*        'Norwegian   ' | 'Dane        ' | 'Englishman  ' | 'German      ' |
-*        'Swede       ' |
-*        'Dunhill    ' | 'Rothmans   ' | 'Pall Mall  ' | 'Marlboro   ' |
-*        'Winfield   ' |
-*        'Cat   ' | 'Horse ' | 'Bird  ' | 'Dog   ' | 'Fish  ' |
-*        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
+* VT ::= '???' |
+*        'Желтый' | 'Голубой' | 'Красный' |
+*        'Зеленый' | 'Белый' |
+*        'Норвежец' | 'Датчанин' | 'Англичанин' |
+*        'Немец' | 'Швед' |
+*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
+*        'Кошка' | 'Конь' | 'Птица' | 'Собака' | 'Рыба' |
+*        'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
 ObjectText +
-    /Color/ '???' +
-            = '???'
-    /Nationality/ '???' +
-            = '???'
-    /Cigarettes/ '???' +
-            = '???'
-    /Pet/ '???' +
-            = '???'
-    /Drink/ '???' +
-            = '???'
-    SC SO   = <ObjectTextAux SO>
-
-ObjectTextAux +
+    '???'   = '???'
     /Yellow/ +
             = 'Желтый'
     /Blue/  = 'Голубой'
