@@ -58,7 +58,7 @@
             EXTRN Br, Dg
             EXTRN True, False
             EXTRN Init, Close, Info, IsExit
-            EXTRN VAnswer, VRule, VTsble, View
+            EXTRN VAnswer, VRule, VTable, View
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
             EMPTY Color, Yellow, Blue, Red, Green, White
@@ -138,17 +138,15 @@ DoSolveOut +
     EB (WL) = <DoSolveOutAux WL /2/> <View>
 
 DoSolveOutAux +
-    (SR E0 '=' VH) SN +
-            = <VRule SN SR <RuleText SR>> +
+    (SR E0 '=' VH) SP +
+            = <VRule SP SR <RuleText SR>> +
             <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
-            <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
-            <DelAccum <MapAccum /1/ /DoMapTable/ VH>> +
-            <Prout '\n'>
+            <DelAccum <MapAccum /DoMapTable/ /1/ VH>>
 
 DoMapTable +
-    (/Home/ SH /Color/ EC /Nationality/ +
+    SN (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
-            = <Prout <Symb SH> '    ' <ObjectText /Color/ EC> +
+            = <P1 SN> <VTable SN <Symb SH> '    ' <ObjectText /Color/ EC> +
             <ObjectText /Nationality/ EN> +
             <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
             <ObjectText /Drink/ ED>>
