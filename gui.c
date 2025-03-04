@@ -98,8 +98,8 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         DrawTextEx(cyrillicFont, TextFormat("Правило %d: %s.", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         for (size_t i = 0; i < 6; i++)
             DrawTextEx(cyrillicFont, table[i], (Vector2){10.0f, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 300.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 340.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 510.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
     }
     return result;
