@@ -156,7 +156,7 @@ DoMapRow +
 
 DoMapCol +
     (SR SC) (ES) +
-            = (SR <P1 SC>) <VRule SR SC ES>
+            = (SR <P1 SC>) <VTable SR SC ES>
 
 * <RuleText S(/0/../16/)R> == VT
 *

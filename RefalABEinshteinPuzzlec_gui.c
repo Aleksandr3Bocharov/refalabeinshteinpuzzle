@@ -19,8 +19,12 @@ static char answer[21] = {'\0'};
 static int rule = 0;
 static int position = 0;
 static char ruleText[150] = {'\0'};
-static char table[6][150] = { "Дом Цвет Национальность Сигареты Животное Напиток",
-                              {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} };
+static char table[6][6][32] = { { {"Дом"}, {"Цвет"}, {"Национальность"}, {"Сигареты"}, {"Животное"}, {"Напиток"} },
+                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
+                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
+                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
+                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
+                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} } };
 
 // <Init> ==
 static void init_(void)
@@ -155,7 +159,7 @@ char vrule_0[] = {Z5 'V', 'R', 'U', 'L', 'E', '\005'};
 G_L_B uint8_t vrule = '\122';
 void (*vrule_1)(void) = vrule_;
 
-// <VTable S(N)R E(O)T> ==
+// <VTable S(N)R S(N)C E(O)T> ==
 static void vtable_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -167,21 +171,27 @@ static void vtable_(void)
         if (row < 1 || row > 5)
             break;
         p = p->next;
+        if (p->tag != TAGN)
+            break;
+        int col = gcoden(p);
+        if (col > 5)
+            break;
+        p = p->next;
         bool neot = false;
         size_t i;
         for (i = 0; p != refal.nexta; i++)
         {
-            if (p->tag != TAGO || i == 149)
+            if (p->tag != TAGO || i == 31)
             {
                 neot = true;
                 break;
             }
-            table[row][i] = p->info.infoc;
+            table[row][col][i] = p->info.infoc;
             p = p->next;
         }
         if (neot)
             break;
-        table[row][i] = '\0';
+        table[row][col][i] = '\0';
         return;
     } while (false);
     refal.upshot = 2;

@@ -20,7 +20,7 @@
 #include "gui.h"
 
 static const int screenWidth = 1300;
-static const int screenHeight = 820;
+static int screenHeight = 820;
 
 static Font cyrillicFont;
 static float sizeCyrillicFont = 0.0f;
@@ -84,10 +84,12 @@ bool guiInfo(void)
     return ok;
 }
 
-int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, char table[6][150], int position)
+int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, char table[6][6][32], int position)
 {
     int result = 0;
     bool exitWindow = false;
+    screenHeight = 550;
+    SetWindowSize(screenWidth, screenHeight);
     while (!exitWindow)
     {
         exitWindow = WindowShouldClose();
@@ -97,11 +99,12 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Подсказка %d: %s", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         for (size_t i = 0; i < 6; i++)
-            DrawTextEx(cyrillicFont, table[i], (Vector2){10.0f, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        GuiButton((Rectangle){10, 420, 50, 30}, GuiIconText(ICON_PLAYER_PREVIOUS, NULL));
-        GuiButton((Rectangle){60, 420, 50, 30}, GuiIconText(ICON_PLAYER_PLAY_BACK, NULL));
-        GuiButton((Rectangle){110, 420, 50, 30}, GuiIconText(ICON_PLAYER_PLAY, NULL));
-        GuiButton((Rectangle){160, 420, 50, 30}, GuiIconText(ICON_PLAYER_NEXT, NULL));
+            for (size_t j = 0; j < 6; j++)
+                DrawTextEx(cyrillicFont, table[i][j], (Vector2){10.0f + 210.0f * (float)j, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        GuiButton((Rectangle){10, 420, 320, 30}, GuiIconText(ICON_PLAYER_PREVIOUS, NULL));
+        GuiButton((Rectangle){330, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY_BACK, NULL));
+        GuiButton((Rectangle){650, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY, NULL));
+        GuiButton((Rectangle){970, 420, 320, 30}, GuiIconText(ICON_PLAYER_NEXT, NULL));
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 510.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
