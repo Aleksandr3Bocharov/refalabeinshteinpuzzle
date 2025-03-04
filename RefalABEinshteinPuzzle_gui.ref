@@ -223,53 +223,53 @@ RuleText +
 *        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
 ObjectText +
     /Color/ '???' +
-            = '???    '
+            = '???'
     /Nationality/ '???' +
-            = '???         '
+            = '???'
     /Cigarettes/ '???' +
-            = '???        '
+            = '???'
     /Pet/ '???' +
-            = '???   '
+            = '???'
     /Drink/ '???' +
             = '???'
     SC SO   = <ObjectTextAux SO>
 
 ObjectTextAux +
     /Yellow/ +
-            = 'Yellow '
-    /Blue/  = 'Blue   '
-    /Red/   = 'Red    '
-    /Green/ = 'Green  '
-    /White/ = 'White  '     
+            = 'Желтый'
+    /Blue/  = 'Голубой'
+    /Red/   = 'Красный'
+    /Green/ = 'Зеленый'
+    /White/ = 'Белый'     
     /Norwegian/ +
-            = 'Norwegian   ' 
-    /Dane/  = 'Dane        '  
+            = 'Норвежец' 
+    /Dane/  = 'Датчанин'  
     /Englishman/ +
-            = 'Englishman  '
+            = 'Англичанин'
     /German/ +
-            = 'German      '
-    /Swede/ = 'Swede       '   
+            = 'Немец'
+    /Swede/ = 'Швед'   
     /Dunhill/ +
-            = 'Dunhill    '
+            = 'Dunhill'
     /Rothmans/ +
-            = 'Rothmans   '
+            = 'Rothmans'
     /PallMall/ +
-            = 'Pall Mall  '
+            = 'Pall Mall'
     /Marlboro/ +
-            = 'Marlboro   ' 
+            = 'Marlboro' 
     /Winfield/ +
-            = 'Winfield   '  
-    /Cat/   = 'Cat   '
-    /Horse/ = 'Horse '
-    /Bird/  = 'Bird  '
-    /Dog/   = 'Dog   '
-    /Fish/  = 'Fish  '
-    /Water/ = 'Water'
-    /Tea/   = 'Tea'
-    /Milk/  = 'Milk'
+            = 'Winfield'  
+    /Cat/   = 'Кошка'
+    /Horse/ = 'Конь'
+    /Bird/  = 'Птица'
+    /Dog/   = 'Собака'
+    /Fish/  = 'Рыба'
+    /Water/ = 'Вода'
+    /Tea/   = 'Чай'
+    /Milk/  = 'Молоко'
     /Coffee/ +
-            = 'Coffee'
-    /Beer/  = 'Beer'
+            = 'Кофе'
+    /Beer/  = 'Пиво'
 
 * <Solve VS> == VS'
 *

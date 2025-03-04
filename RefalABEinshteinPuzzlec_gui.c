@@ -19,7 +19,7 @@ static char answer[21] = {'\0'};
 static int rule = 0;
 static int position = 0;
 static char ruleText[150] = {'\0'};
-static char table[6][150] = { "Дом Цвет  Национальность Сигареты Животное   Напиток",
+static char table[6][150] = { "Дом Цвет Национальность Сигареты Животное Напиток",
                               {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} };
 
 // <Init> ==
