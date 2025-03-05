@@ -135,10 +135,10 @@ AnswerAux +
             = 'Швед'
 
 DoSolveOut +
-    (WL) EE = <DoSolveOutAux WL /0/> <ResView (WL) EE <View>>
-    EB (WL) = <DoSolveOutAux WL /2/> <ResView EB (WL) <View>>
-    EB (WL) EE +
-            = <DoSolveOutAux WL /1/> <ResView EB (WL) EE <View>>
+    (WB) EE = <DoSolveOutAux WB /0/> <ResView (WB) EE <View>>
+    EB (WE) = <DoSolveOutAux WE /2/> <ResView EB (WE) <View>>
+    EB (WM) EE +
+            = <DoSolveOutAux WM /1/> <ResView EB (WM) EE <View>>
 
 DoSolveOutAux +
     (SR E0 '=' VH) SP +
@@ -211,7 +211,8 @@ RuleText +
             'голубого дома.'
     /14/    = 'Немец курит Rothmans.'
     /15/    = 'Курильщик Marlboro живет по ' +
-            'соседству с человеком, который пьет воду.'
+            'соседству с человеком, ' +
+            'который пьет воду.'
     /16/    = 'Рыба - пятое животное.'
 
 * <ObjectText VO> == VT
@@ -270,6 +271,14 @@ ObjectText +
 
 ResView +
     E0 'Q'  = <ResViewAux E0 <IsExit>>
+    WB E1 (WC) E2 'B' +
+            = <DoSolveOut (WB) E1 WC E2>
+    E1 WP (WC) E2 'P' +
+            = <DoSolveOut E1 (WP) WC E2>
+    E1 (WC) WN E2 'N' +
+            = <DoSolveOut E1 WC (WN) E2>
+    E1 (WC) E2 WE 'E' +
+            = <DoSolveOut E1 WC E2 (WE)>
 
 ResViewAux +
     E0 'Y'  =
