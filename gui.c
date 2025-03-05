@@ -93,6 +93,10 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
     while (!exitWindow)
     {
         exitWindow = WindowShouldClose();
+        const bool right = IsKeyPressed(KEY_RIGHT);
+        const bool left = IsKeyPressed(KEY_LEFT);
+        const bool up = IsKeyPressed(KEY_UP);
+        const bool down = IsKeyPressed(KEY_DOWN);
         BeginDrawing();
         ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
@@ -101,10 +105,32 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         for (size_t i = 0; i < 6; i++)
             for (size_t j = 0; j < 6; j++)
                 DrawTextEx(cyrillicFont, table[i][j], (Vector2){10.0f + 210.0f * (float)j, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        GuiButton((Rectangle){10, 420, 320, 30}, GuiIconText(ICON_PLAYER_PREVIOUS, NULL));
-        GuiButton((Rectangle){330, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY_BACK, NULL));
-        GuiButton((Rectangle){650, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY, NULL));
-        GuiButton((Rectangle){970, 420, 320, 30}, GuiIconText(ICON_PLAYER_NEXT, NULL));
+        if (position > 0)
+        {
+            if (GuiButton((Rectangle){10, 420, 320, 30}, GuiIconText(ICON_PLAYER_PREVIOUS, NULL)) || up)
+            {
+                result = 1;
+                exitWindow = true;
+            };
+            if (GuiButton((Rectangle){330, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY_BACK, NULL)) || left)
+            {
+                result = 2;
+                exitWindow = true;
+            };
+        }
+        if (position < 2)
+        {
+            if (GuiButton((Rectangle){650, 420, 320, 30}, GuiIconText(ICON_PLAYER_PLAY, NULL)) || right)
+            {
+                result = 3;
+                exitWindow = true;
+            };
+            if (GuiButton((Rectangle){970, 420, 320, 30}, GuiIconText(ICON_PLAYER_NEXT, NULL)) || down)
+            {
+                result = 4;
+                exitWindow = true;
+            };
+        }
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %d.", steps), (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %d.", stepsBack), (Vector2){10.0f, 510.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();

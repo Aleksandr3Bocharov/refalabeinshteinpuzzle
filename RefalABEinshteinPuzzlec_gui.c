@@ -19,12 +19,12 @@ static char answer[21] = {'\0'};
 static int rule = 0;
 static int position = 0;
 static char ruleText[150] = {'\0'};
-static char table[6][6][32] = { { {"Дом"}, {"Цвет"}, {"Национальность"}, {"Сигареты"}, {"Животное"}, {"Напиток"} },
-                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
-                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
-                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
-                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} },
-                             { {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'} } };
+static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальность"}, {"Сигареты"}, {"Животное"}, {"Напиток"}},
+                               {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
+                               {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
+                               {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
+                               {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
+                               {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}}};
 
 // <Init> ==
 static void init_(void)
@@ -215,8 +215,16 @@ static void view_(void)
     p = p->next;
     p->tag = TAGO;
     p->info.codep = NULL;
-    p->info.infoc = 'Y';
-    guiView(answer, steps, stepsBack, rule, ruleText, table, position);
+    p->info.infoc = 'Q';
+    const int result = guiView(answer, steps, stepsBack, rule, ruleText, table, position);
+    if (result == 1)
+        p->info.infoc = 'B';
+    else if (result == 2)
+        p->info.infoc = 'P';
+    else if (result == 3)
+        p->info.infoc = 'N';
+    else if (result == 4)
+        p->info.infoc = 'E';
     return;
 }
 char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};

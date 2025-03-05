@@ -135,7 +135,10 @@ AnswerAux +
             = 'Швед'
 
 DoSolveOut +
-    EB (WL) = <DoSolveOutAux WL /2/> <View>
+    (WL) EE = <DoSolveOutAux WL /0/> <ResView (WL) EE <View>>
+    EB (WL) = <DoSolveOutAux WL /2/> <ResView EB (WL) <View>>
+    EB (WL) EE +
+            = <DoSolveOutAux WL /1/> <ResView EB (WL) EE <View>>
 
 DoSolveOutAux +
     (SR E0 '=' VH) SP +
@@ -264,6 +267,13 @@ ObjectText +
     /Coffee/ +
             = 'Кофе'
     /Beer/  = 'Пиво'
+
+ResView +
+    E0 'Q'  = <ResViewAux E0 <IsExit>>
+
+ResViewAux +
+    E0 'Y'  =
+    E0 'N'  = <ResView E0 <View>>
 
 * <Solve VS> == VS'
 *
