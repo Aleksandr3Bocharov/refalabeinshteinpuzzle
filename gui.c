@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-05
+// 2025-03-09
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -9,6 +9,7 @@
 //====================================================================
 
 #include <string.h>
+#include <stdint.h>
 #include <stdbool.h>
 
 #include "raylib.h"
@@ -50,7 +51,7 @@ bool guiInfo(void)
         exitWindow = WindowShouldClose();
         const bool enter = IsKeyPressed(KEY_ENTER);
         BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        ClearBackground(GetColor((unsigned int)GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Задача Эйнштейна.", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "Условия:", (Vector2){10.0f, 50.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "1. Есть 5 домов разных цветов.", (Vector2){10.0f, 80.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
@@ -84,7 +85,7 @@ bool guiInfo(void)
     return ok;
 }
 
-int guiView(const char *answer, int steps, int stepsBack, int rule, const char *ruleText, char table[6][6][32], int position)
+int guiView(const char *answer, uint32_t steps, uint32_t stepsBack, uint32_t rule, const char *ruleText, char table[6][6][32], uint32_t position)
 {
     int result = 0;
     bool exitWindow = false;
@@ -98,7 +99,7 @@ int guiView(const char *answer, int steps, int stepsBack, int rule, const char *
         const bool up = IsKeyPressed(KEY_UP);
         const bool down = IsKeyPressed(KEY_DOWN);
         BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        ClearBackground(GetColor((unsigned int)GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Подсказка %d: %s", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
@@ -148,9 +149,9 @@ bool guiIsExit(void)
         const bool enter = IsKeyPressed(KEY_ENTER);
         const bool escape = IsKeyPressed(KEY_ESCAPE);
         BeginDrawing();
-        ClearBackground(GetColor(GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
+        ClearBackground(GetColor((unsigned int)GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawRectangle(0, 0, screenWidth, screenHeight, Fade(RAYWHITE, 0.8f));
-        int result = GuiMessageBox((Rectangle){screenWidth / 2 - 180, screenHeight / 2 - 50, 360, 100}, GuiIconText(ICON_EXIT, "Выход"), "Вы действительно хотите выйти?", "Да;Нет");
+        int result = GuiMessageBox((Rectangle){screenWidth / 2 - 180, (float)screenHeight / 2 - 50, 360, 100}, GuiIconText(ICON_EXIT, "Выход"), "Вы действительно хотите выйти?", "Да;Нет");
         if (result == 0 || result == 1 || result == 2 || enter || escape)
         {
             exitWindow = true;

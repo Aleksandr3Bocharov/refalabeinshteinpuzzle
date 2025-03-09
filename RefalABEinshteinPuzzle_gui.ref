@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-03-05
+* 2025-03-09
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -57,7 +57,7 @@
             EXTRN MapAccum, DelAccum, Prout, P1, NRel, Symb, LengW
             EXTRN Br, Dg
             EXTRN True, False
-            EXTRN Init, Close, Info, IsExit
+            EXTRN GInit, GClose, Info, IsExit
             EXTRN VAnswer, VRule, VTable, View
             EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
             EMPTY Impossible, Member, Left, Nextto, Home
@@ -69,11 +69,11 @@
             EMPTY Pet, Cat, Horse, Bird, Dog, Fish
             EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go          = <Init> <IsInfo <Info>> <Close>
+Go          = <GInit> <IsInfo <Info>> <GClose>
 
 IsInfo      
-    'N'     = <IsInfoAux <IsExit>>
-    'Y'     = +
+    /False/ = <IsInfoAux <IsExit>>
+    /True/  = +
             <Br /Steps/ '=' /0/> +
             <Br /StepsBack/ '=' /0/> +
             <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
@@ -90,8 +90,8 @@ IsInfo
             /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>>
 
 IsInfoAux +
-    'Y'     =
-    'N'     = <IsInfo <Info>>
+    /True/  =
+    /False/ = <IsInfo <Info>>
 
 SolveOut +
     EB (E0 '=' VH) +
@@ -281,8 +281,10 @@ ResView +
             = <DoSolveOut E1 WC E2 (WE)>
 
 ResViewAux +
-    E0 'Y'  =
-    E0 'N'  = <ResView E0 <View>>
+    E0 /True/ +
+            =
+    E0 /False/ +
+            = <ResView E0 <View>>
 
 * <Solve VS> == VS'
 *

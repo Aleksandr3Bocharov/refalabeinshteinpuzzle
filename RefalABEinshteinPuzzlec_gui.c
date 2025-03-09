@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-05
+// 2025-03-09
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -13,11 +13,13 @@
 #include "refal.def"
 #include "gui.h"
 
-static int steps = 0;
-static int stepsBack = 0;
+extern uint8_t refalab_true, refalab_false;
+
+static uint32_t steps = 0;
+static uint32_t stepsBack = 0;
 static char answer[21] = {'\0'};
-static int rule = 0;
-static int position = 0;
+static uint32_t rule = 0;
+static uint32_t position = 0;
 static char ruleText[150] = {'\0'};
 static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальность"}, {"Сигареты"}, {"Животное"}, {"Напиток"}},
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
@@ -26,8 +28,8 @@ static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальн
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}}};
 
-// <Init> ==
-static void init_(void)
+// <GInit> ==
+static void ginit_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
@@ -37,12 +39,12 @@ static void init_(void)
     guiInit();
     return;
 }
-char init_0[] = {Z4 'I', 'N', 'I', 'T', '\004'};
-G_L_B uint8_t init = '\122';
-void (*init_1)(void) = init_;
+char ginit_0[] = {Z5 'G', 'I', 'N', 'I', 'T', '\005'};
+G_L_B uint8_t refalab_ginit = '\122';
+void (*ginit_1)(void) = ginit_;
 
-// <Close> ==
-static void close_(void)
+// <GClose> ==
+static void gclose_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
@@ -52,11 +54,11 @@ static void close_(void)
     guiClose();
     return;
 }
-char close_0[] = {Z5 'C', 'L', 'O', 'S', 'E', '\005'};
-G_L_B uint8_t close = '\122';
-void (*close_1)(void) = close_;
+char gclose_0[] = {Z6 'G', 'C', 'L', 'O', 'S', 'E', '\006'};
+G_L_B uint8_t refalab_gclose = '\122';
+void (*gclose_1)(void) = gclose_;
 
-// <Info> == 'Y' | 'N'
+// <Info> == /True/ | /False/
 static void info_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -68,15 +70,15 @@ static void info_(void)
     if (!slins(p, 1))
         return;
     p = p->next;
-    p->tag = TAGO;
+    p->tag = TAGF;
     p->info.codep = NULL;
-    p->info.infoc = 'Y';
+    p->info.codef = &refalab_true;
     if (!guiInfo())
-        p->info.infoc = 'N';
+        p->info.codef = &refalab_false;
     return;
 }
 char info_0[] = {Z4 'I', 'N', 'F', 'O', '\004'};
-G_L_B uint8_t info = '\122';
+G_L_B uint8_t refalab_info = '\122';
 void (*info_1)(void) = info_;
 
 // <VAnswer S(N)S S(N)B E(O)A> ==
@@ -114,7 +116,7 @@ static void vanswer_(void)
     return;
 }
 char vanswer_0[] = {Z7 'V', 'A', 'N', 'S', 'W', 'E', 'R', '\007'};
-G_L_B uint8_t vanswer = '\122';
+G_L_B uint8_t refalab_vanswer = '\122';
 void (*vanswer_1)(void) = vanswer_;
 
 // <VRule S(N)P S(N)R E(O)T> ==
@@ -156,7 +158,7 @@ static void vrule_(void)
     return;
 }
 char vrule_0[] = {Z5 'V', 'R', 'U', 'L', 'E', '\005'};
-G_L_B uint8_t vrule = '\122';
+G_L_B uint8_t refalab_vrule = '\122';
 void (*vrule_1)(void) = vrule_;
 
 // <VTable S(N)R S(N)C E(O)T> ==
@@ -167,13 +169,13 @@ static void vtable_(void)
     {
         if (p->tag != TAGN)
             break;
-        const int row = gcoden(p);
+        const uint32_t row = gcoden(p);
         if (row < 1 || row > 5)
             break;
         p = p->next;
         if (p->tag != TAGN)
             break;
-        int col = gcoden(p);
+        const uint32_t col = gcoden(p);
         if (col > 5)
             break;
         p = p->next;
@@ -198,10 +200,10 @@ static void vtable_(void)
     return;
 }
 char vtable_0[] = {Z6 'V', 'T', 'A', 'B', 'L', 'E', '\006'};
-G_L_B uint8_t vtable = '\122';
+G_L_B uint8_t refalab_vtable = '\122';
 void (*vtable_1)(void) = vtable_;
 
-// <View> == 'Y' | 'N'
+// <View> == 'Q' | 'B' | 'P' | 'N' | 'E'
 static void view_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -228,10 +230,10 @@ static void view_(void)
     return;
 }
 char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};
-G_L_B uint8_t view = '\122';
+G_L_B uint8_t refalab_view = '\122';
 void (*view_1)(void) = view_;
 
-// <IsExit> == 'Y' | 'N'
+// <IsExit> == /True/ | /False/
 static void isexit_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -243,13 +245,13 @@ static void isexit_(void)
     if (!slins(p, 1))
         return;
     p = p->next;
-    p->tag = TAGO;
+    p->tag = TAGF;
     p->info.codep = NULL;
-    p->info.infoc = 'Y';
+    p->info.codef = &refalab_true;
     if (!guiIsExit())
-        p->info.infoc = 'N';
+        p->info.codef = &refalab_false;
     return;
 }
 char isexit_0[] = {Z6 'I', 'S', 'E', 'X', 'I', 'T', '\006'};
-G_L_B uint8_t isexit = '\122';
+G_L_B uint8_t refalab_isexit = '\122';
 void (*isexit_1)(void) = isexit_;
