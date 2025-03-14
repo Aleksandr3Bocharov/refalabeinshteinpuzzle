@@ -10,7 +10,7 @@ RAYLIBCFLAGS="-Wall -O2"
 RAYLIBLFLAGS="-lraylib -lm"
 
 $REFALABBIN/RefalAB RefalABEinshteinPuzzle_gui > RefalABEinshteinPuzzle_gui.log
-as -o RefalABEinshteinPuzzle_gui.o RefalABEinshteinPuzzle_gui.asm >> RefalABEinshteinPuzzle_gui.log
+as -o RefalABEinshteinPuzzle_gui.o RefalABEinshteinPuzzle_gui.s >> RefalABEinshteinPuzzle_gui.log
 clang $REFALABCFLAGS -I$REFALABINCLUDE -c RefalABEinshteinPuzzlec_gui.c -o RefalABEinshteinPuzzlec_gui.o >> RefalABEinshteinPuzzle_gui.log
 clang $RAYLIBCFLAGS -c gui.c -o gui.o >> RefalABEinshteinPuzzle_gui.log
 clang -o RefalABEinshteinPuzzle_gui RefalABEinshteinPuzzle_gui.o RefalABEinshteinPuzzlec_gui.o $REFALABLIB/mainrf.o -L$REFALABLIB -lRefalAB gui.o $RAYLIBLFLAGS >> RefalABEinshteinPuzzle_gui.log
