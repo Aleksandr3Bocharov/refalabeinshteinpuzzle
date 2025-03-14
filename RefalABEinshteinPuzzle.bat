@@ -7,6 +7,6 @@ rem 2024-10-23
 rem https://github.com/Aleksandr3Bocharov/RefalAB
 
 %REFALABBIN%\RefalAB RefalABEinshteinPuzzle > RefalABEinshteinPuzzle.log
-as -o RefalABEinshteinPuzzle.o RefalABEinshteinPuzzle.asm >> RefalABEinshteinPuzzle.log
+as -o RefalABEinshteinPuzzle.o RefalABEinshteinPuzzle.s >> RefalABEinshteinPuzzle.log
 clang -o RefalABEinshteinPuzzle.exe RefalABEinshteinPuzzle.o %REFALABLIB%\mainrf.o -L%REFALABLIB% -lRefalAB >> RefalABEinshteinPuzzle.log
 RefalABEinshteinPuzzle
