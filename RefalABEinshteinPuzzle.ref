@@ -121,7 +121,7 @@ Help    = <Prout 'Solution of the Einstein''s Puzzle ' +
         '15. The Marlboro smoker has a neighbor who drinks water.' + 
         '\n\n'>
 
-SolveOut +
+SolveOut
     EB (E0 '=' VH) +
         = <Prout 'Question: Who has the fish?\n' +
         'Answer: ' <Answer VH> ' has the fish.\n\n'> +
@@ -146,11 +146,11 @@ SolveOut +
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 * VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
-Answer +
+Answer
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
         = <AnswerAux SN>
 
-AnswerAux +
+AnswerAux
     /Norwegian/ +
         = 'Norwegian'
     /Dane/ +
@@ -162,14 +162,14 @@ AnswerAux +
     /Swede/ +
         = 'Swede'
 
-DoMapSolve +
+DoMapSolve
     (SR E0 '=' VH) +
         = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
         <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
         <Map /DoMapTable/ VH> +
         <Prout '\n'>
 
-DoMapTable +
+DoMapTable
     (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
         = <Prout <Symb SH> '    ' <ObjectText /Color/ EC> +
@@ -196,7 +196,7 @@ DoMapTable +
 *        'The German smokes Rothmanns.' | 
 *        'The Marlboro smoker has a neighbor who drinks water.' | 
 *        'Fish is the fifth pet.'
-RuleText +
+RuleText
     /0/ = 'Conditions.'
     /1/ = 'The Englishman lives in the red house.'
     /2/ = 'The Swede has a dog.'
@@ -241,7 +241,7 @@ RuleText +
 *        'Winfield   ' |
 *        'Cat   ' | 'Horse ' | 'Bird  ' | 'Dog   ' | 'Fish  ' |
 *        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
-ObjectText +
+ObjectText
     /Color/ '???' +
         = '???    '
     /Nationality/ '???' +
@@ -255,7 +255,7 @@ ObjectText +
     SC SO +
         = <ObjectTextAux SO>
 
-ObjectTextAux +
+ObjectTextAux
     /Yellow/ +
         = 'Yellow '
     /Blue/ +
@@ -347,7 +347,7 @@ ObjectTextAux +
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-Solve +
+Solve
 * Возврат к предыдущему правилу
     EB (E0 '=' EH) (SC WI '=' /Impossible/) +
         = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
@@ -366,12 +366,12 @@ Solve +
     EB (SC WR ET '=' EH) +
         = <SolveAux1 EB (SC WR ET '=' EH) <FindMinRule WR EH>>
 
-SolveAux1 +
+SolveAux1
     EB (E0 '=' EH) SM +
         = <ApplyRule <Rule SM> EH> +
         <SolveAux2 EB (E0 '=' EH) SM <Dg /RuleTables/>> 
 
-SolveAux2 +
+SolveAux2
     EB (SC (EP SM EE) ET '=' EH) SM (EN) ER +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
@@ -399,14 +399,14 @@ SolveAux2 +
 *        /Winfield/ | '???'
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-FindMinRule +
+FindMinRule
     (SM) EH +
         = SM
     (SM EE) EH +
         = <ApplyRule <Rule SM> EH> +
         <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
 
-FindMinRuleAux +
+FindMinRuleAux
     /0/ ET SM E0 +
         = SM
     E0 SM () EH +
@@ -416,11 +416,11 @@ FindMinRuleAux +
         <FindMinRuleAux +
         <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
 
-MinRule +
+MinRule
     SL SM SN ET SR +
         = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
 
-MinRuleAux +
+MinRuleAux
     E0 SN SR '>' EE +
         = SN SR
     SL SM E0 +
@@ -435,7 +435,7 @@ MinRuleAux +
 * SS ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SA ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-Rule +
+Rule
 * 1. Англичанин живет в красном доме.
     /1/ = /Member/ /Color/ /Red/ /Nationality/ /Englishman/
 * 2. У шведа есть собака. 
@@ -520,7 +520,7 @@ Rule +
 * V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
 *         /Pet/ SP /Drink/ SD
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
-ApplyRule +
+ApplyRule
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
         = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
@@ -554,7 +554,7 @@ ApplyRule +
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
         = EB (E1 /Pet/ /Fish/ E2) EE
 
-ApplyRuleNone +
+ApplyRuleNone
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SV '???' E3) EE (ER) +
         = <Br /RuleTables/ '=' +
