@@ -1,8 +1,8 @@
-* Copyright 2024 Aleksandr Bocharov
+* Copyright 2025 Aleksandr Bocharov
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2024-10-17
+* 2025-3-19
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -52,80 +52,80 @@
 * с человеком, который пьет воду.
 *====================================================================
 
-            START
-            ENTRY Go
-            EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
-            EXTRN True, False
-            EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
-            EMPTY Impossible, Member, Left, Nextto, Home
-            EMPTY Color, Yellow, Blue, Red, Green, White
-            EMPTY Nationality, Norwegian, Dane, Englishman, German
-            EMPTY Swede
-            EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro
-            EMPTY Winfield
-            EMPTY Pet, Cat, Horse, Bird, Dog, Fish
-            EMPTY Drink, Water, Tea, Milk, Coffee, Beer
+    START
+    ENTRY Go
+    EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
+    EXTRN True, False
+    EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
+    EMPTY Impossible, Member, Left, Nextto, Home
+    EMPTY Color, Yellow, Blue, Red, Green, White
+    EMPTY Nationality, Norwegian, Dane, Englishman, German
+    EMPTY Swede
+    EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro
+    EMPTY Winfield
+    EMPTY Pet, Cat, Horse, Bird, Dog, Fish
+    EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go          = <Help> +
-            <Br /Steps/ '=' /0/> +
-            <Br /StepsBack/ '=' /0/> +
-            <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
-            /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
-            (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /2/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /3/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
-            <Prout 'Number of steps without returns: ' +
-            <Symb <Dg /Steps/>> '.\n' +
-            'Number of steps with returns: ' +
-            <Symb <Dg /StepsBack/>> '.'>
+Go      = <Help> +
+        <Br /Steps/ '=' /0/> +
+        <Br /StepsBack/ '=' /0/> +
+        <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
+        /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
+        (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
+        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+        (/Home/ /2/ /Color/ '???' /Nationality/ '???' +
+        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+        (/Home/ /3/ /Color/ '???' /Nationality/ '???' +
+        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+        (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
+        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+        (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
+        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
+        <Prout 'Number of steps without returns: ' +
+        <Symb <Dg /Steps/>> '.\n' +
+        'Number of steps with returns: ' +
+        <Symb <Dg /StepsBack/>> '.'>
 
 * Вывод справки
-Help        = <Prout 'Solution of the Einstein''s Puzzle ' + 
-            'on RefalAB.\n\n' +
-            'Einstein''s Puzzle.\n\n' +
-            'Conditions:\n' +
-            '1. There are 5 houses each of a different color.\n' +
-            '2. One person lives in each house and the residents ' + 
-            'each have different nationalities.\n' +
-            '3. Each resident prefers a certain drink, smokes ' + 
-            'a certain brand of cigarettes, ' + 
-            'and has a certain house pet.\n' +
-            '4. NONE of the five persons drinks the same drink, ' + 
-            'smokes the same brand of cigarettes or has the same ' + 
-            'house pet as any one of the other residents.\n\n' +
-            'Question: Who has the fish?\n\n' +
-            'The clues:\n' +
-            '1. The Englishman lives in the red house.\n' +
-            '2. The Swede has a dog.\n' +
-            '3. The Dane likes to drink tea.\n' +
-            '4. The green house is left of the white house.\n' +
-            '5. The resident in the green house drinks coffee.\n' +
-            '6. The person who smokes Pall Mall has a bird.\n' +
-            '7. The man who lives in the middle house drinks milk.\n' +
-            '8. The resident in the yellow house smokes Dunhill.\n' +
-            '9. The Norwegian lives in the first house.\n' +
-            '10. The Marlboro smoker lives next to the person ' + 
-            'with a cat.\n' +
-            '11. The man who has a horse lives next to the person ' + 
-            'who smokes Dunhill.\n' +
-            '12. The Winfield smoker likes to drink beer.\n' +
-            '13. The Norwegian lives next to the blue house.\n' +
-            '14. The German smokes Rothmanns.\n' +
-            '15. The Marlboro smoker has a neighbor who drinks water.' + 
-            '\n\n'>
+Help    = <Prout 'Solution of the Einstein''s Puzzle ' + 
+        'on RefalAB.\n\n' +
+        'Einstein''s Puzzle.\n\n' +
+        'Conditions:\n' +
+        '1. There are 5 houses each of a different color.\n' +
+        '2. One person lives in each house and the residents ' + 
+        'each have different nationalities.\n' +
+        '3. Each resident prefers a certain drink, smokes ' + 
+        'a certain brand of cigarettes, ' + 
+        'and has a certain house pet.\n' +
+        '4. NONE of the five persons drinks the same drink, ' + 
+        'smokes the same brand of cigarettes or has the same ' + 
+        'house pet as any one of the other residents.\n\n' +
+        'Question: Who has the fish?\n\n' +
+        'The clues:\n' +
+        '1. The Englishman lives in the red house.\n' +
+        '2. The Swede has a dog.\n' +
+        '3. The Dane likes to drink tea.\n' +
+        '4. The green house is left of the white house.\n' +
+        '5. The resident in the green house drinks coffee.\n' +
+        '6. The person who smokes Pall Mall has a bird.\n' +
+        '7. The man who lives in the middle house drinks milk.\n' +
+        '8. The resident in the yellow house smokes Dunhill.\n' +
+        '9. The Norwegian lives in the first house.\n' +
+        '10. The Marlboro smoker lives next to the person ' + 
+        'with a cat.\n' +
+        '11. The man who has a horse lives next to the person ' + 
+        'who smokes Dunhill.\n' +
+        '12. The Winfield smoker likes to drink beer.\n' +
+        '13. The Norwegian lives next to the blue house.\n' +
+        '14. The German smokes Rothmanns.\n' +
+        '15. The Marlboro smoker has a neighbor who drinks water.' + 
+        '\n\n'>
 
 SolveOut +
     EB (E0 '=' VH) +
-            = <Prout 'Question: Who has the fish?\n' +
-            'Answer: ' <Answer VH> ' has the fish.\n\n'> +
-            <Map /DoMapSolve/ EB (E0 '=' VH)>
+        = <Prout 'Question: Who has the fish?\n' +
+        'Answer: ' <Answer VH> ' has the fish.\n\n'> +
+        <Map /DoMapSolve/ EB (E0 '=' VH)>
 
 * <Answer VH'> == VT
 *
@@ -148,34 +148,34 @@ SolveOut +
 * VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
 Answer +
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
-            = <AnswerAux SN>
+        = <AnswerAux SN>
 
 AnswerAux +
     /Norwegian/ +
-            = 'Norwegian'
+        = 'Norwegian'
     /Dane/ +
-            = 'Dane'
+        = 'Dane'
     /Englishman/ +
-            = 'Englishman'
+        = 'Englishman'
     /German/ +
-            = 'German'
+        = 'German'
     /Swede/ +
-            = 'Swede'
+        = 'Swede'
 
 DoMapSolve +
     (SR E0 '=' VH) +
-            = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
-            <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
-            <Map /DoMapTable/ VH> +
-            <Prout '\n'>
+        = <Prout 'The rule ' <Symb SR> ': ' <RuleText SR> '\n'> +
+        <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
+        <Map /DoMapTable/ VH> +
+        <Prout '\n'>
 
 DoMapTable +
     (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
-            = <Prout <Symb SH> '    ' <ObjectText /Color/ EC> +
-            <ObjectText /Nationality/ EN> +
-            <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
-            <ObjectText /Drink/ ED>>
+        = <Prout <Symb SH> '    ' <ObjectText /Color/ EC> +
+        <ObjectText /Nationality/ EN> +
+        <ObjectText /Cigarettes/ EG> <ObjectText /Pet/ EP> +
+        <ObjectText /Drink/ ED>>
 
 * <RuleText S(/0/../16/)R> == VT
 *
@@ -197,25 +197,32 @@ DoMapTable +
 *        'The Marlboro smoker has a neighbor who drinks water.' | 
 *        'Fish is the fifth pet.'
 RuleText +
-    /0/     = 'Conditions.'
-    /1/     = 'The Englishman lives in the red house.'
-    /2/     = 'The Swede has a dog.'
-    /3/     = 'The Dane likes to drink tea.'
-    /4/     = 'The green house is left of the white house.'
-    /5/     = 'The resident in the green house drinks coffee.'
-    /6/     = 'The person who smokes Pall Mall has a bird.'
-    /7/     = 'The man who lives in the middle house drinks milk.'
-    /8/     = 'The resident in the yellow house smokes Dunhill.'
-    /9/     = 'The Norwegian lives in the first house.'
-    /10/    = 'The Marlboro smoker lives next to the person ' + 
-            'with a cat.'
-    /11/    = 'The man who has a horse lives next to the person ' + 
-            'who smokes Dunhill'
-    /12/    = 'The Winfield smoker likes to drink beer.'
-    /13/    = 'The Norwegian lives next to the blue house.'
-    /14/    = 'The German smokes Rothmanns.'
-    /15/    = 'The Marlboro smoker has a neighbor who drinks water.'
-    /16/    = 'Fish is the fifth pet.'
+    /0/ = 'Conditions.'
+    /1/ = 'The Englishman lives in the red house.'
+    /2/ = 'The Swede has a dog.'
+    /3/ = 'The Dane likes to drink tea.'
+    /4/ = 'The green house is left of the white house.'
+    /5/ = 'The resident in the green house drinks coffee.'
+    /6/ = 'The person who smokes Pall Mall has a bird.'
+    /7/ = 'The man who lives in the middle house drinks milk.'
+    /8/ = 'The resident in the yellow house smokes Dunhill.'
+    /9/ = 'The Norwegian lives in the first house.'
+    /10/ +
+        = 'The Marlboro smoker lives next to the person ' + 
+        'with a cat.'
+    /11/ +
+        = 'The man who has a horse lives next to the person ' + 
+        'who smokes Dunhill'
+    /12/ +
+        = 'The Winfield smoker likes to drink beer.'
+    /13/ +
+        = 'The Norwegian lives next to the blue house.'
+    /14/ +
+        = 'The German smokes Rothmanns.'
+    /15/ +
+        = 'The Marlboro smoker has a neighbor who drinks water.'
+    /16/ +
+        = 'Fish is the fifth pet.'
 
 * <ObjectText SC VO> == VT
 *
@@ -236,53 +243,69 @@ RuleText +
 *        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
 ObjectText +
     /Color/ '???' +
-            = '???    '
+        = '???    '
     /Nationality/ '???' +
-            = '???         '
+        = '???         '
     /Cigarettes/ '???' +
-            = '???        '
+        = '???        '
     /Pet/ '???' +
-            = '???   '
+        = '???   '
     /Drink/ '???' +
-            = '???'
-    SC SO   = <ObjectTextAux SO>
+        = '???'
+    SC SO +
+        = <ObjectTextAux SO>
 
 ObjectTextAux +
     /Yellow/ +
-            = 'Yellow '
-    /Blue/  = 'Blue   '
-    /Red/   = 'Red    '
-    /Green/ = 'Green  '
-    /White/ = 'White  '     
+        = 'Yellow '
+    /Blue/ +
+        = 'Blue   '
+    /Red/ +
+        = 'Red    '
+    /Green/ +
+        = 'Green  '
+    /White/ +
+        = 'White  '     
     /Norwegian/ +
-            = 'Norwegian   ' 
-    /Dane/  = 'Dane        '  
+        = 'Norwegian   ' 
+    /Dane/ +
+        = 'Dane        '  
     /Englishman/ +
-            = 'Englishman  '
+        = 'Englishman  '
     /German/ +
-            = 'German      '
-    /Swede/ = 'Swede       '   
+        = 'German      '
+    /Swede/ +
+        = 'Swede       '   
     /Dunhill/ +
-            = 'Dunhill    '
+        = 'Dunhill    '
     /Rothmans/ +
-            = 'Rothmans   '
+        = 'Rothmans   '
     /PallMall/ +
-            = 'Pall Mall  '
+        = 'Pall Mall  '
     /Marlboro/ +
-            = 'Marlboro   ' 
+        = 'Marlboro   ' 
     /Winfield/ +
-            = 'Winfield   '  
-    /Cat/   = 'Cat   '
-    /Horse/ = 'Horse '
-    /Bird/  = 'Bird  '
-    /Dog/   = 'Dog   '
-    /Fish/  = 'Fish  '
-    /Water/ = 'Water'
-    /Tea/   = 'Tea'
-    /Milk/  = 'Milk'
+        = 'Winfield   '  
+    /Cat/ +
+        = 'Cat   '
+    /Horse/ +
+        = 'Horse '
+    /Bird/ +
+        = 'Bird  '
+    /Dog/ +
+        = 'Dog   '
+    /Fish/ +
+        = 'Fish  '
+    /Water/ +
+        = 'Water'
+    /Tea/ +
+        = 'Tea'
+    /Milk/ +
+        = 'Milk'
     /Coffee/ +
-            = 'Coffee'
-    /Beer/  = 'Beer'
+        = 'Coffee'
+    /Beer/ +
+        = 'Beer'
 
 * <Solve VS> == VS'
 *
@@ -327,34 +350,34 @@ ObjectTextAux +
 Solve +
 * Возврат к предыдущему правилу
     EB (E0 '=' EH) (SC WI '=' /Impossible/) +
-            = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (E0 '=' /Impossible/)>
+        = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        <Solve EB (E0 '=' /Impossible/)>
 * Переход к следующему применению правила
     EB (SC WR (EH) ET '=' /Impossible/) +
-            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SC WR ET '=' EH)>
+        = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        <Solve EB (SC WR ET '=' EH)>
 * Решение найдено
     EB (SC () ET '=' EH) +
-            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            EB (SC () ET '=' EH) (/16/ '=' <ApplyRule <Rule /16/> EH>)
+        = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        EB (SC () ET '=' EH) (/16/ '=' <ApplyRule <Rule /16/> EH>)
 * Переход к следующему правилу  
     EB (SC WR ET '=' EH) +
-            = <SolveAux1 EB (SC WR ET '=' EH) <FindMinRule WR EH>>
+        = <SolveAux1 EB (SC WR ET '=' EH) <FindMinRule WR EH>>
 
 SolveAux1 +
     EB (E0 '=' EH) SM +
-            = <ApplyRule <Rule SM> EH> +
-            <SolveAux2 EB (E0 '=' EH) SM <Dg /RuleTables/>> 
+        = <ApplyRule <Rule SM> EH> +
+        <SolveAux2 EB (E0 '=' EH) SM <Dg /RuleTables/>> 
 
 SolveAux2 +
     EB (SC (EP SM EE) ET '=' EH) SM (EN) ER +
-            = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-            <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-            <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
+        = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
+        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
     EB (E0 '=' EH) SM +
-            = <Solve EB (E0 '=' /Impossible/)>
+        = <Solve EB (E0 '=' /Impossible/)>
 
 * <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
 *
@@ -377,30 +400,31 @@ SolveAux2 +
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 FindMinRule +
-    (SM) EH = SM
+    (SM) EH +
+        = SM
     (SM EE) EH +
-            = <ApplyRule <Rule SM> EH> +
-            <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
+        = <ApplyRule <Rule SM> EH> +
+        <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
 
 FindMinRuleAux +
     /0/ ET SM E0 +
-            = SM
+        = SM
     E0 SM () EH +
-            = SM
+        = SM
     SL ET SM (SR EE) EH +
-            = <ApplyRule <Rule SR> EH> +
-            <FindMinRuleAux +
-            <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
+        = <ApplyRule <Rule SR> EH> +
+        <FindMinRuleAux +
+        <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
 
 MinRule +
     SL SM SN ET SR +
-            = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
+        = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
 
 MinRuleAux +
     E0 SN SR '>' EE +
-            = SN SR
+        = SN SR
     SL SM E0 +
-            = SL SM
+        = SL SM
 
 * <Rule S(/1/../16/)R> == S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
 *
@@ -413,41 +437,48 @@ MinRuleAux +
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Rule +
 * 1. Англичанин живет в красном доме.
-    /1/     = /Member/ /Color/ /Red/ /Nationality/ /Englishman/
+    /1/ = /Member/ /Color/ /Red/ /Nationality/ /Englishman/
 * 2. У шведа есть собака. 
-    /2/     = /Member/ /Nationality/ /Swede/ /Pet/ /Dog/
+    /2/ = /Member/ /Nationality/ /Swede/ /Pet/ /Dog/
 * 3. Датчанин пьет чай.
-    /3/     = /Member/ /Nationality/ /Dane/ /Drink/ /Tea/
+    /3/ = /Member/ /Nationality/ /Dane/ /Drink/ /Tea/
 * 4. Зеленый дом стоит слева от белого. 
-    /4/     = /Left/ /Color/ /Green/ /Color/ /White/
+    /4/ = /Left/ /Color/ /Green/ /Color/ /White/
 * 5. Обитатель зеленого дома пьет кофе. 
-    /5/     = /Member/ /Color/ /Green/ /Drink/ /Coffee/
+    /5/ = /Member/ /Color/ /Green/ /Drink/ /Coffee/
 * 6. Человек, который курит Pall Mall,
 * держит птицу. 
-    /6/     = /Member/ /Cigarettes/ /PallMall/ /Pet/ /Bird/
+    /6/ = /Member/ /Cigarettes/ /PallMall/ /Pet/ /Bird/
 * 7. Обитатель среднего дома пьет молоко. 
-    /7/     = /Member/ /Home/ /3/ /Drink/ /Milk/
+    /7/ = /Member/ /Home/ /3/ /Drink/ /Milk/
 * 8. Обитатель желтого дома курит Dunhill. 
-    /8/     = /Member/ /Color/ /Yellow/ /Cigarettes/ /Dunhill/
+    /8/ = /Member/ /Color/ /Yellow/ /Cigarettes/ /Dunhill/
 * 9. Норвежец живет в первом доме. 
-    /9/     = /Member/ /Home/ /1/ /Nationality/ /Norwegian/
+    /9/ = /Member/ /Home/ /1/ /Nationality/ /Norwegian/
 * 10. Курильщик Marlboro живет возле того,
 * у кого есть кошка. 
-    /10/    = /Nextto/ /Cigarettes/ /Marlboro/ /Pet/ /Cat/
+    /10/ +
+        = /Nextto/ /Cigarettes/ /Marlboro/ /Pet/ /Cat/
 * 11. Человек, у которого есть конь, 
 * живет возле того, кто курит Dunhill. 
-    /11/    = /Nextto/ /Pet/ /Horse/ /Cigarettes/ /Dunhill/
+    /11/ +
+        = /Nextto/ /Pet/ /Horse/ /Cigarettes/ /Dunhill/
 * 12. Курильщик Winfield пьет пиво. 
-    /12/    = /Member/ /Cigarettes/ /Winfield/ /Drink/ /Beer/
+    /12/ +
+        = /Member/ /Cigarettes/ /Winfield/ /Drink/ /Beer/
 * 13. Норвежец живет возле голубого дома. 
-    /13/    = /Nextto/ /Nationality/ /Norwegian/ /Color/ /Blue/
+    /13/ +
+        = /Nextto/ /Nationality/ /Norwegian/ /Color/ /Blue/
 * 14. Немец курит Rothmans. 
-    /14/    = /Member/ /Nationality/ /German/ /Cigarettes/ /Rothmans/
+    /14/ +
+        = /Member/ /Nationality/ /German/ /Cigarettes/ /Rothmans/
 * 15. Курильщик Marlboro живет по соседству
 * с человеком, который пьет воду. 
-    /15/    = /Nextto/ /Cigarettes/ /Marlboro/ /Drink/ /Water/
+    /15/ +
+        = /Nextto/ /Cigarettes/ /Marlboro/ /Drink/ /Water/
 * 16. Рыба - пятое животное.
-    /16/    = /Fish/
+    /16/ +
+        = /Fish/
 
 * <ApplyRule VR VH> == | VH'
 *
@@ -492,52 +523,52 @@ Rule +
 ApplyRule +
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
+        = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
     /Member/ SU SX E0 (E1 SX E2) EE +
-            =
+        =
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SY E3) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
+        = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
     /Member/ SU SX SV SY EB (E1 SY E2) EE +
-            = 
+        = 
     /Member/ E0 +
-            = <ApplyRuleNone /Member/ E0 ()>
+        = <ApplyRuleNone /Member/ E0 ()>
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ SU SX SV SY EB (E1 SX E2) (E3 SV '???' E4) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SV SY E4) EE)>
+        = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SV SY E4) EE)>
     /Left/ SU SX E0 (E1 SX E2) EE +
-            =
+        =
     /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SY E4) EE +
-            = <Br /RuleTables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
+        = <Br /RuleTables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
     /Left/ SU SX SV SY EB (E1 SY E2) EE +
-            =
+        =
     /Left/ E0 +
-            = <ApplyRuleNone /Left/ E0 ()> 
+        = <ApplyRuleNone /Left/ E0 ()> 
 * Nextto - 2 объекта в соседних домах
     /Nextto/ SU SX SV SY ET +
-            = <ApplyRule /Left/ SU SX SV SY ET> +
-            <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
-            <ApplyRule /Left/ SV SY SU SX ET> +
-            <Br /RuleTables/ '=' +
-            <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
+        = <ApplyRule /Left/ SU SX SV SY ET> +
+        <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
+        <ApplyRule /Left/ SV SY SU SX ET> +
+        <Br /RuleTables/ '=' +
+        <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
-            = EB (E1 /Pet/ /Fish/ E2) EE
+        = EB (E1 /Pet/ /Fish/ E2) EE
 
 ApplyRuleNone +
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SV '???' E3) EE (ER) +
-            = <Br /RuleTables/ '=' +
-            <Dg /RuleTables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
-            <ApplyRuleNone /Member/ +
-            SU SX SV SY EE (ER EB (E1 SU '???' E2 SV '???' E3))>
+        = <Br /RuleTables/ '=' +
+        <Dg /RuleTables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
+        <ApplyRuleNone /Member/ +
+         SU SX SV SY EE (ER EB (E1 SU '???' E2 SV '???' E3))>
     /Member/ E0 +
-            =
+        =
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SV '???' E4) EE (ER) +
-            = <Br /RuleTables/ '=' +
-            <Dg /RuleTables/> (ER EB (E1 SU SX E2) (E3 SV SY E4) EE)> +
-            <ApplyRuleNone /Left/ +
-            SU SX SV SY (E3 SV '???' E4) EE (ER EB (E1 SU '???' E2))>
-    E0      =
+        = <Br /RuleTables/ '=' +
+        <Dg /RuleTables/> (ER EB (E1 SU SX E2) (E3 SV SY E4) EE)> +
+        <ApplyRuleNone /Left/ +
+        SU SX SV SY (E3 SV '???' E4) EE (ER EB (E1 SU '???' E2))>
+    E0  =
 
-            END
+    END
