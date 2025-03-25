@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-09
+// 2025-03-25
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "refal.def"
+#include "refalab.h"
 #include "gui.h"
 
 extern uint8_t refalab_true, refalab_false;
@@ -28,7 +28,7 @@ static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальн
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}}};
 
-// <GInit> ==
+// <GUI_Init> ==
 static void ginit_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -43,7 +43,7 @@ char ginit_0[] = {Z5 'G', 'I', 'N', 'I', 'T', '\005'};
 G_L_B uint8_t refalab_ginit = '\122';
 void (*ginit_1)(void) = ginit_;
 
-// <GClose> ==
+// <GUI_Close> ==
 static void gclose_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -58,7 +58,7 @@ char gclose_0[] = {Z6 'G', 'C', 'L', 'O', 'S', 'E', '\006'};
 G_L_B uint8_t refalab_gclose = '\122';
 void (*gclose_1)(void) = gclose_;
 
-// <Info> == /True/ | /False/
+// <Dialog_Info> == /True/ | /False/
 static void info_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -81,7 +81,7 @@ char info_0[] = {Z4 'I', 'N', 'F', 'O', '\004'};
 G_L_B uint8_t refalab_info = '\122';
 void (*info_1)(void) = info_;
 
-// <VAnswer S(N)S S(N)B E(O)A> ==
+// <View_Answer S(N)S S(N)B E(O)A> ==
 static void vanswer_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -119,7 +119,7 @@ char vanswer_0[] = {Z7 'V', 'A', 'N', 'S', 'W', 'E', 'R', '\007'};
 G_L_B uint8_t refalab_vanswer = '\122';
 void (*vanswer_1)(void) = vanswer_;
 
-// <VRule S(N)P S(N)R E(O)T> ==
+// <View_Rule S(N)P S(N)R E(O)T> ==
 static void vrule_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -161,7 +161,7 @@ char vrule_0[] = {Z5 'V', 'R', 'U', 'L', 'E', '\005'};
 G_L_B uint8_t refalab_vrule = '\122';
 void (*vrule_1)(void) = vrule_;
 
-// <VTable S(N)R S(N)C E(O)T> ==
+// <View_Table S(N)R S(N)C E(O)T> ==
 static void vtable_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -203,7 +203,7 @@ char vtable_0[] = {Z6 'V', 'T', 'A', 'B', 'L', 'E', '\006'};
 G_L_B uint8_t refalab_vtable = '\122';
 void (*vtable_1)(void) = vtable_;
 
-// <View> == 'Q' | 'B' | 'P' | 'N' | 'E'
+// <View_Show> == 'Q' | 'B' | 'P' | 'N' | 'E'
 static void view_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -233,7 +233,7 @@ char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};
 G_L_B uint8_t refalab_view = '\122';
 void (*view_1)(void) = view_;
 
-// <IsExit> == /True/ | /False/
+// <Dialog_Is_Exit> == /True/ | /False/
 static void isexit_(void)
 {
     if (refal.preva->next != refal.nexta)

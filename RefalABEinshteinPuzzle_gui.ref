@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-03-19
+* 2025-03-25
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -52,14 +52,15 @@
 * с человеком, который пьет воду.
 *====================================================================
 
+RefalABEinshteinPuzzle_GUI +
     START
     ENTRY Go
-    EXTRN MapAccum, DelAccum, P1, NRel, Symb, LengW
+    EXTRN Map_Accumulator, Del_Accumulator, P1, NRel, Symb, LengW
     EXTRN Br, Dg
     EXTRN True, False
-    EXTRN GInit, GClose, Info, IsExit
-    EXTRN VAnswer, VRule, VTable, View
-    EMPTY Steps, StepsBack, RuleTables, RuleTablesTemp
+    EXTRN GUI_Init, GUI_Close, Dialog_Info, Dialog_Is_Exit
+    EXTRN View_Answer, View_Rule, View_Table, View_Show
+    EMPTY Steps, Steps_Back, Rule_Tables, Rule_Tables_Temp
     EMPTY Impossible, Member, Left, Nextto, Home
     EMPTY Color, Yellow, Blue, Red, Green, White
     EMPTY Nationality, Norwegian, Dane, Englishman, German
@@ -69,15 +70,15 @@
     EMPTY Pet, Cat, Horse, Bird, Dog, Fish
     EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go      = <GInit> <IsInfo <Info>> <GClose>
+Go      = <GUI_Init> <Is_Info <Dialog_Info>> <GUI_Close>
 
-IsInfo
+Is_Info
     /False/ +
-        = <IsInfoAux <IsExit>>
+        = <Is_Info_Aux <Dialog_Is_Exit>>
     /True/ +
         = <Br /Steps/ '=' /0/> +
-        <Br /StepsBack/ '=' /0/> +
-        <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
+        <Br /Steps_Back/ '=' /0/> +
+        <Solve_Out <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
         /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
         (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
         /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
@@ -90,16 +91,16 @@ IsInfo
         (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
         /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>>
 
-IsInfoAux
+Is_Info_Aux
     /True/ +
         =
     /False/ +
-        = <IsInfo <Info>>
+        = <Is_Info <Dialog_Info>>
 
-SolveOut
+Solve_Out
     EB (E0 '=' VH) +
-        = <VAnswer <Dg /Steps/> <Dg /StepsBack/> <Answer VH>> +
-        <DoSolveOut EB ((E0 '=' VH))>
+        = <View_Answer <Dg /Steps/> <Dg /Steps_Back/> <Answer VH>> +
+        <Do_Solve_Out EB ((E0 '=' VH))>
 
 * <Answer VH'> == VT
 *
@@ -123,9 +124,9 @@ SolveOut
 *        'Немец' | 'Швед'
 Answer
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
-        = <AnswerAux SN>
+        = <Answer_Aux SN>
 
-AnswerAux
+Answer_Aux
     /Norwegian/ +
         = 'Норвежец'
     /Dane/ +
@@ -137,36 +138,39 @@ AnswerAux
     /Swede/ +
         = 'Швед'
 
-DoSolveOut
+Do_Solve_Out
     (WB) EE +
-        = <DoSolveOutAux WB /0/> <ResView (WB) EE <View>>
+        = <Do_Solve_Out_Aux WB /0/> +
+        <Result_View (WB) EE <View_Show>>
     EB (WE) +
-        = <DoSolveOutAux WE /2/> <ResView EB (WE) <View>>
+        = <Do_Solve_Out_Aux WE /2/> +
+        <Result_View EB (WE) <View_Show>>
     EB (WM) EE +
-        = <DoSolveOutAux WM /1/> <ResView EB (WM) EE <View>>
+        = <Do_Solve_Out_Aux WM /1/> +
+        <Result_View EB (WM) EE <View_Show>>
 
-DoSolveOutAux
+Do_Solve_Out_Aux
     (SR E0 '=' VH) SP +
-        = <VRule SP SR <RuleText SR>> +
-        <DelAccum <MapAccum /DoMapRow/ /1/ VH>>
+        = <View_Rule SP SR <Rule_Text SR>> +
+        <Del_Accumulator <Map_Accumulator /Do_Map_Row/ /1/ VH>>
 
-DoMapRow
+Do_Map_Row
     SR (/Home/ SH /Color/ EC /Nationality/ +
     EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
         = <P1 SR> +
-        <DelAccum <MapAccum /DoMapCol/ (SR /0/) +
+        <Del_Accumulator <Map_Accumulator /Do_Map_Col/ (SR /0/) +
         (<Symb SH>) +
-        (<ObjectText EC>) +
-        (<ObjectText EN>) +
-        (<ObjectText EG>) +
-        (<ObjectText EP>) +
-        (<ObjectText ED>)>>
+        (<Object_Text EC>) +
+        (<Object_Text EN>) +
+        (<Object_Text EG>) +
+        (<Object_Text EP>) +
+        (<Object_Text ED>)>>
 
-DoMapCol
+Do_Map_Col
     (SR SC) (ES) +
-        = (SR <P1 SC>) <VTable SR SC ES>
+        = (SR <P1 SC>) <View_Table SR SC ES>
 
-* <RuleText S(/0/../16/)R> == VT
+* <Rule_Text S(/0/../16/)R> == VT
 *
 * VT ::= 'Условия.' |
 *        'Англичанин живет в красном доме.' | 
@@ -189,7 +193,7 @@ DoMapCol
 *        'Курильщик Marlboro живет по соседству
 *         с человеком, который пьет воду.' | 
 *        'Рыба - пятое животное.'
-RuleText
+Rule_Text
     /0/ = 'Условия.'
     /1/ = 'Англичанин живет в красном доме.'
     /2/ = 'У шведа есть собака.'
@@ -226,7 +230,7 @@ RuleText
     /16/ +
         = 'Рыба - пятое животное.'
 
-* <ObjectText VO> == VT
+* <Object_Text VO> == VT
 *
 * VO ::= '???' |
 *        /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ |
@@ -242,7 +246,7 @@ RuleText
 *        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
 *        'Кошка' | 'Конь' | 'Птица' | 'Собака' | 'Рыба' |
 *        'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
-ObjectText
+Object_Text
     '???' +
         = '???'
     /Yellow/ +
@@ -296,23 +300,23 @@ ObjectText
     /Beer/ +
         = 'Пиво'
 
-ResView
+Result_View
     E0 'Q' +
-        = <ResViewAux E0 <IsExit>>
+        = <Result_View_Aux E0 <Dialog_Is_Exit>>
     WB E1 (WC) E2 'B' +
-        = <DoSolveOut (WB) E1 WC E2>
+        = <Do_Solve_Out (WB) E1 WC E2>
     E1 WP (WC) E2 'P' +
-        = <DoSolveOut E1 (WP) WC E2>
+        = <Do_Solve_Out E1 (WP) WC E2>
     E1 (WC) WN E2 'N' +
-        = <DoSolveOut E1 WC (WN) E2>
+        = <Do_Solve_Out E1 WC (WN) E2>
     E1 (WC) E2 WE 'E' +
-        = <DoSolveOut E1 WC E2 (WE)>
+        = <Do_Solve_Out E1 WC E2 (WE)>
 
-ResViewAux
+Result_View_Aux
     E0 /True/ +
         =
     E0 /False/ +
-        = <ResView E0 <View>>
+        = <Result_View E0 <View_Show>>
 
 * <Solve VS> == VS'
 *
@@ -357,36 +361,36 @@ ResViewAux
 Solve
 * Возврат к предыдущему правилу
     EB (E0 '=' EH) (SC WI '=' /Impossible/) +
-        = <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        = <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
         <Solve EB (E0 '=' /Impossible/)>
 * Переход к следующему применению правила
     EB (SC WR (EH) ET '=' /Impossible/) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
         <Solve EB (SC WR ET '=' EH)>
 * Решение найдено
     EB (SC () ET '=' EH) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
-        EB (SC () ET '=' EH) (/16/ '=' <ApplyRule <Rule /16/> EH>)
+        <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
+        EB (SC () ET '=' EH) (/16/ '=' <Apply_Rule <Rule /16/> EH>)
 * Переход к следующему правилу  
     EB (SC WR ET '=' EH) +
-        = <SolveAux1 EB (SC WR ET '=' EH) <FindMinRule WR EH>>
+        = <Solve_Aux1 EB (SC WR ET '=' EH) <Find_Min_Rule WR EH>>
 
-SolveAux1
+Solve_Aux1
     EB (E0 '=' EH) SM +
-        = <ApplyRule <Rule SM> EH> +
-        <SolveAux2 EB (E0 '=' EH) SM <Dg /RuleTables/>> 
+        = <Apply_Rule <Rule SM> EH> +
+        <Solve_Aux2 EB (E0 '=' EH) SM <Dg /Rule_Tables/>> 
 
-SolveAux2
+Solve_Aux2
     EB (SC (EP SM EE) ET '=' EH) SM (EN) ER +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
-        <Br /StepsBack/ '=' <P1 <Dg /StepsBack/>>> +
+        <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
         <Solve EB (SC (EP SM EE) ET '=' EH) (SM (EP EE) ER '=' EN)>
     EB (E0 '=' EH) SM +
         = <Solve EB (E0 '=' /Impossible/)>
 
-* <FindMinRule (V(/1/../15/)R) VH> == S(/1/../15/)M
+* <Find_Min_Rule (V(/1/../15/)R) VH> == S(/1/../15/)M
 *
 * VH ::= (V1) (V2) (V3) (V4) (V5)
 * V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
@@ -406,28 +410,28 @@ SolveAux2
 *        /Winfield/ | '???'
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-FindMinRule
+Find_Min_Rule
     (SM) EH +
         = SM
     (SM EE) EH +
-        = <ApplyRule <Rule SM> EH> +
-        <FindMinRuleAux <LengW <Dg /RuleTables/>> SM (EE) EH>
+        = <Apply_Rule <Rule SM> EH> +
+        <Find_Min_Rule_Aux <LengW <Dg /Rule_Tables/>> SM (EE) EH>
 
-FindMinRuleAux
+Find_Min_Rule_Aux
     /0/ ET SM E0 +
         = SM
     E0 SM () EH +
         = SM
     SL ET SM (SR EE) EH +
-        = <ApplyRule <Rule SR> EH> +
-        <FindMinRuleAux +
-        <MinRule SL SM <LengW <Dg /RuleTables/>> SR> (EE) EH>
+        = <Apply_Rule <Rule SR> EH> +
+        <Find_Min_Rule_Aux +
+        <Min_Rule SL SM <LengW <Dg /Rule_Tables/>> SR> (EE) EH>
 
-MinRule
+Min_Rule
     SL SM SN ET SR +
-        = <MinRuleAux SL SM SN SR <NRel (SL) SN>>
+        = <Min_Rule_Aux SL SM SN SR <NRel (SL) SN>>
 
-MinRuleAux
+Min_Rule_Aux
     E0 SN SR '>' EE +
         = SN SR
     SL SM E0 +
@@ -487,7 +491,7 @@ Rule
     /16/ +
         = /Fish/
 
-* <ApplyRule VR VH> == | VH'
+* <Apply_Rule VR VH> == | VH'
 *
 * VR ::= S(/Member/ /Left/ /Nextto/)P VO VO | /Fish/
 * VO ::= /Home/ S(/1/ /3/)H | /Color/ SC | /Nationality/ SN | 
@@ -527,54 +531,54 @@ Rule
 * V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
 *         /Pet/ SP /Drink/ SD
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
-ApplyRule
+Apply_Rule
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SX E2 SV '???' E3) EE +
-        = <Br /RuleTables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
+        = <Br /Rule_Tables/ '=' (EB (E1 SX E2 SV SY E3) EE)>
     /Member/ SU SX E0 (E1 SX E2) EE +
         =
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SY E3) EE +
-        = <Br /RuleTables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
+        = <Br /Rule_Tables/ '=' (EB (E1 SU SX E2 SY E3) EE)>
     /Member/ SU SX SV SY EB (E1 SY E2) EE +
         = 
     /Member/ E0 +
-        = <ApplyRuleNone /Member/ E0 ()>
+        = <Apply_Rule_None /Member/ E0 ()>
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ SU SX SV SY EB (E1 SX E2) (E3 SV '???' E4) EE +
-        = <Br /RuleTables/ '=' (EB (E1 SX E2) (E3 SV SY E4) EE)>
+        = <Br /Rule_Tables/ '=' (EB (E1 SX E2) (E3 SV SY E4) EE)>
     /Left/ SU SX E0 (E1 SX E2) EE +
         =
     /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SY E4) EE +
-        = <Br /RuleTables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
+        = <Br /Rule_Tables/ '=' (EB (E1 SU SX E2) (E3 SY E4) EE)>
     /Left/ SU SX SV SY EB (E1 SY E2) EE +
         =
     /Left/ E0 +
-        = <ApplyRuleNone /Left/ E0 ()> 
+        = <Apply_Rule_None /Left/ E0 ()> 
 * Nextto - 2 объекта в соседних домах
     /Nextto/ SU SX SV SY ET +
-        = <ApplyRule /Left/ SU SX SV SY ET> +
-        <Br /RuleTablesTemp/ '=' <Dg /RuleTables/>> +
-        <ApplyRule /Left/ SV SY SU SX ET> +
-        <Br /RuleTables/ '=' +
-        <Dg /RuleTablesTemp/> <Dg /RuleTables/>>
+        = <Apply_Rule /Left/ SU SX SV SY ET> +
+        <Br /Rule_Tables_Temp/ '=' <Dg /Rule_Tables/>> +
+        <Apply_Rule /Left/ SV SY SU SX ET> +
+        <Br /Rule_Tables/ '=' +
+        <Dg /Rule_Tables_Temp/> <Dg /Rule_Tables/>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
         = EB (E1 /Pet/ /Fish/ E2) EE
 
-ApplyRuleNone
+Apply_Rule_None
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SV '???' E3) EE (ER) +
-        = <Br /RuleTables/ '=' +
-        <Dg /RuleTables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
-        <ApplyRuleNone /Member/ +
+        = <Br /Rule_Tables/ '=' +
+        <Dg /Rule_Tables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
+        <Apply_Rule_None /Member/ +
         SU SX SV SY EE (ER EB (E1 SU '???' E2 SV '???' E3))>
     /Member/ E0 +
         =
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ SU SX SV SY EB (E1 SU '???' E2) (E3 SV '???' E4) EE (ER) +
-        = <Br /RuleTables/ '=' +
-        <Dg /RuleTables/> (ER EB (E1 SU SX E2) (E3 SV SY E4) EE)> +
-        <ApplyRuleNone /Left/ +
+        = <Br /Rule_Tables/ '=' +
+        <Dg /Rule_Tables/> (ER EB (E1 SU SX E2) (E3 SV SY E4) EE)> +
+        <Apply_Rule_None /Left/ +
         SU SX SV SY (E3 SV '???' E4) EE (ER EB (E1 SU '???' E2))>
     E0  =
 
