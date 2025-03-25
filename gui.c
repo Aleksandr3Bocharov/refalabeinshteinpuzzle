@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-09
+// 2025-03-25
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -26,7 +26,7 @@ static int screenHeight = 820;
 static Font cyrillicFont;
 static float sizeCyrillicFont = 0.0f;
 
-void guiInit(void)
+void gui_Init(void)
 {
     InitWindow(screenWidth, screenHeight, "RefalABEinshteinPuzzle (GUI версия)");
     SetExitKey(0);
@@ -37,12 +37,12 @@ void guiInit(void)
     GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 }
 
-void guiClose(void)
+void gui_Close(void)
 {
     CloseWindow();
 }
 
-bool guiInfo(void)
+bool dialog_Info(void)
 {
     bool ok = false;
     bool exitWindow = false;
@@ -85,7 +85,7 @@ bool guiInfo(void)
     return ok;
 }
 
-int guiView(const char *answer, uint32_t steps, uint32_t stepsBack, uint32_t rule, const char *ruleText, char table[6][6][32], uint32_t position)
+int view_Show(const char *answer, uint32_t steps, uint32_t steps_Back, uint32_t rule, const char *rule_Text, char table[6][6][32], uint32_t position)
 {
     int result = 0;
     bool exitWindow = false;
@@ -102,7 +102,7 @@ int guiView(const char *answer, uint32_t steps, uint32_t stepsBack, uint32_t rul
         ClearBackground(GetColor((unsigned int)GuiGetStyle(DEFAULT, BACKGROUND_COLOR)));
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 20.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, TextFormat("Ответ: %s имеет рыбу.", answer), (Vector2){10.0f, 60.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Подсказка %u: %s", rule, ruleText), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Подсказка %u: %s", rule, rule_Text), (Vector2){10.0f, 140.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         for (size_t i = 0; i < 6; i++)
             for (size_t j = 0; j < 6; j++)
                 DrawTextEx(cyrillicFont, table[i][j], (Vector2){10.0f + 210.0f * (float)j, 180.0f + 40.0f * (float)i}, sizeCyrillicFont, 1.0f, DARKGRAY);
@@ -133,13 +133,13 @@ int guiView(const char *answer, uint32_t steps, uint32_t stepsBack, uint32_t rul
             };
         }
         DrawTextEx(cyrillicFont, TextFormat("Количество шагов без возвращения: %u.", steps), (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %u.", stepsBack), (Vector2){10.0f, 510.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, TextFormat("Количество шагов с возвращением: %u.", steps_Back), (Vector2){10.0f, 510.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         EndDrawing();
     }
     return result;
 }
 
-bool guiIsExit(void)
+bool dialog_Is_Exit(void)
 {
     bool isExit = true;
     bool exitWindow = false;

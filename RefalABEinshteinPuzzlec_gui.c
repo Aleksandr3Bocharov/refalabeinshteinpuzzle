@@ -16,11 +16,11 @@
 extern uint8_t refalab_true, refalab_false;
 
 static uint32_t steps = 0;
-static uint32_t stepsBack = 0;
+static uint32_t steps_Back = 0;
 static char answer[21] = {'\0'};
 static uint32_t rule = 0;
 static uint32_t position = 0;
-static char ruleText[150] = {'\0'};
+static char rule_Text[150] = {'\0'};
 static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальность"}, {"Сигареты"}, {"Животное"}, {"Напиток"}},
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}},
@@ -29,37 +29,37 @@ static char table[6][6][32] = {{{"Дом"}, {"Цвет"}, {"Национальн
                                {{'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}, {'\0'}}};
 
 // <GUI_Init> ==
-static void ginit_(void)
+static void gui_init_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
         refal.upshot = 2;
         return;
     }
-    guiInit();
+    gui_Init();
     return;
 }
-char ginit_0[] = {Z5 'G', 'I', 'N', 'I', 'T', '\005'};
-G_L_B uint8_t refalab_ginit = '\122';
-void (*ginit_1)(void) = ginit_;
+char gui_init_0[] = {Z0 'G', 'U', 'I', '_', 'I', 'N', 'I', 'T', (char)8};
+G_L_B uint8_t refalab_gui_init = '\122';
+void (*gui_init_1)(void) = gui_init_;
 
 // <GUI_Close> ==
-static void gclose_(void)
+static void gui_close_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
         refal.upshot = 2;
         return;
     }
-    guiClose();
+    gui_Close();
     return;
 }
-char gclose_0[] = {Z6 'G', 'C', 'L', 'O', 'S', 'E', '\006'};
-G_L_B uint8_t refalab_gclose = '\122';
-void (*gclose_1)(void) = gclose_;
+char gui_close_0[] = {Z1 'G', 'U', 'I', '_', 'C', 'L', 'O', 'S', 'E', (char)9};
+G_L_B uint8_t refalab_gui_close = '\122';
+void (*gui_close_1)(void) = gui_close_;
 
 // <Dialog_Info> == /True/ | /False/
-static void info_(void)
+static void dialog_info_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
@@ -73,16 +73,16 @@ static void info_(void)
     p->tag = TAGF;
     p->info.codep = NULL;
     p->info.codef = &refalab_true;
-    if (!guiInfo())
+    if (!dialog_Info())
         p->info.codef = &refalab_false;
     return;
 }
-char info_0[] = {Z4 'I', 'N', 'F', 'O', '\004'};
-G_L_B uint8_t refalab_info = '\122';
-void (*info_1)(void) = info_;
+char dialog_info_0[] = {Z3 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'N', 'F', 'O', (char)11};
+G_L_B uint8_t refalab_dialog_info = '\122';
+void (*dialog_info_1)(void) = dialog_info_;
 
 // <View_Answer S(N)S S(N)B E(O)A> ==
-static void vanswer_(void)
+static void view_answer_(void)
 {
     const T_LINKCB *p = refal.preva->next;
     do
@@ -93,7 +93,7 @@ static void vanswer_(void)
         p = p->next;
         if (p->tag != TAGN)
             break;
-        stepsBack = gcoden(p);
+        steps_Back = gcoden(p);
         p = p->next;
         bool neot = false;
         size_t i;
@@ -115,12 +115,12 @@ static void vanswer_(void)
     refal.upshot = 2;
     return;
 }
-char vanswer_0[] = {Z7 'V', 'A', 'N', 'S', 'W', 'E', 'R', '\007'};
-G_L_B uint8_t refalab_vanswer = '\122';
-void (*vanswer_1)(void) = vanswer_;
+char view_answer_0[] = {Z3 'V', 'I', 'E', 'W', '_', 'A', 'N', 'S', 'W', 'E', 'R', (char)11};
+G_L_B uint8_t refalab_view_answer = '\122';
+void (*view_answer_1)(void) = view_answer_;
 
 // <View_Rule S(N)P S(N)R E(O)T> ==
-static void vrule_(void)
+static void view_rule_(void)
 {
     const T_LINKCB *p = refal.preva->next;
     do
@@ -146,23 +146,23 @@ static void vrule_(void)
                 neot = true;
                 break;
             }
-            ruleText[i] = p->info.infoc;
+            rule_Text[i] = p->info.infoc;
             p = p->next;
         }
         if (neot)
             break;
-        ruleText[i] = '\0';
+        rule_Text[i] = '\0';
         return;
     } while (false);
     refal.upshot = 2;
     return;
 }
-char vrule_0[] = {Z5 'V', 'R', 'U', 'L', 'E', '\005'};
-G_L_B uint8_t refalab_vrule = '\122';
-void (*vrule_1)(void) = vrule_;
+char view_rule_0[] = {Z1 'V', 'I', 'E', 'W', '_', 'R', 'U', 'L', 'E', (char)9};
+G_L_B uint8_t refalab_view_rule = '\122';
+void (*view_rule_1)(void) = view_rule_;
 
 // <View_Table S(N)R S(N)C E(O)T> ==
-static void vtable_(void)
+static void view_table_(void)
 {
     const T_LINKCB *p = refal.preva->next;
     do
@@ -199,12 +199,12 @@ static void vtable_(void)
     refal.upshot = 2;
     return;
 }
-char vtable_0[] = {Z6 'V', 'T', 'A', 'B', 'L', 'E', '\006'};
-G_L_B uint8_t refalab_vtable = '\122';
-void (*vtable_1)(void) = vtable_;
+char view_table_0[] = {Z2 'V', 'I', 'E', 'W', '_', 'T', 'A', 'B', 'L', 'E', (char)10};
+G_L_B uint8_t refalab_view_table = '\122';
+void (*view_table_1)(void) = view_table_;
 
 // <View_Show> == 'Q' | 'B' | 'P' | 'N' | 'E'
-static void view_(void)
+static void view_show_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
@@ -218,7 +218,7 @@ static void view_(void)
     p->tag = TAGO;
     p->info.codep = NULL;
     p->info.infoc = 'Q';
-    const int result = guiView(answer, steps, stepsBack, rule, ruleText, table, position);
+    const int result = view_Show(answer, steps, steps_Back, rule, rule_Text, table, position);
     if (result == 1)
         p->info.infoc = 'B';
     else if (result == 2)
@@ -229,12 +229,12 @@ static void view_(void)
         p->info.infoc = 'E';
     return;
 }
-char view_0[] = {Z4 'V', 'I', 'E', 'W', '\004'};
-G_L_B uint8_t refalab_view = '\122';
-void (*view_1)(void) = view_;
+char view_show_0[] = {Z1 'V', 'I', 'E', 'W', '_', 'S', 'H', 'O', 'W', (char)9};
+G_L_B uint8_t refalab_view_show = '\122';
+void (*view_show_1)(void) = view_show_;
 
 // <Dialog_Is_Exit> == /True/ | /False/
-static void isexit_(void)
+static void dialog_is_exit_(void)
 {
     if (refal.preva->next != refal.nexta)
     {
@@ -248,10 +248,10 @@ static void isexit_(void)
     p->tag = TAGF;
     p->info.codep = NULL;
     p->info.codef = &refalab_true;
-    if (!guiIsExit())
+    if (!dialog_Is_Exit())
         p->info.codef = &refalab_false;
     return;
 }
-char isexit_0[] = {Z6 'I', 'S', 'E', 'X', 'I', 'T', '\006'};
-G_L_B uint8_t refalab_isexit = '\122';
-void (*isexit_1)(void) = isexit_;
+char dialog_is_exit_0[] = {Z6 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'S', '_', 'E', 'X', 'I', 'T', (char)14};
+G_L_B uint8_t refalab_dialog_is_exit = '\122';
+void (*dialog_is_exit_1)(void) = dialog_is_exit_;
