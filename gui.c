@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-25
+// 2025-04-07
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -28,7 +28,7 @@ static float sizeCyrillicFont = 0.0f;
 
 void gui_Init(void)
 {
-    InitWindow(screenWidth, screenHeight, "RefalABEinshteinPuzzle (GUI версия)");
+    InitWindow(screenWidth, screenHeight, "Решение задачи Эйнштейна на РефалАБ (GUI версия)");
     SetExitKey(0);
     cyrillicFont = LoadFont("fonts/dejavu.fnt");
     SetTargetFPS(60);
