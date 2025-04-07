@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-03-25
+* 2025-04-07
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -19,8 +19,7 @@
 * Условия:
 * 1. Есть 5 домов разных цветов.
 * 2. В каждом доме живет по одному человеку,
-* отличающегося от другого 
-* по национальности.
+* отличающегося от другого по национальности.
 * 3. Каждый обитатель пьет только один
 * определенный напиток, курит определенную
 * марку сигарет и держит животное.
@@ -36,8 +35,7 @@
 * 3.  Датчанин пьет чай.
 * 4.  Зеленый дом стоит слева от белого.
 * 5.  Обитатель зеленого дома пьет кофе.
-* 6.  Человек, который курит Pall Mall, 
-* держит птицу.
+* 6.  Человек, который курит Pall Mall, держит птицу.
 * 7.  Обитатель среднего дома пьет молоко.
 * 8.  Обитатель желтого дома курит Dunhill.
 * 9.  Норвежец живет в первом доме.
@@ -60,16 +58,12 @@ RefalABEinshteinPuzzle +
     EMPTY Steps, Steps_Back, Rule_Tables, Rule_Tables_Temp
     EMPTY Impossible, Member, Left, Nextto, Home
     EMPTY Color, Yellow, Blue, Red, Green, White
-    EMPTY Nationality, Norwegian, Dane, Englishman, German
-    EMPTY Swede
-    EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro
-    EMPTY Winfield
+    EMPTY Nationality, Norwegian, Dane, Englishman, German, Swede
+    EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro, Winfield
     EMPTY Pet, Cat, Horse, Bird, Dog, Fish
     EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go      = <Help> +
-        <Br /Steps/ '=' /0/> +
-        <Br /Steps_Back/ '=' /0/> +
+Go      = <Help> <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
         <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
         /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
         (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
@@ -82,25 +76,28 @@ Go      = <Help> +
         /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
         (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
         /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
-        <Prout 'Number of steps without returns: ' +
+        <Prout 'Количество шагов без возвращения: ' +
         <Symb <Dg /Steps/>> '.\n' +
-        'Number of steps with returns: ' +
+        'Количество шагов с возвращением: ' +
         <Symb <Dg /Steps_Back/>> '.'>
 
 * Вывод справки
-Help    = <Prout 'Solution of the Einstein''s Puzzle ' + 
-        'on RefalAB.\n\n' +
-        'Einstein''s Puzzle.\n\n' +
-        'Conditions:\n' +
-        '1. There are 5 houses each of a different color.\n' +
-        '2. One person lives in each house and the residents ' + 
-        'each have different nationalities.\n' +
-        '3. Each resident prefers a certain drink, smokes ' + 
-        'a certain brand of cigarettes, ' + 
-        'and has a certain house pet.\n' +
-        '4. NONE of the five persons drinks the same drink, ' + 
-        'smokes the same brand of cigarettes or has the same ' + 
-        'house pet as any one of the other residents.\n\n' +
+Help    = <Prout 'Решение задачи Эйнштейна '+
+        'на РефалАБ.\n\n' +
+        'Задача Эйнштейна.\n\n' +
+        'Условия:\n' +
+        '1. Есть 5 домов разных цветов.\n' +
+        '2. В каждом доме живет по одному человеку, ' + 
+        'отличающегося от другого ' + '
+        'по национальности.\n' +
+        '3. Каждый обитатель пьет только ' + 
+        'один определенный напиток, курит ' +
+        'определенную марку сигарет и ' +
+        'держит животное.\n' +
+        '4. Никто из пяти людей не пьет ' + 
+        'одинакового напитка, не курит одинаковые ' + 
+        'сигареты и не держит '+
+        'одинаковых животных\n\n' +
         'Question: Who has the fish?\n\n' +
         'The clues:\n' +
         '1. The Englishman lives in the red house.\n' +
