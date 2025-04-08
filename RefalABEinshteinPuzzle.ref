@@ -256,55 +256,55 @@ Object_Text
 
 Object_Text_Aux
     /Yellow/ +
-        = 'Yellow '
+        = 'Желтый'
     /Blue/ +
-        = 'Blue   '
+        = 'Голубой'
     /Red/ +
-        = 'Red    '
+        = 'Красный'
     /Green/ +
-        = 'Green  '
+        = 'Зеленый'
     /White/ +
-        = 'White  '     
+        = 'Белый'     
     /Norwegian/ +
-        = 'Norwegian   ' 
+        = 'Норвежец' 
     /Dane/ +
-        = 'Dane        '  
+        = 'Датчанин'  
     /Englishman/ +
-        = 'Englishman  '
+        = 'Англичанин'
     /German/ +
-        = 'German      '
+        = 'Немец'
     /Swede/ +
-        = 'Swede       '   
+        = 'Швед'   
     /Dunhill/ +
-        = 'Dunhill    '
+        = 'Dunhill'
     /Rothmans/ +
-        = 'Rothmans   '
+        = 'Rothmans'
     /PallMall/ +
-        = 'Pall Mall  '
+        = 'Pall Mall'
     /Marlboro/ +
-        = 'Marlboro   ' 
+        = 'Marlboro' 
     /Winfield/ +
-        = 'Winfield   '  
+        = 'Winfield'  
     /Cat/ +
-        = 'Cat   '
+        = 'Кошка'
     /Horse/ +
-        = 'Horse '
+        = 'Конь'
     /Bird/ +
-        = 'Bird  '
+        = 'Птица'
     /Dog/ +
-        = 'Dog   '
+        = 'Собака'
     /Fish/ +
-        = 'Fish  '
+        = 'Рыба'
     /Water/ +
-        = 'Water'
+        = 'Вода'
     /Tea/ +
-        = 'Tea'
+        = 'Чай'
     /Milk/ +
-        = 'Milk'
+        = 'Молоко'
     /Coffee/ +
-        = 'Coffee'
+        = 'Кофе'
     /Beer/ +
-        = 'Beer'
+        = 'Пиво'
 
 * <Solve VS> == VS'
 *
