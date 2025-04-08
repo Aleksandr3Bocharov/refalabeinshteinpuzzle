@@ -53,8 +53,8 @@
 RefalABEinshteinPuzzle +
     START
     ENTRY Go
-    EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW
-    EXTRN True, False
+    EXTRN Map, Prout, P1, NRel, Symb, Br, Dg, LengW, Platform, System
+    EXTRN True, False, Windows
     EMPTY Steps, Steps_Back, Rule_Tables, Rule_Tables_Temp
     EMPTY Impossible, Member, Left, Nextto, Home
     EMPTY Color, Yellow, Blue, Red, Green, White
@@ -63,7 +63,8 @@ RefalABEinshteinPuzzle +
     EMPTY Pet, Cat, Horse, Bird, Dog, Fish
     EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go      = <Help> <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
+Go      = <chcp_utf8 <Platform>> <Help> +
+        <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
         <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
         /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
         (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
@@ -80,6 +81,15 @@ Go      = <Help> <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
         <Symb <Dg /Steps/>> '.\n' +
         'Количество шагов с возвращением: ' +
         <Symb <Dg /Steps_Back/>> '.'>
+
+* Смена кодовой страницы в Windows на UTF-8
+chcp_utf8
+    /Windows/ +
+        = <chcp_utf8_Aux <System 'chcp 65001'>> 
+    E0  =
+
+chcp_utf8_Aux
+    E0  =
 
 * Вывод справки
 Help    = <Prout 'Решение задачи Эйнштейна '+
