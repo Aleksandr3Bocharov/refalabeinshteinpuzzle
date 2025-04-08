@@ -60,12 +60,12 @@ bool dialog_Info(void)
         DrawTextEx(cyrillicFont, "4. Никто из пяти людей не пьет одинакового напитка, не курит одинаковые сигареты и не держит одинаковых животных.", (Vector2){10.0f, 170.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "Вопрос: Чья рыба?", (Vector2){10.0f, 230.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "Подсказки:", (Vector2){10.0f, 290.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "1. Англичанин живет в красном доме.", (Vector2){10.0f, 320.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "2. У шведа есть собака.", (Vector2){10.0f, 350.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "3. Датчанин пьет чай.", (Vector2){10.0f, 380.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "4. Зеленый дом стоит слева от белого.", (Vector2){10.0f, 410.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "5. Обитатель зеленого дома пьет кофе.", (Vector2){10.0f, 440.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
-        DrawTextEx(cyrillicFont, "6. Человек, который курит Pall Mall, держит птицу.", (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "1.  Англичанин живет в красном доме.", (Vector2){10.0f, 320.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "2.  У шведа есть собака.", (Vector2){10.0f, 350.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "3.  Датчанин пьет чай.", (Vector2){10.0f, 380.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "4.  Зеленый дом стоит слева от белого.", (Vector2){10.0f, 410.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "5.  Обитатель зеленого дома пьет кофе.", (Vector2){10.0f, 440.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
+        DrawTextEx(cyrillicFont, "6.  Человек, который курит Pall Mall, держит птицу.", (Vector2){10.0f, 470.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "7.  Обитатель среднего дома пьет молоко.", (Vector2){10.0f, 500.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "8.  Обитатель желтого дома курит Dunhill.", (Vector2){10.0f, 530.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
         DrawTextEx(cyrillicFont, "9.  Норвежец живет в первом доме.", (Vector2){10.0f, 560.0f}, sizeCyrillicFont, 1.0f, DARKGRAY);
