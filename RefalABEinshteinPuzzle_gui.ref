@@ -109,7 +109,8 @@ Solve_Out
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' | 'Швед'
+* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' |
+*        'Швед'
 Answer
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
         = <Answer_Aux SN>
@@ -220,7 +221,8 @@ Rule_Text
 *        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 * VT ::= '???' |
 *        'Желтый' | 'Голубой' | 'Красный' | 'Зеленый' | 'Белый' |
-*        'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' | 'Швед' |
+*        'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' |
+*        'Швед' |
 *        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
 *        'Кошка' | 'Конь' | 'Птица' | 'Собака' | 'Рыба' |
 *        'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
@@ -301,36 +303,23 @@ Result_View_Aux
 * VS ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+
 * VX ::= VH | /Impossible/
 * VH ::= (V1) (V2) (V3) (V4) (V5)
-* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
 * VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
-*        '???'
-* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
-*        /Winfield/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-* VS' ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+
-*         (/16/ '=' VH')
+* VS' ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+ (/16/ '=' VH')
 * VH' ::= (V1') (V2') (V3') (V4') (V5')
-* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
 * SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
 * SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
@@ -371,21 +360,14 @@ Solve_Aux2
 * <Find_Min_Rule (V(/1/../15/)R) VH> == S(/1/../15/)M
 *
 * VH ::= (V1) (V2) (V3) (V4) (V5)
-* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
 * VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
-*        '???'
-* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
-*        /Winfield/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Find_Min_Rule
@@ -435,8 +417,7 @@ Rule
     /4/ = /Left/ /Color/ /Green/ /Color/ /White/
 * 5. Обитатель зеленого дома пьет кофе. 
     /5/ = /Member/ /Color/ /Green/ /Drink/ /Coffee/
-* 6. Человек, который курит Pall Mall,
-* держит птицу. 
+* 6. Человек, который курит Pall Mall, держит птицу. 
     /6/ = /Member/ /Cigarettes/ /PallMall/ /Pet/ /Bird/
 * 7. Обитатель среднего дома пьет молоко. 
     /7/ = /Member/ /Home/ /3/ /Drink/ /Milk/
@@ -445,11 +426,11 @@ Rule
 * 9. Норвежец живет в первом доме. 
     /9/ = /Member/ /Home/ /1/ /Nationality/ /Norwegian/
 * 10. Курильщик Marlboro живет возле того,
-* у кого есть кошка. 
+*     у кого есть кошка. 
     /10/ +
         = /Nextto/ /Cigarettes/ /Marlboro/ /Pet/ /Cat/
 * 11. Человек, у которого есть конь, 
-* живет возле того, кто курит Dunhill. 
+*     живет возле того, кто курит Dunhill. 
     /11/ +
         = /Nextto/ /Pet/ /Horse/ /Cigarettes/ /Dunhill/
 * 12. Курильщик Winfield пьет пиво. 
@@ -462,7 +443,7 @@ Rule
     /14/ +
         = /Member/ /Nationality/ /German/ /Cigarettes/ /Rothmans/
 * 15. Курильщик Marlboro живет по соседству
-* с человеком, который пьет воду. 
+*     с человеком, который пьет воду. 
     /15/ +
         = /Nextto/ /Cigarettes/ /Marlboro/ /Drink/ /Water/
 * 16. Рыба - пятое животное.
@@ -480,34 +461,22 @@ Rule
 * SA ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 * VH ::= (V1) (V2) (V3) (V4) (V5)
-* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
-* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG
-*        /Pet/ VP /Drink/ VD
+* V1 ::= /Home/ /1/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V2 ::= /Home/ /2/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V3 ::= /Home/ /3/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V4 ::= /Home/ /4/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
+* V5 ::= /Home/ /5/ /Color/ VC /Nationality/ VN /Cigarettes/ VG /Pet/ VP /Drink/ VD
 * VC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
-*        '???'
-* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ |
-*        /Winfield/ | '???'
+* VN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
+* VG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
 * VP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * VD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 * VH' ::= (V1') (V2') (V3') (V4') (V5')
-* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 Apply_Rule
 * Member - 2 объекта в одном доме
