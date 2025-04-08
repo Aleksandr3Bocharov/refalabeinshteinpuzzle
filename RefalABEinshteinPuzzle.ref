@@ -235,13 +235,11 @@ Rule_Text
 *        /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
 *        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 * VT ::= '???    ' | '???         ' | '???       ' | '???   ' | '???' |
-*        'Yellow ' | 'Blue   ' | 'Red    ' | 'Green  ' | 'White  ' |
-*        'Norwegian   ' | 'Dane        ' | 'Englishman  ' | 'German      ' |
-*        'Swede       ' |
-*        'Dunhill    ' | 'Rothmans   ' | 'Pall Mall  ' | 'Marlboro   ' |
-*        'Winfield   ' |
-*        'Cat   ' | 'Horse ' | 'Bird  ' | 'Dog   ' | 'Fish  ' |
-*        'Water' | 'Tea' | 'Milk' | 'Coffee' | 'Beer'
+*        'Желтый' | 'Голубой' | 'Красный' | 'Зеленый' | 'Белый' |
+*        'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' | 'Швед' |
+*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
+*        'Кошка' | 'Конь' | 'Птица' | 'Собака' | 'Рыба' |
+*        'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
 Object_Text
     /Color/ '???' +
         = '???    '
