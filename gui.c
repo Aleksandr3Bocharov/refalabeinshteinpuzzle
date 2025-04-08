@@ -28,7 +28,7 @@ static float sizeCyrillicFont = 0.0f;
 
 void gui_Init(void)
 {
-    InitWindow(screenWidth, screenHeight, "Решение задачи Эйнштейна на РефалАБ (GUI версия)");
+    InitWindow(screenWidth, screenHeight, "Решение задачи Эйнштейна на РефалАБ");
     SetExitKey(0);
     cyrillicFont = LoadFont("fonts/dejavu.fnt");
     SetTargetFPS(60);
