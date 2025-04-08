@@ -1,5 +1,5 @@
-Задача Эйнштейна
-------------------
+RefalABEinshteinPuzzle
+------------------------
 
 Программа "RefalABEinshteinPuzzle" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/RefalAB).
 
