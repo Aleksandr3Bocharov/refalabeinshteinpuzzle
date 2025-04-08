@@ -99,23 +99,17 @@ Solve_Out
 * <Answer VH'> == VT
 *
 * VH' ::= (V1') (V2') (V3') (V4') (V5')
-* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
 * SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
 * SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' |
-*        'Немец' | 'Швед'
+* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' | 'Швед'
 Answer
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
         = <Answer_Aux SN>
@@ -149,8 +143,7 @@ Do_Solve_Out_Aux
         <Del_Accumulator <Map_Accumulator /Do_Map_Row/ /1/ VH>>
 
 Do_Map_Row
-    SR (/Home/ SH /Color/ EC /Nationality/ +
-    EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
+    SR (/Home/ SH /Color/ EC /Nationality/ EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
         = <P1 SR> +
         <Del_Accumulator <Map_Accumulator /Do_Map_Col/ (SR /0/) +
         (<Symb SH>) +

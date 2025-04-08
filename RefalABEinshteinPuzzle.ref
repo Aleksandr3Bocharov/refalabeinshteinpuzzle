@@ -100,15 +100,16 @@ Help    = <Prout 'Решение задачи Эйнштейна '+
         'одинаковых животных\n\n' +
         'Вопрос: Чья рыба?\n\n' +
         'Подсказки:\n' +
-        '1. Англичанин живет в красном доме.\n' +
-        '2. У шведа есть собака.\n' +
-        '3. Датчанин пьет чай.\n' +
-        '4. Зеленый дом стоит слева от белого.\n' +
-        '5. Обитатель зеленого дома пьет кофе.\n' +
-        '6. Человек, который курит Pall Mall, держит птицу.\n' +
-        '7. Обитатель среднего дома пьет молоко.\n' +
-        '8. Обитатель желтого дома курит Dunhill.\n' +
-        '9. Норвежец живет в первом доме.\n' +
+        '1.  Англичанин живет в красном доме.\n' +
+        '2.  У шведа есть собака.\n' +
+        '3.  Датчанин пьет чай.\n' +
+        '4.  Зеленый дом стоит слева от белого.\n' +
+        '5.  Обитатель зеленого дома пьет кофе.\n' +
+        '6.  Человек, который курит Pall Mall, ' +
+        'держит птицу.\n' +
+        '7.  Обитатель среднего дома пьет молоко.\n' +
+        '8.  Обитатель желтого дома курит Dunhill.\n' +
+        '9.  Норвежец живет в первом доме.\n' +
         '10. Курильщик Marlboro живет возле того, ' + 
         'у кого есть кошка.\n' +
         '11. Человек, у которого есть конь, ' + 
@@ -121,79 +122,79 @@ Help    = <Prout 'Решение задачи Эйнштейна '+
 
 SolveOut
     EB (E0 '=' VH) +
-        = <Prout 'Question: Who has the fish?\n' +
-        'Answer: ' <Answer VH> ' has the fish.\n\n'> +
+        = <Prout 'Вопрос: Чья рыба?\n' +
+        'Ответ: ' <Answer VH> ' имеет рыбу.\n\n'> +
         <Map /Do_Map_Solve/ EB (E0 '=' VH)>
 
 * <Answer VH'> == VT
 *
 * VH' ::= (V1') (V2') (V3') (V4') (V5')
-* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
-* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG
-*         /Pet/ SP /Drink/ SD
+* V1' ::= /Home/ /1/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V2' ::= /Home/ /2/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V3' ::= /Home/ /3/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V4' ::= /Home/ /4/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
+* V5' ::= /Home/ /5/ /Color/ SC /Nationality/ SN /Cigarettes/ SG /Pet/ SP /Drink/ SD
 * SC ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
 * SN ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
 * SG ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * SP ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * SD ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= 'Norwegian' | 'Dane' | 'Englishman' | 'German' | 'Swede'
+* VT ::= 'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' | 'Швед'
 Answer
     EB (E1 /Nationality/ SN E2 /Fish/ E3) EE +
         = <Answer_Aux SN>
 
 Answer_Aux
     /Norwegian/ +
-        = 'Norwegian'
+        = 'Норвежец'
     /Dane/ +
-        = 'Dane'
+        = 'Датчанин'
     /Englishman/ +
-        = 'Englishman'
+        = 'Англичанин'
     /German/ +
-        = 'German'
+        = 'Немец'
     /Swede/ +
-        = 'Swede'
+        = 'Швед'
 
 Do_Map_Solve
     (SR E0 '=' VH) +
-        = <Prout 'The rule ' <Symb SR> ': ' <Rule_Text SR> '\n'> +
-        <Prout 'Home Color  Nationality Cigarettes Pet   Drink'> +
+        = <Prout 'Подсказка ' <Symb SR> ': ' <Rule_Text SR> '\n'> +
+        <Prout 'Дом Цвет  Национальность Сигареты Животное   Напиток'> +
         <Map /Do_Map_Table/ VH> +
         <Prout '\n'>
 
 Do_Map_Table
-    (/Home/ SH /Color/ EC /Nationality/ +
-    EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
-        = <Prout <Symb SH> '    ' <Object_Text /Color/ EC> +
+    (/Home/ SH /Color/ EC /Nationality/ EN /Cigarettes/ EG /Pet/ EP /Drink/ ED) +
+        = <Prout <Symb SH> '    ' +
+        <Object_Text /Color/ EC> +
         <Object_Text /Nationality/ EN> +
-        <Object_Text /Cigarettes/ EG> <Object_Text /Pet/ EP> +
+        <Object_Text /Cigarettes/ EG> +
+        <Object_Text /Pet/ EP> +
         <Object_Text /Drink/ ED>>
 
 * <Rule_Text S(/0/../16/)R> == VT
 *
-* VT ::= 'Conditions.' |
-*        'The Englishman lives in the red house.' | 
-*        'The Swede has a dog.' |
-*        'The Dane likes to drink tea.' |
-*        'The green house is left of the white house.' |
-*        'The resident in the green house drinks coffee.' |
-*        'The person who smokes Pall Mall has a bird.' |
-*        'The man who lives in the middle house drinks milk.' |
-*        'The resident in the yellow house smokes Dunhill.' |
-*        'The Norwegian lives in the first house.' |
-*        'The Marlboro smoker lives next to the person with a cat.' |
-*        'The man who has a horse lives next to the person who smokes Dunhill.' |
-*        'The Winfield smoker likes to drink beer.' |
-*        'The Norwegian lives next to the blue house.' |
-*        'The German smokes Rothmanns.' | 
-*        'The Marlboro smoker has a neighbor who drinks water.' | 
-*        'Fish is the fifth pet.'
+* VT ::= 'Условия.' |
+*        'Англичанин живет в красном доме.' | 
+*        'У шведа есть собака.' |
+*        'Датчанин пьет чай.' |
+*        'Зеленый дом стоит слева от белого.' |
+*        'Обитатель зеленого дома пьет кофе.' |
+*        'Человек, который курит Pall Mall,
+*         держит птицу.' |
+*        'Обитатель среднего дома пьет молоко.' |
+*        'Обитатель желтого дома курит Dunhill.' |
+*        'Норвежец живет в первом доме.' |
+*        'Курильщик Marlboro живет возле того,
+*         у кого есть кошка.' |
+*        'Человек, у которого есть конь,
+*         живет возле того, кто курит Dunhill.' |
+*        'Курильщик Winfield пьет пиво.' |
+*        'Норвежец живет возле голубого дома.' |
+*        'Немец курит Rothmans.' | 
+*        'Курильщик Marlboro живет по соседству
+*         с человеком, который пьет воду.' | 
+*        'Рыба - пятое животное.'
 Rule_Text
     /0/ = 'Conditions.'
     /1/ = 'The Englishman lives in the red house.'
