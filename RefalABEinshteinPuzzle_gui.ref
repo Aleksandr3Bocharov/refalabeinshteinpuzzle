@@ -384,8 +384,7 @@ Find_Min_Rule_Aux
         = SM
     SL ET SM (SR EE) EH +
         = <Apply_Rule <Rule SR> EH> +
-        <Find_Min_Rule_Aux +
-        <Min_Rule SL SM <LengW <Dg /Rule_Tables/>> SR> (EE) EH>
+        <Find_Min_Rule_Aux <Min_Rule SL SM <LengW <Dg /Rule_Tables/>> SR> (EE) EH>
 
 Min_Rule
     SL SM SN ET SR +
@@ -506,8 +505,7 @@ Apply_Rule
         = <Apply_Rule /Left/ SU SX SV SY ET> +
         <Br /Rule_Tables_Temp/ '=' <Dg /Rule_Tables/>> +
         <Apply_Rule /Left/ SV SY SU SX ET> +
-        <Br /Rule_Tables/ '=' +
-        <Dg /Rule_Tables_Temp/> <Dg /Rule_Tables/>>
+        <Br /Rule_Tables/ '=' <Dg /Rule_Tables_Temp/> <Dg /Rule_Tables/>>
 * Fish - рыба - пятое животное 
     /Fish/ EB (E1 /Pet/ '???' E2) EE +
         = EB (E1 /Pet/ /Fish/ E2) EE
@@ -515,10 +513,8 @@ Apply_Rule
 Apply_Rule_None
 * Member - 2 объекта в одном доме
     /Member/ SU SX SV SY EB (E1 SU '???' E2 SV '???' E3) EE (ER) +
-        = <Br /Rule_Tables/ '=' +
-        <Dg /Rule_Tables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
-        <Apply_Rule_None /Member/ +
-        SU SX SV SY EE (ER EB (E1 SU '???' E2 SV '???' E3))>
+        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> (ER EB (E1 SU SX E2 SV SY E3) EE)> +
+        <Apply_Rule_None /Member/ SU SX SV SY EE (ER EB (E1 SU '???' E2 SV '???' E3))>
     /Member/ E0 +
         =
 * Left - 1 объект в доме слева дома 2 объекта
