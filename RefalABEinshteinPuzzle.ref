@@ -170,7 +170,8 @@ Answer_Aux
 Do_Map_Solve
     (SR E0 '=' VH) +
         = <Prout 'Подсказка ' <Symb SR> ': ' <Rule_Text SR> '\n'> +
-        <Prout 'Дом Цвет  Национальность Сигареты Животное   Напиток'> +
+        <Prout 'Дом Цвет  Национальность Сигареты ' +
+        'Животное   Напиток'> +
         <Map /Do_Map_Table/ VH> +
         <Prout '\n'>
 
