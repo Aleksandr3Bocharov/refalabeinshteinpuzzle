@@ -40,14 +40,14 @@
 * 8.  Обитатель желтого дома курит Dunhill.
 * 9.  Норвежец живет в первом доме.
 * 10. Курильщик Marlboro живет возле того,
-* у кого есть кошка.
+*     у кого есть кошка.
 * 11. Человек, у которого есть конь,
-* живет возле того, кто курит Dunhill.
+*     живет возле того, кто курит Dunhill.
 * 12. Курильщик Winfield пьет пиво.
 * 13. Норвежец живет возле голубого дома.
 * 14. Немец курит Rothmans.
 * 15. Курильщик Marlboro живет по соседству 
-* с человеком, который пьет воду.
+*     с человеком, который пьет воду.
 *====================================================================
 
 RefalABEinshteinPuzzle +
@@ -98,26 +98,26 @@ Help    = <Prout 'Решение задачи Эйнштейна '+
         'одинакового напитка, не курит одинаковые ' + 
         'сигареты и не держит '+
         'одинаковых животных\n\n' +
-        'Question: Who has the fish?\n\n' +
-        'The clues:\n' +
-        '1. The Englishman lives in the red house.\n' +
-        '2. The Swede has a dog.\n' +
-        '3. The Dane likes to drink tea.\n' +
-        '4. The green house is left of the white house.\n' +
-        '5. The resident in the green house drinks coffee.\n' +
-        '6. The person who smokes Pall Mall has a bird.\n' +
-        '7. The man who lives in the middle house drinks milk.\n' +
-        '8. The resident in the yellow house smokes Dunhill.\n' +
-        '9. The Norwegian lives in the first house.\n' +
-        '10. The Marlboro smoker lives next to the person ' + 
-        'with a cat.\n' +
-        '11. The man who has a horse lives next to the person ' + 
-        'who smokes Dunhill.\n' +
-        '12. The Winfield smoker likes to drink beer.\n' +
-        '13. The Norwegian lives next to the blue house.\n' +
-        '14. The German smokes Rothmanns.\n' +
-        '15. The Marlboro smoker has a neighbor who drinks water.' + 
-        '\n\n'>
+        'Вопрос: Чья рыба?\n\n' +
+        'Подсказки:\n' +
+        '1. Англичанин живет в красном доме.\n' +
+        '2. У шведа есть собака.\n' +
+        '3. Датчанин пьет чай.\n' +
+        '4. Зеленый дом стоит слева от белого.\n' +
+        '5. Обитатель зеленого дома пьет кофе.\n' +
+        '6. Человек, который курит Pall Mall, держит птицу.\n' +
+        '7. Обитатель среднего дома пьет молоко.\n' +
+        '8. Обитатель желтого дома курит Dunhill.\n' +
+        '9. Норвежец живет в первом доме.\n' +
+        '10. Курильщик Marlboro живет возле того, ' + 
+        'у кого есть кошка.\n' +
+        '11. Человек, у которого есть конь, ' + 
+        'живет возле того, кто курит Dunhill.\n' +
+        '12. Курильщик Winfield пьет пиво.\n' +
+        '13. Норвежец живет возле голубого дома.\n' +
+        '14. Немец курит Rothmans.\n' +
+        '15. Курильщик Marlboro живет по соседству ' + 
+        'с человеком, который пьет воду.\n\n'>
 
 SolveOut
     EB (E0 '=' VH) +
