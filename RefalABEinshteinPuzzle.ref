@@ -170,8 +170,8 @@ Answer_Aux
 Do_Map_Solve
     (SR E0 '=' VH) +
         = <Prout 'Подсказка ' <Symb SR> ': ' <Rule_Text SR> '\n'> +
-        <Prout 'Дом Цвет    Национальность Сигареты ' +
-        'Животное   Напиток'> +
+        <Prout 'Дом Цвет    Национальность Сигареты  ' +
+        'Животное Напиток'> +
         <Map /Do_Map_Table/ VH> +
         <Prout '\n'>
 
@@ -246,22 +246,24 @@ Rule_Text
 *        /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/| /Winfield/ |
 *        /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
 *        /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* VT ::= '???     ' | '???         ' | '???       ' | '???   ' | '???' |
-*        'Желтый  ' | 'Голубой ' | 'Красный ' | 'Зеленый ' | 'Белый   ' |
-*        'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' |
-*        'Швед' |
-*        'Dunhill' | 'Rothmans' | 'Pall Mall' | 'Marlboro' | 'Winfield' |
-*        'Кошка' | 'Конь' | 'Птица' | 'Собака' | 'Рыба' |
+* VT ::= '???     ' | '???         ' | '???       ' | '???      ' | '???' |
+*        'Желтый  ' | 'Голубой ' | 'Красный ' | 'Зеленый ' |
+*        'Белый   ' |
+*        'Норвежец       ' | 'Датчанин       ' | 'Англичанин     ' |
+*        'Немец          ' | 'Швед           ' |
+*        'Dunhill   ' | 'Rothmans  ' | 'Pall Mall ' | 'Marlboro  ' | 'Winfield  ' |
+*        'Кошка    ' | 'Конь     ' | 'Птица    ' | 'Собака   ' |
+*        'Рыба     ' |
 *        'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
 Object_Text
     /Color/ '???' +
         = '???     '
     /Nationality/ '???' +
-        = '???         '
+        = '???            '
     /Cigarettes/ '???' +
-        = '???        '
+        = '???       '
     /Pet/ '???' +
-        = '???   '
+        = '???      '
     /Drink/ '???' +
         = '???'
     SC SO +
@@ -279,35 +281,35 @@ Object_Text_Aux
     /White/ +
         = 'Белый   '     
     /Norwegian/ +
-        = 'Норвежец' 
+        = 'Норвежец       ' 
     /Dane/ +
-        = 'Датчанин'  
+        = 'Датчанин       '  
     /Englishman/ +
-        = 'Англичанин'
+        = 'Англичанин     '
     /German/ +
-        = 'Немец'
+        = 'Немец          '
     /Swede/ +
-        = 'Швед'   
+        = 'Швед           '   
     /Dunhill/ +
-        = 'Dunhill'
+        = 'Dunhill   '
     /Rothmans/ +
-        = 'Rothmans'
+        = 'Rothmans  '
     /PallMall/ +
-        = 'Pall Mall'
+        = 'Pall Mall '
     /Marlboro/ +
-        = 'Marlboro' 
+        = 'Marlboro  ' 
     /Winfield/ +
-        = 'Winfield'  
+        = 'Winfield  '  
     /Cat/ +
-        = 'Кошка'
+        = 'Кошка    '
     /Horse/ +
-        = 'Конь'
+        = 'Конь     '
     /Bird/ +
-        = 'Птица'
+        = 'Птица    '
     /Dog/ +
-        = 'Собака'
+        = 'Собака   '
     /Fish/ +
-        = 'Рыба'
+        = 'Рыба     '
     /Water/ +
         = 'Вода'
     /Tea/ +
