@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-04-09
+* 2025-04-10
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -63,7 +63,7 @@ RefalABEinshteinPuzzle +
     EMPTY Pet, Cat, Horse, Bird, Dog, Fish
     EMPTY Drink, Water, Tea, Milk, Coffee, Beer
 
-Go      = <chcp_utf8 <Platform>> <Help> +
+Go      = <chcp_UTF8 <Platform>> <Help> +
         <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
         <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
         /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
@@ -83,12 +83,12 @@ Go      = <chcp_utf8 <Platform>> <Help> +
         <Symb <Dg /Steps_Back/>> '.'>
 
 * Смена кодовой страницы в Windows на UTF-8
-chcp_utf8
+chcp_UTF8
     /Windows/ +
-        = <chcp_utf8_Aux <System 'chcp 65001'>> 
+        = <chcp_UTF8_Aux <System 'chcp 65001'>> 
     E0  =
 
-chcp_utf8_Aux
+chcp_UTF8_Aux
     E0  =
 
 * Вывод справки
