@@ -66,21 +66,21 @@ RefalABEinshteinPuzzle +
 Go      = <chcp_UTF8 <Platform>> <Help> +
         <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
         <SolveOut <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
-        /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
-        (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
-        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-        (/Home/ /2/ /Color/ '???' /Nationality/ '???' +
-        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-        (/Home/ /3/ /Color/ '???' /Nationality/ '???' +
-        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-        (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
-        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-        (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
-        /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
+            /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
+            (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+            (/Home/ /2/ /Color/ '???' /Nationality/ '???' +
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+            (/Home/ /3/ /Color/ '???' /Nationality/ '???' +
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+            (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
+            (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
+            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>> +
         <Prout 'Количество шагов без возвращения: ' +
-        <Symb <Dg /Steps/>> '.\n' +
-        'Количество шагов с возвращением: ' +
-        <Symb <Dg /Steps_Back/>> '.'>
+            <Symb <Dg /Steps/>> '.\n' +
+            'Количество шагов с возвращением: ' +
+            <Symb <Dg /Steps_Back/>> '.'>
 
 * Смена кодовой страницы в Windows на UTF-8
 chcp_UTF8
@@ -93,47 +93,50 @@ chcp_UTF8_Aux
 
 * Вывод справки
 Help    = <Prout 'Решение задачи Эйнштейна '+
-        'на РефалАБ.\n\n' +
-        'Задача Эйнштейна.\n\n' +
-        'Условия:\n' +
-        '1. Есть 5 домов разных цветов.\n' +
-        '2. В каждом доме живет по одному человеку, ' + 
-        'отличающегося от другого ' + '
-        'по национальности.\n' +
-        '3. Каждый обитатель пьет только ' + 
-        'один определенный напиток, курит ' +
-        'определенную марку сигарет и ' +
-        'держит животное.\n' +
-        '4. Никто из пяти людей не пьет ' + 
-        'одинакового напитка, не курит одинаковые ' + 
-        'сигареты и не держит '+
-        'одинаковых животных\n\n' +
-        'Вопрос: Чья рыба?\n\n' +
-        'Подсказки:\n' +
-        '1.  Англичанин живет в красном доме.\n' +
-        '2.  У шведа есть собака.\n' +
-        '3.  Датчанин пьет чай.\n' +
-        '4.  Зеленый дом стоит слева от белого.\n' +
-        '5.  Обитатель зеленого дома пьет кофе.\n' +
-        '6.  Человек, который курит Pall Mall, ' +
-        'держит птицу.\n' +
-        '7.  Обитатель среднего дома пьет молоко.\n' +
-        '8.  Обитатель желтого дома курит Dunhill.\n' +
-        '9.  Норвежец живет в первом доме.\n' +
-        '10. Курильщик Marlboro живет возле того, ' + 
-        'у кого есть кошка.\n' +
-        '11. Человек, у которого есть конь, ' + 
-        'живет возле того, кто курит Dunhill.\n' +
-        '12. Курильщик Winfield пьет пиво.\n' +
-        '13. Норвежец живет возле голубого дома.\n' +
-        '14. Немец курит Rothmans.\n' +
-        '15. Курильщик Marlboro живет по соседству ' + 
-        'с человеком, который пьет воду.\n\n'>
+            'на РефалАБ.\n\n' +
+            'Задача Эйнштейна.\n\n' +
+            'Условия:\n' +
+            '1. Есть 5 домов разных цветов.\n' +
+            '2. В каждом доме живет по одному ' +
+            'человеку, ' + 
+            'отличающегося от другого ' + '
+            'по национальности.\n' +
+            '3. Каждый обитатель пьет только ' + 
+            'один определенный напиток, курит ' +
+            'определенную марку сигарет и ' +
+            'держит животное.\n' +
+            '4. Никто из пяти людей не пьет ' + 
+            'одинакового напитка, не курит ' +
+            'одинаковые ' + 
+            'сигареты и не держит '+
+            'одинаковых животных\n\n' +
+            'Вопрос: Чья рыба?\n\n' +
+            'Подсказки:\n' +
+            '1.  Англичанин живет в красном доме.\n' +
+            '2.  У шведа есть собака.\n' +
+            '3.  Датчанин пьет чай.\n' +
+            '4.  Зеленый дом стоит слева от белого.\n' +
+            '5.  Обитатель зеленого дома пьет кофе.\n' +
+            '6.  Человек, который курит Pall Mall, ' +
+            'держит птицу.\n' +
+            '7.  Обитатель среднего дома пьет ' +
+            'молоко.\n' +
+            '8.  Обитатель желтого дома курит Dunhill.\n' +
+            '9.  Норвежец живет в первом доме.\n' +
+            '10. Курильщик Marlboro живет возле того, ' + 
+            'у кого есть кошка.\n' +
+            '11. Человек, у которого есть конь, ' + 
+            'живет возле того, кто курит Dunhill.\n' +
+            '12. Курильщик Winfield пьет пиво.\n' +
+            '13. Норвежец живет возле голубого дома.\n' +
+            '14. Немец курит Rothmans.\n' +
+            '15. Курильщик Marlboro живет по соседству ' + 
+            'с человеком, который пьет воду.\n\n'>
 
 SolveOut
     E.Solve_B (E._ '=' E.Table) +
         = <Prout 'Вопрос: Чья рыба?\n' +
-        'Ответ: ' <Answer E.Table> ' имеет рыбу.\n\n'> +
+            'Ответ: ' <Answer E.Table> ' имеет рыбу.\n\n'> +
         <Map /Do_Map_Solve/ E.Solve_B (E._ '=' E.Table)>
 
 * <Answer V.Table> == V.Nationality_txt
@@ -177,7 +180,7 @@ Do_Map_Solve
     (S.Rule E._ '=' E.Table) +
         = <Prout 'Подсказка ' <Symb S.Rule> ': ' <Rule_Text S.Rule> '\n'> +
         <Prout 'Дом Цвет    Национальность Сигареты  ' +
-        'Животное Напиток'> +
+            'Животное Напиток'> +
         <Map /Do_Map_Table/ E.Table> +
         <Prout '\n'>
 
@@ -185,11 +188,11 @@ Do_Map_Table
     (/Home/ S.Home /Color/ E.Color /Nationality/ E.Nationality +
     /Cigarettes/ E.Cigarettes /Pet/ E.Pet /Drink/ E.Drink) +
         = <Prout <Symb S.Home> '   ' +
-        <Object_Text /Color/ E.Color> +
-        <Object_Text /Nationality/ E.Nationality> +
-        <Object_Text /Cigarettes/ E.Cigarettes> +
-        <Object_Text /Pet/ E.Pet> +
-        <Object_Text /Drink/ E.Drink>>
+            <Object_Text /Color/ E.Color> +
+            <Object_Text /Nationality/ E.Nationality> +
+            <Object_Text /Cigarettes/ E.Cigarettes> +
+            <Object_Text /Pet/ E.Pet> +
+            <Object_Text /Drink/ E.Drink>>
 
 * <Rule_Text S(/0/../16/).Rule> == V.Rule_txt
 *
@@ -387,7 +390,7 @@ Solve
 * Переход к следующему правилу  
     E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
         = <Solve_Aux1 E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
-        <Find_Min_Rule W.Rest_Rules E.Table>>
+            <Find_Min_Rule W.Rest_Rules E.Table>>
 
 Solve_Aux1
     E.Solve_B (E._ '=' E.Table) S.Min +
@@ -400,7 +403,7 @@ Solve_Aux2
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
         <Solve E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) +
-        (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
+            (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
     E.Solve_B (E._ '=' E.Table) S.Min +
         = <Solve E.Solve_B (E._ '=' /Impossible/)>
 
@@ -438,7 +441,7 @@ Find_Min_Rule_Aux
     S.Len E._ S.Min (S.Rule E.Rest_Rules) E.Table +
         = <Apply_Rule <Rule S.Rule> E.Table> +
         <Find_Min_Rule_Aux <Min_Rule S.Len S.Min <LengW <Dg /Rule_Tables/>> S.Rule> +
-        (E.Rest_Rules) E.Table>
+            (E.Rest_Rules) E.Table>
 
 Min_Rule
     S.Len S.Min S.New_Len E._ S.Rule +
@@ -547,15 +550,15 @@ Apply_Rule
     /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
     E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 '???' E.Home_E) E.Table_E +
         = <Br /Rule_Tables/ '=' +
-        (E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
-        E.Table_E)>
+            (E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
+            E.Table_E)>
     /Member/ S.Category1 S.Object1 E._ (E.Home_B S.Object1 E.Home_E) E.Table_E +
         =
     /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
     E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Object2 E.Home_E) E.Table_E +
         = <Br /Rule_Tables/ '=' +
-        (E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Object2 E.Home_E) +
-        E.Table_E)>
+            (E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Object2 E.Home_E) +
+            E.Table_E)>
     /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
     E.Table_B (E.Home_B S.Object2 E.Home_E) E.Table_E +
         = 
@@ -566,16 +569,16 @@ Apply_Rule
     E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) +
     (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
         = <Br /Rule_Tables/ '=' +
-        (E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) +
-        (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)>
+            (E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) +
+            (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)>
     /Left/ S.Category1 S.Object1 E._ (E.HomeL_B S.Object1 E.HomeL_E) E.Table_E +
         =
     /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
     E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) +
     (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
         = <Br /Rule_Tables/ '=' +
-        (E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
-        (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E)>
+            (E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
+            (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E)>
     /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
     E.Table_B (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
         =
@@ -597,12 +600,12 @@ Apply_Rule_None
     E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E) +
     E.Table_E (E.Rest_Table) +
         = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> +
-        (E.Rest_Table E.Table_B +
-        (E.Home_B S.Category1 S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
-        E.Table_E)> +
+            (E.Rest_Table E.Table_B +
+            (E.Home_B S.Category1 S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
+            E.Table_E)> +
         <Apply_Rule_None /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
-        E.Table_E (E.Rest_Table E.Table_B +
-        (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E))>
+            E.Table_E (E.Rest_Table E.Table_B +
+            (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E))>
     /Member/ E._ +
         =
 * Left - 1 объект в доме слева дома 2 объекта
@@ -610,11 +613,11 @@ Apply_Rule_None
     E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) +
     (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table) +
         = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> +
-        (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
-        (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)> +
+            (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
+            (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)> +
         <Apply_Rule_None /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
-        (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
-        (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E))>
+            (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
+            (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E))>
     E._ =
 
     END
