@@ -543,39 +543,39 @@ Apply_Rule
     /Member/ E._ +
         = <Apply_Rule_None /Member/ E._ ()>
 * Left - 1 объект в доме слева дома 2 объекта
-    /Left/ S.U S.X S.V S.Y E.B (E.1 S.X E.2) (E.3 S.V '???' E.4) E.E +
-        = <Br /Rule_Tables/ '=' (E.B (E.1 S.X E.2) (E.3 S.V S.Y E.4) E.E)>
-    /Left/ S.U S.X E.0 (E.1 S.X E.2) E.E +
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' (E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)>
+    /Left/ S.Category1 S.Object1 E._ (E.HomeL_B S.Object1 E.HomeL_E) E.Table_E +
         =
-    /Left/ S.U S.X S.V S.Y E.B (E.1 S.U '???' E.2) (E.3 S.Y E.4) E.E +
-        = <Br /Rule_Tables/ '=' (E.B (E.1 S.U S.X E.2) (E.3 S.Y E.4) E.E)>
-    /Left/ S.U S.X S.V S.Y E.B (E.1 S.Y E.2) E.E +
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' (E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E)>
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
         =
-    /Left/ E.0 +
-        = <Apply_Rule_None /Left/ E.0 ()> 
+    /Left/ E._ +
+        = <Apply_Rule_None /Left/ E._ ()> 
 * Nextto - 2 объекта в соседних домах
-    /Nextto/ S.U S.X S.V S.Y E.T +
-        = <Apply_Rule /Left/ S.U S.X S.V S.Y E.T> +
+    /Nextto/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table +
+        = <Apply_Rule /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table> +
         <Br /Rule_Tables_Temp/ '=' <Dg /Rule_Tables/>> +
-        <Apply_Rule /Left/ S.V S.Y S.U S.X E.T> +
+        <Apply_Rule /Left/ S.Category2 S.Object2 S.Category1 S.Object1 E.Table> +
         <Br /Rule_Tables/ '=' <Dg /Rule_Tables_Temp/> <Dg /Rule_Tables/>>
 * Fish - рыба - пятое животное 
-    /Fish/ E.B (E.1 /Pet/ '???' E.2) E.E +
-        = E.B (E.1 /Pet/ /Fish/ E.2) E.E
+    /Fish/ E.Table_B (E.Home_B /Pet/ '???' E.Home_E) E.Table_E +
+        = E.Table_B (E.Home_B /Pet/ /Fish/ E.Home_E) E.Table_E
 
 Apply_Rule_None
 * Member - 2 объекта в одном доме
-    /Member/ S.U S.X S.V S.Y E.B (E.1 S.U '???' E.2 S.V '???' E.3) E.E (E.R) +
-        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> (E.R E.B (E.1 S.U S.X E.2 S.V S.Y E.3) E.E)> +
-        <Apply_Rule_None /Member/ S.U S.X S.V S.Y E.E (E.R E.B (E.1 S.U '???' E.2 S.V '???' E.3))>
-    /Member/ E.0 +
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E) E.Table_E (E.Rest_Table) +
+        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> (E.Rest_Table E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) E.Table_E)> +
+        <Apply_Rule_None /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_E (E.Rest_Table E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E))>
+    /Member/ E._ +
         =
 * Left - 1 объект в доме слева дома 2 объекта
-    /Left/ S.U S.X S.V S.Y E.B (E.1 S.U '???' E.2) (E.3 S.V '???' E.4) E.E (E.R) +
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table) +
         = <Br /Rule_Tables/ '=' +
-        <Dg /Rule_Tables/> (E.R E.B (E.1 S.U S.X E.2) (E.3 S.V S.Y E.4) E.E)> +
+        <Dg /Rule_Tables/> (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)> +
         <Apply_Rule_None /Left/ +
-        S.U S.X S.V S.Y (E.3 S.V '???' E.4) E.E (E.R E.B (E.1 S.U '???' E.2))>
-    E.0 =
+            S.Category1 S.Object1 S.Category2 S.Object2 (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table E.Home_B (E.HomeL_B S.Category1 '???' E.HomeL_E))>
+    E._ =
 
     END
