@@ -131,10 +131,10 @@ Help    = <Prout 'Решение задачи Эйнштейна '+
         'с человеком, который пьет воду.\n\n'>
 
 SolveOut
-    E.Solves_B (E._ '=' E.Table) +
+    E.Solve_B (E._ '=' E.Table) +
         = <Prout 'Вопрос: Чья рыба?\n' +
         'Ответ: ' <Answer E.Table> ' имеет рыбу.\n\n'> +
-        <Map /Do_Map_Solve/ E.Solves_B (E._ '=' E.Table)>
+        <Map /Do_Map_Solve/ E.Solve_B (E._ '=' E.Table)>
 
 * <Answer V.Table> == V.Nationality_txt
 *
@@ -328,7 +328,7 @@ Object_Text_Aux
 
 * <Solve V.Solve> == V.Solve'
 *
-* V.Solve ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Home)* '=' V.Extented)+
+* V.Solve ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Table)* '=' V.Extented)+
 * V.Extented ::= V.Table | /Impossible/
 * V.Table ::= (V.Home1) (V.Home2) (V.Home3) (V.Home4) (V.Home5)
 * V.Home1 ::= /Home/ /1/ /Color/ V.Color /Nationality/ V.Nationality |
@@ -341,12 +341,12 @@ Object_Text_Aux
 *             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
 * V.Home5 ::= /Home/ /5/ /Color/ V.Color /Nationality/ V.Nationality |
 *             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
-* V.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* V.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
-* V.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
+* V.Color ::= S.Color | '???'
+* V.Nationality ::= S.Nationality | '???'
+* V.Cigarettes ::= S.Cigarettes | '???'
 * V.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
-* V.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-* V.Solve' ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Home)* '=' V.Extented)+ (/16/ '=' V.Table')
+* V.Drink ::= S.Drink | '???'
+* V.Solve' ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Table)* '=' V.Extented)+ (/16/ '=' V.Table')
 * V.Table' ::= (V.Home1') (V.Home2') (V.Home3') (V.Home4') (V.Home5')
 * V.Home1' ::= /Home/ /1/ /Color/ S.Color /Nationality/ S.Nationality |
 *              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
@@ -365,35 +365,35 @@ Object_Text_Aux
 * S.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Solve
 * Возврат к предыдущему правилу
-    E.Solves_B (E._ '=' E.Table) (S.Rule W.Rest_Rules '=' /Impossible/) +
+    E.Solve_B (E._ '=' E.Table) (S.Rule W.Rest_Rules '=' /Impossible/) +
         = <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.Solves_B (E._ '=' /Impossible/)>
+        <Solve E.Solve_B (E._ '=' /Impossible/)>
 * Переход к следующему применению правила
-    E.Solves_B (S.Rule W.Rest_Rules (E.Table) E.Tables '=' /Impossible/) +
+    E.Solve_B (S.Rule W.Rest_Rules (E.Table) E.Tables '=' /Impossible/) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table)>
+        <Solve E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table)>
 * Решение найдено
-    E.Solves_B (S.Rule () E.Tables '=' E.Table) +
+    E.Solve_B (S.Rule () E.Tables '=' E.Table) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        E.Solves_B (S.Rule () E.Tables '=' E.Table) (/16/ '=' <Apply_Rule <Rule /16/> E.Table>)
+        E.Solve_B (S.Rule () E.Tables '=' E.Table) (/16/ '=' <Apply_Rule <Rule /16/> E.Table>)
 * Переход к следующему правилу  
-    E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
-        = <Solve_Aux1 E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) <Find_Min_Rule W.Rest_Rules E.Table>>
+    E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
+        = <Solve_Aux1 E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) <Find_Min_Rule W.Rest_Rules E.Table>>
 
 Solve_Aux1
-    E.Solves_B (E._ '=' E.Table) S.Min +
+    E.Solve_B (E._ '=' E.Table) S.Min +
         = <Apply_Rule <Rule S.Min> E.Table> +
-        <Solve_Aux2 E.Solves_B (E._ '=' E.Table) S.Min <Dg /Rule_Tables/>> 
+        <Solve_Aux2 E.Solve_B (E._ '=' E.Table) S.Min <Dg /Rule_Tables/>> 
 
 Solve_Aux2
-    E.Solves_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) S.Min (E.Next_Table) E.Rest_Tables +
+    E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) S.Min (E.Next_Table) E.Rest_Tables +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.Solves_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
-    E.Solves_B (E._ '=' E.Table) S.Min +
-        = <Solve E.Solves_B (E._ '=' /Impossible/)>
+        <Solve E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
+    E.Solve_B (E._ '=' E.Table) S.Min +
+        = <Solve E.Solve_B (E._ '=' /Impossible/)>
 
 * <Find_Min_Rule (V(/1/../15/).Rule) V.Table> == S(/1/../15/).Min
 *
@@ -441,7 +441,7 @@ Min_Rule_Aux
 
 * <Rule S(/1/../16/).Rule> == S(/Member/ /Left/ /Nextto/).Predicate V.Object V.Object | /Fish/
 *
-* V.Object ::= /Home/ S(/1/ /3/).Home | /Color/ S.Coloe | /Nationality/ S.Nationality | 
+* V.Object ::= /Home/ S(/1/ /3/).Home | /Color/ S.Color | /Nationality/ S.Nationality | 
 *              /Cigarettes/ S.Cigarettes | /Pet/ S.Pet | /Drink/ S.Drink 
 * S.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
 * S.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
@@ -492,46 +492,56 @@ Rule
     /16/ +
         = /Fish/
 
-* <Apply_Rule V.R V.H> == | V.H'
+* <Apply_Rule V.Rule V.Table> == | V.Table'
 *
-* V.R ::= S(/Member/ /Left/ /Nextto/).P V.O V.O | /Fish/
-* V.O ::= /Home/ S(/1/ /3/).H | /Color/ S.C | /Nationality/ S.N | 
-*         /Cigarettes/ S.G | /Pet/ S.A | /Drink/ S.D 
-* S.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
-* S.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
-* S.G ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
-* S.A ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
-* S.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* V.H ::= (V.1) (V.2) (V.3) (V.4) (V.5)
-* V.1 ::= /Home/ /1/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.2 ::= /Home/ /2/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.3 ::= /Home/ /3/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.4 ::= /Home/ /4/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.5 ::= /Home/ /5/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* V.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
-* V.G ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
-* V.P ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
-* V.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-* V.H' ::= (V.1') (V.2') (V.3') (V.4') (V.5')
-* V.1' ::= /Home/ /1/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.2' ::= /Home/ /2/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.3' ::= /Home/ /3/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.4' ::= /Home/ /4/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.5' ::= /Home/ /5/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* S.P ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
+* V.Rule ::= S(/Member/ /Left/ /Nextto/).Predicate V.Object V.Object | /Fish/
+* V.Object ::= /Home/ S(/1/ /3/).Home | /Color/ S.Color | /Nationality/ S.Nationality | 
+*              /Cigarettes/ S.Cigarettes | /Pet/ S.Pet | /Drink/ S.Drink 
+* S.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* S.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* S.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* S.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
+* S.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* V.Table ::= (V.Home1) (V.Home2) (V.Home3) (V.Home4) (V.Home5)
+* V.Home1 ::= /Home/ /1/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home2 ::= /Home/ /2/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home3 ::= /Home/ /3/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home4 ::= /Home/ /4/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home5 ::= /Home/ /5/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Color ::= S.Color | '???'
+* V.Nationality ::= S.Nationality | '???'
+* V.Cigarettes ::= S.Cigarettes | '???'
+* V.Pet ::= S.Pet | '???'
+* V.Drink ::= S.Drink | '???'
+* V.Table' ::= (V.Home1') (V.Home2') (V.Home3') (V.Home4') (V.Home5')
+* V.Home1' ::= /Home/ /1/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet' /Drink/ S.Drink
+* V.Home2' ::= /Home/ /2/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet' /Drink/ S.Drink
+* V.Home3' ::= /Home/ /3/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet' /Drink/ S.Drink
+* V.Home4' ::= /Home/ /4/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet' /Drink/ S.Drink
+* V.Home5' ::= /Home/ /5/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet' /Drink/ S.Drink
+* S.Pet' ::= S.Pet | /Fish/
 Apply_Rule
 * Member - 2 объекта в одном доме
-    /Member/ S.U S.X S.V S.Y E.B (E.1 S.X E.2 S.V '???' E.3) E.E +
-        = <Br /Rule_Tables/ '=' (E.B (E.1 S.X E.2 S.V S.Y E.3) E.E)>
-    /Member/ S.U S.X E.0 (E.1 S.X E.2) E.E +
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 '???' E.Home_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' (E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) E.Table_E)>
+    /Member/ S.Category1 S.Object1 E._ (E.Home_B S.Object1 E.Home_E) E.Table_E +
         =
-    /Member/ S.U S.X S.V S.Y E.B (E.1 S.U '???' E.2 S.Y E.3) E.E +
-        = <Br /Rule_Tables/ '=' (E.B (E.1 S.U S.X E.2 S.Y E.3) E.E)>
-    /Member/ S.U S.X S.V S.Y E.B (E.1 S.Y E.2) E.E +
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Object2 E.Home_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' (E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Object2 E.Home_E) E.Table_E)>
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Object2 E.Home_E) E.Table_E +
         = 
-    /Member/ E.0 +
-        = <Apply_Rule_None /Member/ E.0 ()>
+    /Member/ E._ +
+        = <Apply_Rule_None /Member/ E._ ()>
 * Left - 1 объект в доме слева дома 2 объекта
     /Left/ S.U S.X S.V S.Y E.B (E.1 S.X E.2) (E.3 S.V '???' E.4) E.E +
         = <Br /Rule_Tables/ '=' (E.B (E.1 S.X E.2) (E.3 S.V S.Y E.4) E.E)>
