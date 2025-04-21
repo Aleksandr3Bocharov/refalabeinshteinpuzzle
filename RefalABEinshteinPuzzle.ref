@@ -388,61 +388,66 @@ Solve_Aux1
         <Solve_Aux2 E.Solves_B (E._ '=' E.Table) S.Min <Dg /Rule_Tables/>> 
 
 Solve_Aux2
-    E.B (S.C (E.P S.M E.E) E.T '=' E.H) S.M (E.N) E.R +
+    E.Solves_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) S.Min (E.Next_Table) E.Rest_Tables +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.B (S.C (E.P S.M E.E) E.T '=' E.H) (S.M (E.P E.E) E.R '=' E.N)>
-    E.B (E.0 '=' E.H) S.M +
-        = <Solve E.B (E.0 '=' /Impossible/)>
+        <Solve E.Solves_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
+    E.Solves_B (E._ '=' E.Table) S.Min +
+        = <Solve E.Solves_B (E._ '=' /Impossible/)>
 
-* <Find_Min_Rule (V(/1/../15/).R) V.H> == S(/1/../15/).M
+* <Find_Min_Rule (V(/1/../15/).Rule) V.Table> == S(/1/../15/).Min
 *
-* V.H ::= (V.1) (V.2) (V.3) (V.4) (V.5)
-* V.1 ::= /Home/ /1/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.2 ::= /Home/ /2/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.3 ::= /Home/ /3/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.4 ::= /Home/ /4/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.5 ::= /Home/ /5/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* V.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
-* V.G ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
-* V.P ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
-* V.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+* V.Table ::= (V.Home1) (V.Home2) (V.Home3) (V.Home4) (V.Home5)
+* V.Home1 ::= /Home/ /1/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home2 ::= /Home/ /2/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home3 ::= /Home/ /3/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home4 ::= /Home/ /4/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home5 ::= /Home/ /5/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
+* V.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
+* V.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
+* V.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
+* V.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Find_Min_Rule
-    (S.M) E.H +
-        = S.M
-    (S.M E.E) E.H +
-        = <Apply_Rule <Rule S.M> E.H> +
-        <Find_Min_Rule_Aux <LengW <Dg /Rule_Tables/>> S.M (E.E) E.H>
+    (S.Min) E._ +
+        = S.Min
+    (S.Min E.Rest_Rules) E.Table +
+        = <Apply_Rule <Rule S.Min> E.Table> +
+        <Find_Min_Rule_Aux <LengW <Dg /Rule_Tables/>> S.Min (E.Rest_Rules) E.Table>
 
 Find_Min_Rule_Aux
-    /0/ E.T S.M E.0 +
-        = S.M
-    E.0 S.M () E.H +
-        = S.M
-    S.L E.T S.M (S.R E.E) E.H +
-        = <Apply_Rule <Rule S.R> E.H> +
-        <Find_Min_Rule_Aux <Min_Rule S.L S.M <LengW <Dg /Rule_Tables/>> S.R> (E.E) E.H>
+    /0/ S.Min E._ +
+        = S.Min
+    E._ S.Min () E.Table +
+        = S.Min
+    S.Len E._ S.Min (S.Rule E.Rest_Rules) E.Table +
+        = <Apply_Rule <Rule S.Rule> E.Table> +
+        <Find_Min_Rule_Aux <Min_Rule S.Len S.Min <LengW <Dg /Rule_Tables/>> S.Rule> (E.Rest_Rules) E.Table>
 
 Min_Rule
-    S.L S.M S.N E.T S.R +
-        = <Min_Rule_Aux S.L S.M S.N S.R <NRel (S.L) S.N>>
+    S.Len S.Min S.New_Len E._ S.Rule +
+        = <Min_Rule_Aux S.Len S.Min S.New_Len S.Rule <NRel (S.Len) S.New_Len>>
 
 Min_Rule_Aux
-    E.0 S.N S.R '>' E.E +
-        = S.N S.R
-    S.L S.M E.0 +
-        = S.L S.M
+    E._ S.New_Len S.Rule '>' E.__ +
+        = S.New_Len S.Rule
+    S.Len S.Min E._ +
+        = S.Len S.Min
 
-* <Rule S(/1/../16/).R> == S(/Member/ /Left/ /Nextto/).P V.O V.O | /Fish/
+* <Rule S(/1/../16/).Rule> == S(/Member/ /Left/ /Nextto/).Predicate V.Object V.Object | /Fish/
 *
-* V.O ::= /Home/ S(/1/ /3/).H | /Color/ S.C | /Nationality/ S.N | 
-*         /Cigarettes/ S.S | /Pet/ S.A | /Drink/ S.D 
-* S.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
-* S.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
-* S.S ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
-* S.A ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
-* S.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* V.Object ::= /Home/ S(/1/ /3/).Home | /Color/ S.Coloe | /Nationality/ S.Nationality | 
+*              /Cigarettes/ S.Cigarettes | /Pet/ S.Pet | /Drink/ S.Drink 
+* S.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* S.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* S.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* S.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/
+* S.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Rule
 * 1. Англичанин живет в красном доме.
     /1/ = /Member/ /Color/ /Red/ /Nationality/ /Englishman/
