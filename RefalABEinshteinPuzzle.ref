@@ -154,10 +154,11 @@ SolveOut
 * S.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
 * S.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
 * S.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
-* V.Nationality_txt ::= 'Норвежец' | 'Датчанин' | 'Англичанин' | 'Немец' |
-*                       'Швед'
+* V.Nationality_txt ::= 'Норвежец' | 'Датчанин' | 'Англичанин' |
+*                       'Немец' | 'Швед'
 Answer
-    E.Table_B (E.Home_B /Nationality/ S.Nationality E.Home_M /Fish/ E.Home_E) E.Table_E +
+    E.Table_B (E.Home_B /Nationality/ S.Nationality E.Home_M /Fish/ E.Home_E) +
+    E.Table_E +
         = <Answer_Aux S.Nationality>
 
 Answer_Aux
@@ -181,7 +182,8 @@ Do_Map_Solve
         <Prout '\n'>
 
 Do_Map_Table
-    (/Home/ S.Home /Color/ E.Color /Nationality/ E.Nationality /Cigarettes/ E.Cigarettes /Pet/ E.Pet /Drink/ E.Drink) +
+    (/Home/ S.Home /Color/ E.Color /Nationality/ E.Nationality +
+    /Cigarettes/ E.Cigarettes /Pet/ E.Pet /Drink/ E.Drink) +
         = <Prout <Symb S.Home> '   ' +
         <Object_Text /Color/ E.Color> +
         <Object_Text /Nationality/ E.Nationality> +
@@ -252,13 +254,15 @@ Rule_Text
 *              /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
 *              /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 * V.Object_txt ::= '???     ' | '???         ' | '???       ' | '???      ' | '???' |
-*                  'Желтый  ' | 'Голубой ' | 'Красный ' | 'Зеленый ' |
-*                  'Белый   ' |
-*                  'Норвежец       ' | 'Датчанин       ' | 'Англичанин     ' |
-*                  'Немец          ' | 'Швед           ' |
-*                  'Dunhill   ' | 'Rothmans  ' | 'Pall Mall ' | 'Marlboro  ' | 'Winfield  ' |
-*                  'Кошка    ' | 'Конь     ' | 'Птица    ' | 'Собака   ' |
-*                  'Рыба     ' |
+*                  'Желтый  ' | 'Голубой ' | 'Красный ' |
+*                   'Зеленый ' | 'Белый   ' |
+*                  'Норвежец       ' | 'Датчанин       ' | 
+*                  'Англичанин     ' | 'Немец          ' |
+*                  'Швед           ' |
+*                  'Dunhill   ' | 'Rothmans  ' | 'Pall Mall ' | 'Marlboro  ' |
+*                  'Winfield  ' |
+*                  'Кошка    ' | 'Конь     ' | 'Птица    ' |
+*                  'Собака   ' | 'Рыба     ' |
 *                  'Вода' | 'Чай' | 'Молоко' | 'Кофе' | 'Пиво'
 Object_Text
     /Color/ '???' +
@@ -346,7 +350,8 @@ Object_Text_Aux
 * V.Cigarettes ::= S.Cigarettes | '???'
 * V.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * V.Drink ::= S.Drink | '???'
-* V.Solve' ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Table)* '=' V.Extented)+ (/16/ '=' V.Table')
+* V.Solve' ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Table)* '=' V.Extented)+
+*              (/16/ '=' V.Table')
 * V.Table' ::= (V.Home1') (V.Home2') (V.Home3') (V.Home4') (V.Home5')
 * V.Home1' ::= /Home/ /1/ /Color/ S.Color /Nationality/ S.Nationality |
 *              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
@@ -377,10 +382,12 @@ Solve
     E.Solve_B (S.Rule () E.Tables '=' E.Table) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        E.Solve_B (S.Rule () E.Tables '=' E.Table) (/16/ '=' <Apply_Rule <Rule /16/> E.Table>)
+        E.Solve_B (S.Rule () E.Tables '=' E.Table) +
+        (/16/ '=' <Apply_Rule <Rule /16/> E.Table>)
 * Переход к следующему правилу  
     E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
-        = <Solve_Aux1 E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) <Find_Min_Rule W.Rest_Rules E.Table>>
+        = <Solve_Aux1 E.Solve_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
+        <Find_Min_Rule W.Rest_Rules E.Table>>
 
 Solve_Aux1
     E.Solve_B (E._ '=' E.Table) S.Min +
@@ -388,10 +395,12 @@ Solve_Aux1
         <Solve_Aux2 E.Solve_B (E._ '=' E.Table) S.Min <Dg /Rule_Tables/>> 
 
 Solve_Aux2
-    E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) S.Min (E.Next_Table) E.Rest_Tables +
+    E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) +
+    S.Min (E.Next_Table) E.Rest_Tables +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
+        <Solve E.Solve_B (S.Rule (E.Rules_B S.Min E.Rules_E) E.Tables '=' E.Table) +
+        (S.Min (E.Rules_B E.Rules_E) E.Rest_Tables '=' E.Next_Table)>
     E.Solve_B (E._ '=' E.Table) S.Min +
         = <Solve E.Solve_B (E._ '=' /Impossible/)>
 
@@ -410,7 +419,8 @@ Solve_Aux2
 *             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
 * V.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
 * V.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
-* V.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
+* V.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ |
+*                  '???'
 * V.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
 * V.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
 Find_Min_Rule
@@ -427,7 +437,8 @@ Find_Min_Rule_Aux
         = S.Min
     S.Len E._ S.Min (S.Rule E.Rest_Rules) E.Table +
         = <Apply_Rule <Rule S.Rule> E.Table> +
-        <Find_Min_Rule_Aux <Min_Rule S.Len S.Min <LengW <Dg /Rule_Tables/>> S.Rule> (E.Rest_Rules) E.Table>
+        <Find_Min_Rule_Aux <Min_Rule S.Len S.Min <LengW <Dg /Rule_Tables/>> S.Rule> +
+        (E.Rest_Rules) E.Table>
 
 Min_Rule
     S.Len S.Min S.New_Len E._ S.Rule +
@@ -439,7 +450,8 @@ Min_Rule_Aux
     S.Len S.Min E._ +
         = S.Len S.Min
 
-* <Rule S(/1/../16/).Rule> == S(/Member/ /Left/ /Nextto/).Predicate V.Object V.Object | /Fish/
+* <Rule S(/1/../16/).Rule> == S(/Member/ /Left/ /Nextto/).Predicate V.Object V.Object |
+*                             /Fish/
 *
 * V.Object ::= /Home/ S(/1/ /3/).Home | /Color/ S.Color | /Nationality/ S.Nationality | 
 *              /Cigarettes/ S.Cigarettes | /Pet/ S.Pet | /Drink/ S.Drink 
@@ -532,24 +544,40 @@ Rule
 * S.Pet' ::= S.Pet | /Fish/
 Apply_Rule
 * Member - 2 объекта в одном доме
-    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 '???' E.Home_E) E.Table_E +
-        = <Br /Rule_Tables/ '=' (E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) E.Table_E)>
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 '???' E.Home_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' +
+        (E.Table_B (E.Home_B S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
+        E.Table_E)>
     /Member/ S.Category1 S.Object1 E._ (E.Home_B S.Object1 E.Home_E) E.Table_E +
         =
-    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Object2 E.Home_E) E.Table_E +
-        = <Br /Rule_Tables/ '=' (E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Object2 E.Home_E) E.Table_E)>
-    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Object2 E.Home_E) E.Table_E +
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Object2 E.Home_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' +
+        (E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Object2 E.Home_E) +
+        E.Table_E)>
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.Home_B S.Object2 E.Home_E) E.Table_E +
         = 
     /Member/ E._ +
         = <Apply_Rule_None /Member/ E._ ()>
 * Left - 1 объект в доме слева дома 2 объекта
-    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
-        = <Br /Rule_Tables/ '=' (E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)>
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) +
+    (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' +
+        (E.Table_B (E.HomeL_B S.Object1 E.HomeL_E) +
+        (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)>
     /Left/ S.Category1 S.Object1 E._ (E.HomeL_B S.Object1 E.HomeL_E) E.Table_E +
         =
-    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
-        = <Br /Rule_Tables/ '=' (E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E)>
-    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) +
+    (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
+        = <Br /Rule_Tables/ '=' +
+        (E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
+        (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E)>
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.HomeR_B S.Object2 E.HomeR_E) E.Table_E +
         =
     /Left/ E._ +
         = <Apply_Rule_None /Left/ E._ ()> 
@@ -565,17 +593,28 @@ Apply_Rule
 
 Apply_Rule_None
 * Member - 2 объекта в одном доме
-    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E) E.Table_E (E.Rest_Table) +
-        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> (E.Rest_Table E.Table_B (E.Home_B S.Category1 S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) E.Table_E)> +
-        <Apply_Rule_None /Member/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_E (E.Rest_Table E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E))>
+    /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E) +
+    E.Table_E (E.Rest_Table) +
+        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> +
+        (E.Rest_Table E.Table_B +
+        (E.Home_B S.Category1 S.Object1 E.Home_M S.Category2 S.Object2 E.Home_E) +
+        E.Table_E)> +
+        <Apply_Rule_None /Member/ S.Category1 S.Object1 S.Category2 S.Object2 +
+        E.Table_E (E.Rest_Table E.Table_B +
+        (E.Home_B S.Category1 '???' E.Home_M S.Category2 '???' E.Home_E))>
     /Member/ E._ +
         =
 * Left - 1 объект в доме слева дома 2 объекта
-    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table) +
-        = <Br /Rule_Tables/ '=' +
-        <Dg /Rule_Tables/> (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)> +
-        <Apply_Rule_None /Left/ +
-            S.Category1 S.Object1 S.Category2 S.Object2 (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table E.Home_B (E.HomeL_B S.Category1 '???' E.HomeL_E))>
+    /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
+    E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E) +
+    (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E (E.Rest_Table) +
+        = <Br /Rule_Tables/ '=' <Dg /Rule_Tables/> +
+        (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 S.Object1 E.HomeL_E) +
+        (E.HomeR_B S.Category2 S.Object2 E.HomeR_E) E.Table_E)> +
+        <Apply_Rule_None /Left/ S.Category1 S.Object1 S.Category2 S.Object2 +
+        (E.HomeR_B S.Category2 '???' E.HomeR_E) E.Table_E +
+        (E.Rest_Table E.Table_B (E.HomeL_B S.Category1 '???' E.HomeL_E))>
     E._ =
 
     END
