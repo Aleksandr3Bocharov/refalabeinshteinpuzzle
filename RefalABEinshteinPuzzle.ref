@@ -326,56 +326,66 @@ Object_Text_Aux
     /Beer/ +
         = 'Пиво'
 
-* <Solve V.S> == V.S'
+* <Solve V.Solve> == V.Solve'
 *
-* V.S ::= (S(/0/../15/).R (E(/1/../15/).R) (V.H)* '=' V.X)+
-* V.X ::= V.H | /Impossible/
-* V.H ::= (V.1) (V.2) (V.3) (V.4) (V.5)
-* V.1 ::= /Home/ /1/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.2 ::= /Home/ /2/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.3 ::= /Home/ /3/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.4 ::= /Home/ /4/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.5 ::= /Home/ /5/ /Color/ V.C /Nationality/ V.N /Cigarettes/ V.G /Pet/ V.P /Drink/ V.D
-* V.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
-* V.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
-* V.G ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
-* V.P ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
-* V.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
-* V.S' ::= (S(/0/../15/)R (E(/1/../15/)R) (VH)* '=' VX)+ (/16/ '=' VH')
-* V.H' ::= (V.1') (V.2') (V.3') (V.4') (V.5')
-* V.1' ::= /Home/ /1/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.2' ::= /Home/ /2/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.3' ::= /Home/ /3/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.4' ::= /Home/ /4/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* V.5' ::= /Home/ /5/ /Color/ S.C /Nationality/ S.N /Cigarettes/ S.G /Pet/ S.P /Drink/ S.D
-* S.C ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
-* S.N ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
-* S.G ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
-* S.P ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
-* S.D ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+* V.Solve ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Home)* '=' V.Extented)+
+* V.Extented ::= V.Table | /Impossible/
+* V.Table ::= (V.Home1) (V.Home2) (V.Home3) (V.Home4) (V.Home5)
+* V.Home1 ::= /Home/ /1/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home2 ::= /Home/ /2/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home3 ::= /Home/ /3/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home4 ::= /Home/ /4/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Home5 ::= /Home/ /5/ /Color/ V.Color /Nationality/ V.Nationality |
+*             /Cigarettes/ V.Cigarettes /Pet/ V.Pet /Drink/ V.Drink
+* V.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ | '???'
+* V.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ | '???'
+* V.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/ | '???'
+* V.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | '???'
+* V.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/ | '???'
+* V.Solve' ::= (S(/0/../15/).Rule (E(/1/../15/).Rule) (V.Home)* '=' V.Extented)+ (/16/ '=' V.Table')
+* V.Table' ::= (V.Home1') (V.Home2') (V.Home3') (V.Home4') (V.Home5')
+* V.Home1' ::= /Home/ /1/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
+* V.Home2' ::= /Home/ /2/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
+* V.Home3' ::= /Home/ /3/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
+* V.Home4' ::= /Home/ /4/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
+* V.Home5' ::= /Home/ /5/ /Color/ S.Color /Nationality/ S.Nationality |
+*              /Cigarettes/ S.Cigarettes /Pet/ S.Pet /Drink/ S.Drink
+* S.Color ::= /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/
+* S.Nationality ::= /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/
+* S.Cigarettes ::= /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/ | /Winfield/
+* S.Pet ::= /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/
+* S.Drink ::= /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
 Solve
 * Возврат к предыдущему правилу
-    E.B (E.0 '=' E.H) (S.C W.I '=' /Impossible/) +
+    E.Solves_B (E._ '=' E.Table) (S.Rule W.Rest_Rules '=' /Impossible/) +
         = <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.B (E.0 '=' /Impossible/)>
+        <Solve E.Solves_B (E._ '=' /Impossible/)>
 * Переход к следующему применению правила
-    E.B (S.C W.R (E.H) E.T '=' /Impossible/) +
+    E.Solves_B (S.Rule W.Rest_Rules (E.Table) E.Tables '=' /Impossible/) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        <Solve E.B (S.C W.R E.T '=' E.H)>
+        <Solve E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table)>
 * Решение найдено
-    E.B (S.C () E.T '=' E.H) +
+    E.Solves_B (S.Rule () E.Tables '=' E.Table) +
         = <Br /Steps/ '=' <P1 <Dg /Steps/>>> +
         <Br /Steps_Back/ '=' <P1 <Dg /Steps_Back/>>> +
-        E.B (S.C () E.T '=' E.H) (/16/ '=' <Apply_Rule <Rule /16/> E.H>)
+        E.Solves_B (S.Rule () E.Tables '=' E.Table) (/16/ '=' <Apply_Rule <Rule /16/> E.Table>)
 * Переход к следующему правилу  
-    E.B (S.C W.R E.T '=' E.H) +
-        = <Solve_Aux1 E.B (S.C W.R E.T '=' E.H) <Find_Min_Rule W.R E.H>>
+    E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) +
+        = <Solve_Aux1 E.Solves_B (S.Rule W.Rest_Rules E.Tables '=' E.Table) <Find_Min_Rule W.Rest_Rules E.Table>>
 
 Solve_Aux1
-    E.B (E.0 '=' E.H) S.M +
-        = <Apply_Rule <Rule S.M> E.H> +
-        <Solve_Aux2 E.B (E.0 '=' E.H) S.M <Dg /Rule_Tables/>> 
+    E.Solves_B (E._ '=' E.Table) S.Min +
+        = <Apply_Rule <Rule S.Min> E.Table> +
+        <Solve_Aux2 E.Solves_B (E._ '=' E.Table) S.Min <Dg /Rule_Tables/>> 
 
 Solve_Aux2
     E.B (S.C (E.P S.M E.E) E.T '=' E.H) S.M (E.N) E.R +
