@@ -6,7 +6,7 @@ rem See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENS
 rem 2025-03-21
 rem https://github.com/Aleksandr3Bocharov/RefalAB
 
-set RAYLIB=D:\Programming\raylib-5.5_win64_mingw-w64
+set RAYLIB=F:\Programming\raylib-5.5_win64_mingw-w64
 set RAYLIBCFLAGS=-Wall -O2 -I%RAYLIB%\include
 set RAYLIBLFLAGS=-L%RAYLIB%\lib -lraylib -lgdi32 -lwinmm
 
