@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-04-21
+* 2025-05-17
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -18,7 +18,7 @@ Solver +
     ENTRY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro, Winfield
     ENTRY Pet, Cat, Horse, Bird, Dog, Fish
     ENTRY Drink, Water, Tea, Milk, Coffee, Beer
-    EXTRN P1, NRel, LengW, Br, Dg
+    EXTRN P1, LRel, LengW, Br, Dg
     EMPTY Impossible, Left, Member, Nextto, Rule_Tables, Rule_Tables_Temp
     EMPTY Steps, Steps_Back, Home
     EMPTY Color, Yellow, Blue, Red, Green, White
@@ -162,10 +162,10 @@ Find_Min_Rule_Aux
 
 Min_Rule
     S.Len S.Min S.New_Len E._ S.Rule +
-        = <Min_Rule_Aux S.Len S.Min S.New_Len S.Rule <NRel (S.Len) S.New_Len>>
+        = <Min_Rule_Aux S.Len S.Min S.New_Len S.Rule <LRel (S.Len) S.New_Len>>
 
 Min_Rule_Aux
-    E._ S.New_Len S.Rule '>' E.__ +
+    E._ S.New_Len S.Rule '>' +
         = S.New_Len S.Rule
     S.Len S.Min E._ +
         = S.Len S.Min
