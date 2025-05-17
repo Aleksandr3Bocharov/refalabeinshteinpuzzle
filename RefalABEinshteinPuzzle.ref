@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-04-21
+* 2025-05-17
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -54,7 +54,7 @@ RefalABEinshteinPuzzle +
     START
     ENTRY Go
     EXTRN Answer, Solve
-    EXTRN Map, Prout, Symb, Br, Dg, Platform, System
+    EXTRN Map, Prout, Symb, Br, Dg, Platform, System, Empty
     EXTRN Windows
     EXTRN Steps, Steps_Back, Home
     EXTRN Color, Yellow, Blue, Red, Green, White
@@ -85,10 +85,7 @@ Go      = <chcp_UTF8 <Platform>> <Help> +
 * Смена кодовой страницы в Windows на UTF-8
 chcp_UTF8
     /Windows/ +
-        = <chcp_UTF8_Aux <System 'chcp 65001'>> 
-    E._ =
-
-chcp_UTF8_Aux
+        = <Empty <System 'chcp 65001'>> 
     E._ =
 
 * Вывод справки
