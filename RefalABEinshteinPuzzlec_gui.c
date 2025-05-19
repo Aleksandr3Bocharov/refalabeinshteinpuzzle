@@ -81,7 +81,7 @@ char dialog_info_0[] = {Z3 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'N', 'F', 'O'
 G_L_B uint8_t refalab_dialog_info = '\122';
 void (*dialog_info_1)(void) = dialog_info_;
 
-// <View_Answer S(N)S S(N)B E(O)A> ==
+// <View_Answer S(N).Steps S(N).Back E(O).Answer> ==
 static void view_answer_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -119,7 +119,7 @@ char view_answer_0[] = {Z3 'V', 'I', 'E', 'W', '_', 'A', 'N', 'S', 'W', 'E', 'R'
 G_L_B uint8_t refalab_view_answer = '\122';
 void (*view_answer_1)(void) = view_answer_;
 
-// <View_Rule S(N)P S(N)R E(O)T> ==
+// <View_Rule S(N).Position S(N).Rule E(O).Text> ==
 static void view_rule_(void)
 {
     const T_LINKCB *p = refal.preva->next;
@@ -161,7 +161,7 @@ char view_rule_0[] = {Z1 'V', 'I', 'E', 'W', '_', 'R', 'U', 'L', 'E', (char)9};
 G_L_B uint8_t refalab_view_rule = '\122';
 void (*view_rule_1)(void) = view_rule_;
 
-// <View_Table S(N)R S(N)C E(O)T> ==
+// <View_Table S(N).Row S(N).Column E(O).Text> ==
 static void view_table_(void)
 {
     const T_LINKCB *p = refal.preva->next;
