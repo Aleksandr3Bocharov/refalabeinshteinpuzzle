@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-05-17
+* 2025-05-25
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -11,6 +11,7 @@
 
 Solver +
     START
+
     ENTRY Answer, Solve
     ENTRY Steps, Steps_Back, Home
     ENTRY Color, Yellow, Blue, Red, Green, White
@@ -26,6 +27,8 @@ Solver +
     EMPTY Cigarettes, Dunhill, Rothmans, PallMall, Marlboro, Winfield
     EMPTY Pet, Cat, Horse, Bird, Dog, Fish
     EMPTY Drink, Water, Tea, Milk, Coffee, Beer
+
+    IMPL
 
 * <Answer V.Table> == S.Nationality
 *

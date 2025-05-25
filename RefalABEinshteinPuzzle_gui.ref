@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-04-21
+* 2025-05-25
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -52,6 +52,7 @@
 
 RefalABEinshteinPuzzle_GUI +
     START
+
     ENTRY Go
     EXTRN Answer, Solve
     EXTRN Map_Accumulator, Del_Accumulator, P1, Symb, Br, Dg
@@ -64,6 +65,8 @@ RefalABEinshteinPuzzle_GUI +
     EXTRN Cigarettes, Dunhill, Rothmans, PallMall, Marlboro, Winfield
     EXTRN Pet, Cat, Horse, Bird, Dog, Fish
     EXTRN Drink, Water, Tea, Milk, Coffee, Beer
+
+    IMPL
 
 Go      = <GUI_Init> <Is_Info <Dialog_Info>> <GUI_Close>
 
