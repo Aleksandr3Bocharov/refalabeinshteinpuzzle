@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-05-25
+* 2025-07-27
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -71,67 +71,66 @@ RefalABEinshteinPuzzle_GUI +
 Go      = <GUI_Init> <Is_Info <Dialog_Info>> <GUI_Close>
 
 Is_Info
-    /False/ +
+    &False +
         = <Is_Info_Aux <Dialog_Is_Exit>>
-    /True/ +
-        = <Br /Steps/ '=' /0/> <Br /Steps_Back/ '=' /0/> +
-        <Solve_Out <Solve (/0/ (/1/ /2/ /3/ /4/ /5/ +
-            /6/ /7/ /8/ /9/ /10/ /11/ /12/ /13/ /14/ /15/) '=' +
-            (/Home/ /1/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /2/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /3/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /4/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???') +
-            (/Home/ /5/ /Color/ '???' /Nationality/ '???' +
-            /Cigarettes/ '???' /Pet/ '???' /Drink/ '???'))>>
+    &True +
+        = <Br &Steps '=' 0> <Br &Steps_Back '=' 0> +
+        <Solve_Out <Solve (0 (1 2 3 4 5 6 7 8 9 10 11 12 13 14 15) '=' +
+            (&Home 1 &Color '???' &Nationality '???' +
+            &Cigarettes '???' &Pet '???' &Drink '???') +
+            (&Home 2 &Color '???' &Nationality '???' +
+            &Cigarettes '???' &Pet '???' &Drink '???') +
+            (&Home 3 &Color '???' &Nationality '???' +
+            &Cigarettes '???' &Pet '???' &Drink '???') +
+            (&Home 4 &Color '???' &Nationality '???' +
+            &Cigarettes '???' &Pet '???' &Drink '???') +
+            (&Home 5 &Color '???' &Nationality '???' +
+            &Cigarettes '???' &Pet '???' &Drink '???'))>>
 
 Is_Info_Aux
-    /True/ +
+    &True +
         =
-    /False/ +
+    &False +
         = <Is_Info <Dialog_Info>>
 
 Solve_Out
     E.Solve_B (E._ '=' E.Table) +
-        = <View_Answer <Dg /Steps/> <Dg /Steps_Back/> <Answer_Text <Answer E.Table>>> +
+        = <View_Answer <Dg &Steps> <Dg &Steps_Back> <Answer_Text <Answer E.Table>>> +
         <Do_Solve_Out E.Solve_B ((E._ '=' E.Table))>
 
 Answer_Text
-    /Norwegian/ +
+    &Norwegian +
         = 'Норвежец'
-    /Dane/ +
+    &Dane +
         = 'Датчанин'
-    /Englishman/ +
+    &Englishman +
         = 'Англичанин'
-    /German/ +
+    &German +
         = 'Немец'
-    /Swede/ +
+    &Swede +
         = 'Швед'
 
 Do_Solve_Out
     (W.Solve_B) E.Solve_E +
-        = <Do_Solve_Out_Aux W.Solve_B /0/> +
+        = <Do_Solve_Out_Aux W.Solve_B 0> +
         <Result_View (W.Solve_B) E.Solve_E <View_Show>>
     E.Solve_B (W.Solve_E) +
-        = <Do_Solve_Out_Aux W.Solve_E /2/> +
+        = <Do_Solve_Out_Aux W.Solve_E 2> +
         <Result_View E.Solve_B (W.Solve_E) <View_Show>>
     E.Solve_B (W.Solve_M) E.Solve_E +
-        = <Do_Solve_Out_Aux W.Solve_M /1/> +
+        = <Do_Solve_Out_Aux W.Solve_M 1> +
         <Result_View E.Solve_B (W.Solve_M) E.Solve_E <View_Show>>
 
 Do_Solve_Out_Aux
     (S.Rule E._ '=' V.Table) S.Position +
         = <View_Rule S.Position S.Rule <Rule_Text S.Rule>> +
-        <Del_Accumulator <Map_Accumulator /Do_Map_Row/ /1/ V.Table>>
+        <Del_Accumulator <Map_Accumulator &Do_Map_Row 1 V.Table>>
 
 Do_Map_Row
-    S.Row (/Home/ S.Home /Color/ E.Color /Nationality/ E.Nationality +
-    /Cigarettes/ E.Cigarettes /Pet/ E.Pet /Drink/ E.Drink) +
+    S.Row (&Home S.Home &Color E.Color &Nationality E.Nationality +
+    &Cigarettes E.Cigarettes &Pet E.Pet &Drink E.Drink) +
         = <P1 S.Row> +
-        <Del_Accumulator <Map_Accumulator /Do_Map_Col/ (S.Row /0/) +
+        <Del_Accumulator <Map_Accumulator &Do_Map_Col (S.Row 0) +
             (<Symb S.Home>) +
             (<Object_Text E.Color>) +
             (<Object_Text E.Nationality>) +
@@ -143,7 +142,7 @@ Do_Map_Col
     (S.Row S.Column) (E.Object_Text) +
         = (S.Row <P1 S.Column>) <View_Table S.Row S.Column E.Object_Text>
 
-* <Rule_Text S(/0/../16/).Rule> == V.Rule_txt
+* <Rule_Text S(0..16).Rule> == V.Rule_txt
 *
 * V.Rule_txt ::= 'Условия.' |
 *                'Англичанин живет в красном доме.' | 
@@ -167,43 +166,36 @@ Do_Map_Col
 *                 с человеком, который пьет воду.' | 
 *                'Рыба - пятое животное.'
 Rule_Text
-    /0/ = 'Условия.'
-    /1/ = 'Англичанин живет в красном доме.'
-    /2/ = 'У шведа есть собака.'
-    /3/ = 'Датчанин пьет чай.'
-    /4/ = 'Зеленый дом стоит слева от белого.'
-    /5/ = 'Обитатель зеленого дома пьет кофе.'
-    /6/ = 'Человек, который курит Pall Mall, ' +
+    0   = 'Условия.'
+    1   = 'Англичанин живет в красном доме.'
+    2   = 'У шведа есть собака.'
+    3   = 'Датчанин пьет чай.'
+    4   = 'Зеленый дом стоит слева от белого.'
+    5   = 'Обитатель зеленого дома пьет кофе.'
+    6   = 'Человек, который курит Pall Mall, ' +
         'держит птицу.'
-    /7/ = 'Обитатель среднего дома пьет молоко.'
-    /8/ = 'Обитатель желтого дома курит Dunhill.'
-    /9/ = 'Норвежец живет в первом доме.'
-    /10/ +
-        = 'Курильщик Marlboro живет возле ' +
+    7   = 'Обитатель среднего дома пьет молоко.'
+    8   = 'Обитатель желтого дома курит Dunhill.'
+    9   = 'Норвежец живет в первом доме.'
+    10  = 'Курильщик Marlboro живет возле ' +
         'того, у кого есть кошка.'
-    /11/ +
-        = 'Человек, у которого есть конь, ' +
+    11  = 'Человек, у которого есть конь, ' +
         'живет возле того, кто курит Dunhill.'
-    /12/ +
-        = 'Курильщик Winfield пьет пиво.'
-    /13/ +
-        = 'Норвежец живет возле голубого дома.'
-    /14/ +
-        = 'Немец курит Rothmans.'
-    /15/ +
-        = 'Курильщик Marlboro живет по соседству ' +
+    12  = 'Курильщик Winfield пьет пиво.'
+    13  = 'Норвежец живет возле голубого дома.'
+    14  = 'Немец курит Rothmans.'
+    15  = 'Курильщик Marlboro живет по соседству ' +
         'с человеком, который пьет воду.'
-    /16/ +
-        = 'Рыба - пятое животное.'
+    16  = 'Рыба - пятое животное.'
 
 * <Object_Text V.Object> == V.Object_txt
 *
 * V.Object ::= '???' |
-*              /Yellow/ | /Blue/ | /Red/ | /Green/ | /White/ |
-*              /Norwegian/ | /Dane/ | /Englishman/ | /German/ | /Swede/ |
-*              /Dunhill/ | /Rothmans/ | /PallMall/ | /Marlboro/| /Winfield/ |
-*              /Cat/ | /Horse/ | /Bird/ | /Dog/ | /Fish/ |
-*              /Water/ | /Tea/ | /Milk/ | /Coffee/ | /Beer/
+*              &Yellow | &Blue | &Red | &Green | &White |
+*              &Norwegian | &Dane | &Englishman | &German | &Swede |
+*              &Dunhill | &Rothmans | &PallMall | &Marlboro | &Winfield |
+*              &Cat | &Horse | &Bird | &Dog | &Fish |
+*              &Water | &Tea | &Milk | &Coffee | &Beer
 * V.Object_txt ::= '???' |
 *                  'Желтый' | 'Голубой' | 'Красный' | 'Зеленый' | 
 *                  'Белый' |
@@ -215,55 +207,55 @@ Rule_Text
 Object_Text
     '???' +
         = '???'
-    /Yellow/ +
+    &Yellow +
         = 'Желтый'
-    /Blue/ +
+    &Blue +
         = 'Голубой'
-    /Red/ +
+    &Red +
         = 'Красный'
-    /Green/ +
+    &Green +
         = 'Зеленый'
-    /White/ +
+    &White +
         = 'Белый'     
-    /Norwegian/ +
+    &Norwegian +
         = 'Норвежец' 
-    /Dane/ +
+    &Dane +
         = 'Датчанин'  
-    /Englishman/ +
+    &Englishman +
         = 'Англичанин'
-    /German/ +
+    &German +
         = 'Немец'
-    /Swede/ +
+    &Swede +
         = 'Швед'   
-    /Dunhill/ +
+    &Dunhill +
         = 'Dunhill'
-    /Rothmans/ +
+    &Rothmans +
         = 'Rothmans'
-    /PallMall/ +
+    &PallMall +
         = 'Pall Mall'
-    /Marlboro/ +
+    &Marlboro +
         = 'Marlboro' 
-    /Winfield/ +
+    &Winfield +
         = 'Winfield'  
-    /Cat/ +
+    &Cat +
         = 'Кошка'
-    /Horse/ +
+    &Horse +
         = 'Конь'
-    /Bird/ +
+    &Bird +
         = 'Птица'
-    /Dog/ +
+    &Dog +
         = 'Собака'
-    /Fish/ +
+    &Fish +
         = 'Рыба'
-    /Water/ +
+    &Water +
         = 'Вода'
-    /Tea/ +
+    &Tea +
         = 'Чай'
-    /Milk/ +
+    &Milk +
         = 'Молоко'
-    /Coffee/ +
+    &Coffee +
         = 'Кофе'
-    /Beer/ +
+    &Beer +
         = 'Пиво'
 
 Result_View
@@ -279,9 +271,9 @@ Result_View
         = <Do_Solve_Out E.Solve_B W.Solve_C E.Solve_M (W.Solve_E)>
 
 Result_View_Aux
-    E._ /True/ +
+    E._ &True +
         =
-    E._ /False/ +
+    E._ &False +
         = <Result_View E._ <View_Show>>
 
     END
