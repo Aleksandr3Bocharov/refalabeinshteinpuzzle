@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-03-25
+// 2025-09-07
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -12,8 +12,6 @@
 #include <stdbool.h>
 #include "refalab.h"
 #include "gui.h"
-
-extern uint8_t refalab_true, refalab_false;
 
 static uint32_t steps = 0;
 static uint32_t steps_Back = 0;
@@ -58,7 +56,7 @@ char gui_close_0[] = {Z1 'G', 'U', 'I', '_', 'C', 'L', 'O', 'S', 'E', (char)9};
 G_L_B uint8_t refalab_gui_close = '\122';
 void (*gui_close_1)(void) = gui_close_;
 
-// <Dialog_Info> == /True/ | /False/
+// <Dialog_Info> == &True | &False
 static void dialog_info_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -66,15 +64,7 @@ static void dialog_info_(void)
         refal.upshot = 2;
         return;
     }
-    T_LINKCB *p = refal.prevr;
-    if (!slins(p, 1))
-        return;
-    p = p->next;
-    p->tag = TAGF;
-    p->info.codep = NULL;
-    p->info.codef = &refalab_true;
-    if (!dialog_Info())
-        p->info.codef = &refalab_false;
+    rfrbool(dialog_Info(), refal.preva);
     return;
 }
 char dialog_info_0[] = {Z3 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'N', 'F', 'O', (char)11};
@@ -211,10 +201,7 @@ static void view_show_(void)
         refal.upshot = 2;
         return;
     }
-    T_LINKCB *p = refal.prevr;
-    if (!slins(p, 1))
-        return;
-    p = p->next;
+    T_LINKCB *p = refal.preva;
     p->tag = TAGO;
     p->info.codep = NULL;
     p->info.infoc = 'Q';
@@ -227,13 +214,14 @@ static void view_show_(void)
         p->info.infoc = 'N';
     else if (result == 4)
         p->info.infoc = 'E';
+    rftpl(refal.prevr, p->prev, p->next);
     return;
 }
 char view_show_0[] = {Z1 'V', 'I', 'E', 'W', '_', 'S', 'H', 'O', 'W', (char)9};
 G_L_B uint8_t refalab_view_show = '\122';
 void (*view_show_1)(void) = view_show_;
 
-// <Dialog_Is_Exit> == /True/ | /False/
+// <Dialog_Is_Exit> == &True | &False
 static void dialog_is_exit_(void)
 {
     if (refal.preva->next != refal.nexta)
@@ -241,15 +229,7 @@ static void dialog_is_exit_(void)
         refal.upshot = 2;
         return;
     }
-    T_LINKCB *p = refal.prevr;
-    if (!slins(p, 1))
-        return;
-    p = p->next;
-    p->tag = TAGF;
-    p->info.codep = NULL;
-    p->info.codef = &refalab_true;
-    if (!dialog_Is_Exit())
-        p->info.codef = &refalab_false;
+    rfrbool(dialog_Is_Exit(), refal.preva);
     return;
 }
 char dialog_is_exit_0[] = {Z6 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'S', '_', 'E', 'X', 'I', 'T', (char)14};
