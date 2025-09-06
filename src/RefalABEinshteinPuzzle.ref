@@ -2,7 +2,7 @@
 * Distributed under the Boost Software License, Version 1.0.
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
-* 2025-07-27
+* 2025-09-07
 * https://github.com/Aleksandr3Bocharov/RefalABEinshteinPuzzle
 
 *====================================================================
@@ -55,7 +55,7 @@ RefalABEinshteinPuzzle +
 
     ENTRY Go
     EXTRN Answer, Solve
-    EXTRN Map, Prout, Symb, Br, Dg, Platform, System, Empty
+    EXTRN Map, Prouts, Symb, Br, Dg, Platform, System, Empty
     EXTRN Windows
     EXTRN Steps, Steps_Back, Home
     EXTRN Color, Yellow, Blue, Red, Green, White
@@ -79,10 +79,10 @@ Go      = <chcp_UTF8 <Platform>> <Help> +
             &Cigarettes '???' &Pet '???' &Drink '???') +
             (&Home 5 &Color '???' &Nationality '???' +
             &Cigarettes '???' &Pet '???' &Drink '???'))>> +
-        <Prout 'Количество шагов без возвращения: ' +
-            <Symb <Dg &Steps>> '.\n' +
+        <Prouts 'Количество шагов без возвращения: ' +
+            <Dg &Steps> '.\n' +
             'Количество шагов с возвращением: ' +
-            <Symb <Dg &Steps_Back>> '.'>
+            <Dg &Steps_Back> '.'>
 
 * Смена кодовой страницы в Windows на UTF-8
 chcp_UTF8
@@ -91,7 +91,7 @@ chcp_UTF8
     E._ =
 
 * Вывод справки
-Help    = <Prout 'Решение задачи Эйнштейна '+
+Help    = <Prouts 'Решение задачи Эйнштейна '+
             'на РефалАБ.\n\n' +
             'Задача Эйнштейна.\n\n' +
             'Условия:\n' +
@@ -134,7 +134,7 @@ Help    = <Prout 'Решение задачи Эйнштейна '+
 
 SolveOut
     E.Solve_B (E._ '=' E.Table) +
-        = <Prout 'Вопрос: Чья рыба?\n' +
+        = <Prouts 'Вопрос: Чья рыба?\n' +
             'Ответ: ' <Answer_Text <Answer E.Table>> ' имеет рыбу.\n\n'> +
         <Map &Do_Map_Solve E.Solve_B (E._ '=' E.Table)>
 
@@ -152,16 +152,16 @@ Answer_Text
 
 Do_Map_Solve
     (S.Rule E._ '=' E.Table) +
-        = <Prout 'Подсказка ' <Symb S.Rule> ': ' <Rule_Text S.Rule> '\n'> +
-        <Prout 'Дом Цвет    Национальность Сигареты  ' +
+        = <Prouts 'Подсказка ' S.Rule ': ' <Rule_Text S.Rule> '\n'> +
+        <Prouts 'Дом Цвет    Национальность Сигареты  ' +
             'Животное Напиток'> +
         <Map &Do_Map_Table E.Table> +
-        <Prout '\n'>
+        <Prouts '\n'>
 
 Do_Map_Table
     (&Home S.Home &Color E.Color &Nationality E.Nationality +
     &Cigarettes E.Cigarettes &Pet E.Pet &Drink E.Drink) +
-        = <Prout <Symb S.Home> '   ' +
+        = <Prouts S.Home '   ' +
             <Object_Text &Color E.Color> +
             <Object_Text &Nationality E.Nationality> +
             <Object_Text &Cigarettes E.Cigarettes> +
