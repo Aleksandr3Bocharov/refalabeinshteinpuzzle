@@ -81,9 +81,9 @@ void (*dialog_info_1)(void) = dialog_info_;
 // <View_Answer S(N).Steps S(N).Back E(O).Answer> ==
 static void view_answer_(void)
 {
-    const T_LINKCB *p = refal.preva->next;
     do
     {
+        T_LINKCB *p = refal.preva->next;
         if (p->tag != TAGN)
             break;
         steps = gcoden(p);
@@ -107,9 +107,9 @@ void (*view_answer_1)(void) = view_answer_;
 // <View_Rule S(N).Position S(N).Rule E(O).Text> ==
 static void view_rule_(void)
 {
-    const T_LINKCB *p = refal.preva->next;
     do
     {
+        T_LINKCB *p = refal.preva->next;
         if (p->tag != TAGN)
             break;
         position = gcoden(p);
@@ -137,9 +137,9 @@ void (*view_rule_1)(void) = view_rule_;
 // <View_Table S(N).Row S(N).Column E(O).Text> ==
 static void view_table_(void)
 {
-    const T_LINKCB *p = refal.preva->next;
     do
     {
+        T_LINKCB *p = refal.preva->next;
         if (p->tag != TAGN)
             break;
         const uint32_t row = gcoden(p);
