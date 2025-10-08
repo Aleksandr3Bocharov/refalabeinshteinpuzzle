@@ -37,7 +37,6 @@ static void gui_init_(void)
         return;
     }
     gui_Init();
-    printf("\n%d\n", MAX_PATHFILENAME);
     return;
 }
 char gui_init_0[] = {Z0 'G', 'U', 'I', '_', 'I', 'N', 'I', 'T', (char)8};
