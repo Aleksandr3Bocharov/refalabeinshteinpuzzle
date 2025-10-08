@@ -1,7 +1,7 @@
 // Copyright 2025 Aleksandr Bocharov
 // Distributed under the Boost Software License, Version 1.0.
 // See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-// 2025-09-07
+// 2025-10-07
 // https://github.com/Aleksandr3Bocharov/RefalABBrainfuck
 
 //====================================================================
@@ -12,6 +12,8 @@
 #include <stdbool.h>
 #include "refalab.h"
 #include "gui.h"
+
+extern uint8_t refalab_true, refalab_false;
 
 static uint32_t steps = 0;
 static uint32_t steps_Back = 0;
@@ -35,6 +37,7 @@ static void gui_init_(void)
         return;
     }
     gui_Init();
+    printf("\n%d\n", MAX_PATHFILENAME);
     return;
 }
 char gui_init_0[] = {Z0 'G', 'U', 'I', '_', 'I', 'N', 'I', 'T', (char)8};
@@ -64,7 +67,11 @@ static void dialog_info_(void)
         refal.upshot = 2;
         return;
     }
-    rfrbool(dialog_Info(), refal.preva);
+    if (dialog_Info())
+        refal.preva->info.codef = &refalab_true;
+    else
+        refal.preva->info.codef = &refalab_false;
+    rftpl(refal.prevr, refal.nextr, refal.nexta);
     return;
 }
 char dialog_info_0[] = {Z3 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'N', 'F', 'O', (char)11};
@@ -85,21 +92,9 @@ static void view_answer_(void)
             break;
         steps_Back = gcoden(p);
         p = p->next;
-        bool neot = false;
-        size_t i;
-        for (i = 0; p != refal.nexta; i++)
-        {
-            if (p->tag != TAGO || i == 20)
-            {
-                neot = true;
-                break;
-            }
-            answer[i] = p->info.infoc;
-            p = p->next;
-        }
-        if (neot)
+        p = rfgstr(answer, 20, p);
+        if (p != refal.nexta)
             break;
-        answer[i] = '\0';
         return;
     } while (false);
     refal.upshot = 2;
@@ -127,21 +122,9 @@ static void view_rule_(void)
         if (rule > 16)
             break;
         p = p->next;
-        bool neot = false;
-        size_t i;
-        for (i = 0; p != refal.nexta; i++)
-        {
-            if (p->tag != TAGO || i == 149)
-            {
-                neot = true;
-                break;
-            }
-            rule_Text[i] = p->info.infoc;
-            p = p->next;
-        }
-        if (neot)
+        p = rfgstr(rule_Text, 149, p);
+        if (p != refal.nexta)
             break;
-        rule_Text[i] = '\0';
         return;
     } while (false);
     refal.upshot = 2;
@@ -169,21 +152,9 @@ static void view_table_(void)
         if (col > 5)
             break;
         p = p->next;
-        bool neot = false;
-        size_t i;
-        for (i = 0; p != refal.nexta; i++)
-        {
-            if (p->tag != TAGO || i == 31)
-            {
-                neot = true;
-                break;
-            }
-            table[row][col][i] = p->info.infoc;
-            p = p->next;
-        }
-        if (neot)
+        p = rfgstr(table[row][col], 31, p);
+        if (p != refal.nexta)
             break;
-        table[row][col][i] = '\0';
         return;
     } while (false);
     refal.upshot = 2;
@@ -202,10 +173,9 @@ static void view_show_(void)
         return;
     }
     T_LINKCB *p = refal.preva;
+    const int result = view_Show(answer, steps, steps_Back, rule, rule_Text, table, position);
     p->tag = TAGO;
     p->info.codep = NULL;
-    p->info.infoc = 'Q';
-    const int result = view_Show(answer, steps, steps_Back, rule, rule_Text, table, position);
     if (result == 1)
         p->info.infoc = 'B';
     else if (result == 2)
@@ -214,7 +184,9 @@ static void view_show_(void)
         p->info.infoc = 'N';
     else if (result == 4)
         p->info.infoc = 'E';
-    rftpl(refal.prevr, p->prev, p->next);
+    else
+        p->info.infoc = 'Q';
+    rftpl(refal.prevr, refal.nextr, refal.nexta);
     return;
 }
 char view_show_0[] = {Z1 'V', 'I', 'E', 'W', '_', 'S', 'H', 'O', 'W', (char)9};
@@ -229,7 +201,11 @@ static void dialog_is_exit_(void)
         refal.upshot = 2;
         return;
     }
-    rfrbool(dialog_Is_Exit(), refal.preva);
+    if (dialog_Is_Exit())
+        refal.preva->info.codef = &refalab_true;
+    else
+        refal.preva->info.codef = &refalab_false;
+    rftpl(refal.prevr, refal.nextr, refal.nexta);
     return;
 }
 char dialog_is_exit_0[] = {Z6 'D', 'I', 'A', 'L', 'O', 'G', '_', 'I', 'S', '_', 'E', 'X', 'I', 'T', (char)14};
