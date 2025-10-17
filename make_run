@@ -4,10 +4,10 @@
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
 # 2024-10-17
-# https://github.com/Aleksandr3Bocharov/refalabeinshteinpuzzle
+# https://github.com/Aleksandr3Bocharov/refalabeinsteinpuzzle
 
 mkdir -p bin
-$REFALABBIN/refalabc src/refalabeinshteinpuzzle -a,"-o src/refalabeinshteinpuzzle.o" > refalabeinshteinpuzzle.log
-$REFALABBIN/refalabc src/solver -a,"-o src/solver.o" >> refalabeinshteinpuzzle.log
-clang -o bin/refalabeinshteinpuzzle src/refalabeinshteinpuzzle.o src/solver.o $REFALABLIB/obj/mainrf.o -L$REFALABLIB -lrefalab >> refalabeinshteinpuzzle.log
-bin/refalabeinshteinpuzzle
+$REFALABBIN/refalabc src/refalabeinsteinpuzzle -a,"-o src/refalabeinsteinpuzzle.o" > refalabeinsteinpuzzle.log
+$REFALABBIN/refalabc src/solver -a,"-o src/solver.o" >> refalabeinsteinpuzzle.log
+clang -o bin/refalabeinsteinpuzzle src/refalabeinsteinpuzzle.o src/solver.o $REFALABLIB/obj/mainrf.o -L$REFALABLIB -lrefalab >> refalabeinsteinpuzzle.log
+bin/refalabeinsteinpuzzle
