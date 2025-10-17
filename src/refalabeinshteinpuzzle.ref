@@ -3,12 +3,12 @@
 * See accompanying file LICENSE_1_0.txt
 * or copy at http://www.boost.org/LICENSE_1_0.txt
 * 2025-09-07
-* https://github.com/Aleksandr3Bocharov/refalabeinshteinpuzzle
+* https://github.com/Aleksandr3Bocharov/refalabeinsteinpuzzle
 
 *====================================================================
-* RefalABEinshteinPuzzle
+* RefalABEinsteinPuzzle
 *
-* Программа "RefalABEinshteinPuzzle" написана
+* Программа "RefalABEinsteinPuzzle" написана
 * на языке программирования РефалАБ.
 * https://github.com/Aleksandr3Bocharov/refalab
 *
@@ -50,7 +50,7 @@
 *     с человеком, который пьет воду.
 *====================================================================
 
-RefalABEinshteinPuzzle +
+RefalABEinsteinPuzzle +
     START
 
     ENTRY Go
