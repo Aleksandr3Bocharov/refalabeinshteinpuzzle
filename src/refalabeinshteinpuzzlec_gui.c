@@ -5,7 +5,7 @@
 // https://github.com/Aleksandr3Bocharov/refalabeinshteinpuzzle
 
 //====================================================================
-// Модуль "RefalABEinshteinPuzzlec" (GUI версия)
+// Модуль "refalabeinshteinpuzzlec" (GUI версия)
 //====================================================================
 
 #include <stdint.h>
