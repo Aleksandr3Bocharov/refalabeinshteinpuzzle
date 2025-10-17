@@ -1,7 +1,7 @@
 RefalABEinshteinPuzzle
 ------------------------
 
-Программа "RefalABEinshteinPuzzle" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/RefalAB).
+Программа "RefalABEinshteinPuzzle" написана на языке программирования [РефалАБ](https://github.com/Aleksandr3Bocharov/refalab).
 
 Список командных файлов для сборки программы:
 - make_run.bat для компиляции, компоновки и запуска программы в Windows;
