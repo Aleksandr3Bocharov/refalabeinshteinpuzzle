@@ -3,13 +3,11 @@
 rem Copyright 2025 Aleksandr Bocharov
 rem Distributed under the Boost Software License, Version 1.0.
 rem See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
-rem 2025-10-07
+rem 2025-10-17
 rem https://github.com/Aleksandr3Bocharov/refalabeinshteinpuzzle
 
 if not exist bin mkdir bin
-%REFALABBIN%\RefalAB src\RefalABEinshteinPuzzle > RefalABEinshteinPuzzle.log
-as -o src\RefalABEinshteinPuzzle.o src\RefalABEinshteinPuzzle.s >> RefalABEinshteinPuzzle.log
-%REFALABBIN%\RefalAB src\Solver >> RefalABEinshteinPuzzle.log
-as -o src\Solver.o src\Solver.s >> RefalABEinshteinPuzzle.log
-clang -o bin\RefalABEinshteinPuzzle.exe src\RefalABEinshteinPuzzle.o src\Solver.o %REFALABLIB%\obj\mainrf.o -L%REFALABLIB% -lRefalAB >> RefalABEinshteinPuzzle.log
-bin\RefalABEinshteinPuzzle
+%REFALABBIN%\refalabc src\refalabeinshteinpuzzle -a,"-o src\refalabeinshteinpuzzle.o" > refalabeinshteinpuzzle.log
+%REFALABBIN%\refalabc src\solver -a,"-o src\solver.o" >> refalabeinshteinpuzzle.log
+clang -o bin\refalabeinshteinpuzzle.exe src\refalabeinshteinpuzzle.o src\solver.o %REFALABLIB%\obj\mainrf.o -L%REFALABLIB% -lrefalab >> refalabeinshteinpuzzle.log
+bin\refalabeinshteinpuzzle
